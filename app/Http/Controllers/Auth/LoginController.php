@@ -21,6 +21,12 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    // using username for authentication instead of email
+    public function username()
+    {
+        return 'username';
+    }
+
     /**
      * Where to redirect users after login.
      *
