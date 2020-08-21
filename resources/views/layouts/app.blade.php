@@ -53,14 +53,28 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
-
+                                {{-- profile user option 1 --}}
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <div class="header-nav"><p class="no-underline px-3 pt-2 pb-2 mb-n2 mt-n1 d-block">Signed in as 
+                                        <strong class="css-truncate-target">{{ Auth::user()->username }}</strong></p>
+                                    </div>
+                                    <div role="none" class="dropdown-divider"></div>
+                        
+                                    {{-- Profile / edit profile user  --}}
+                                    <a class="dropdown-item" href="{{ route('profile') }}">
+                                        {{ __('Edit Profile') }}
+                                    </a>
+
+                                    {{-- Logout dropdown --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
+                                    
+                                    <form id="profile-form" action="{{ route('profile') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
