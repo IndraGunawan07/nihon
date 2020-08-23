@@ -22,16 +22,6 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    // protected function authenticated(Request $request,$user){
-        // $id = Auth::username();
-    //     if($user->role === 'Admin'){
-    //         return RouteServiceProvider::HOME; //redirect to admin panel
-    //     }
-    
-    //     // return redirect()->intended('/'); //redirect to standard user homepage
-    //     // return RouteServiceProvider::HOME;
-    // }
-
     // using username for authentication instead of email
     public function username()
     {   
@@ -44,6 +34,7 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
+    // Untuk cek apakah user tersebut admin
     protected function redirectTo()
     {
         if (auth()->user()->role == 'Admin') {

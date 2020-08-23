@@ -24,7 +24,7 @@ Route::get('/admin', function(){
     return view('/admin');
 });
 
-// Route::get('/home/profile', 'UserController@profile')->name('profile');
+// Route untuk update profile
 Route::group(['middleware' => 'auth'], function (){
     Route::get('profile', 'ProfileController@edit')->name('profile.edit');
 

@@ -53,14 +53,14 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
-                                {{-- profile user option 1 --}}
+                                {{-- Profile user --}}
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <div class="header-nav"><p class="no-underline px-3 pt-2 pb-2 mb-n2 mt-n1 d-block">Signed in as 
                                         <strong class="css-truncate-target">{{ Auth::user()->username }}</strong></p>
                                     </div>
                                     <div role="none" class="dropdown-divider"></div>
                         
-                                    {{-- Profile / edit profile user  --}}
+                                    {{-- Edit Profile user  --}}
                                     <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                         {{ __('Edit Profile') }}
                                     </a>
