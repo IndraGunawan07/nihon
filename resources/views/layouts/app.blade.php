@@ -61,7 +61,7 @@
                                     <div role="none" class="dropdown-divider"></div>
                         
                                     {{-- Profile / edit profile user  --}}
-                                    <a class="dropdown-item" href="{{ route('profile') }}">
+                                    <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                         {{ __('Edit Profile') }}
                                     </a>
 
@@ -72,7 +72,7 @@
                                         {{ __('Logout') }}
                                     </a>
                                     
-                                    <form id="profile-form" action="{{ route('profile') }}" method="POST" style="display: none;">
+                                    <form id="profile-form" action="{{ route('profile.edit') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
