@@ -70,7 +70,7 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a v-on:click="forgot = true" class="btn btn-link"  href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
@@ -82,4 +82,13 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            forgot: false
+        }
+    })
+</script>
 @endsection

@@ -30,3 +30,7 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::patch('profile', 'ProfileController@update')->name('profile.update');
 });
+
+Route::get('/secret', 'Auth\ForgotPasswordController@index');
+
+Route::post('secret', 'Auth\ForgotPasswordController@checkSecretAnswer')->name('check');
