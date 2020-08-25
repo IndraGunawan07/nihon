@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="padding-top: 10em;">
         <div class="col-md-8">
             <!-- Profile Avatar -->
             <div class="card card-primary card-outline">

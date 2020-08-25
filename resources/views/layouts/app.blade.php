@@ -1,94 +1,96 @@
-<!doctype html>
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        
+        <!-- Fonts -->
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
+        {{-- bootstrap --}}
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+        
+        {{-- style --}}
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+        <link href="//fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+</head>			
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->username }} <span class="caret"></span>
-                                </a>
-                                {{-- Profile user --}}
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <div class="header-nav"><p class="no-underline px-3 pt-2 pb-2 mb-n2 mt-n1 d-block">Signed in as 
-                                        <strong class="css-truncate-target">{{ Auth::user()->username }}</strong></p>
-                                    </div>
-                                    <div role="none" class="dropdown-divider"></div>
-                        
-                                    {{-- Edit Profile user  --}}
-                                    <a class="dropdown-item" href="{{ route('profile.edit') }}">
-                                        {{ __('Edit Profile') }}
-                                    </a>
-
-                                    {{-- Logout dropdown --}}
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    
-                                    <form id="profile-form" action="{{ route('profile.edit') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+    <!-- header -->
+    <header>	
+        <div id="app"></div>
+        <div class="container">
+            <!-- nav -->
+            <nav class="py-3">
+                <div id="logo">
+                    <h1> <a href="index.html" style="color: black">Nihonesia</a></h1>
                 </div>
-            </div>
-        </nav>
+                <ul class="menu mt-lg-4">
+                    <li class="mr-lg-4 mr-3 active"><a href="{{ url('/') }}">Home</a></li>
+                    <li class="mr-lg-4 mr-3"><a href="{{ url('/#about') }}">About</a></li>
+                    <li class="mr-lg-4 mr-3"><a href="{{ url('/#team') }}">Team</a></li>
+                    <!-- Authentication Links -->
+                    @guest
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                        @if (Route::has('register'))
+                            <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                        @endif
+                     @else
+                     <li class="nav-item dropdown">
+                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                             {{ Auth::user()->username }} <span class="caret"></span>
+                         </a>
+                         {{-- Profile user --}}
+                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                             <div class="header-nav"><p class="no-underline px-3 pt-2 pb-2 mb-n2 mt-n1 d-block">Signed in as 
+                                 <strong class="css-truncate-target">{{ Auth::user()->username }}</strong></p>
+                             </div>
+                             <div role="none" class="dropdown-divider"></div>
+                 
+                             {{-- Edit Profile user  --}}
+                             <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                 {{ __('Edit Profile') }}
+                             </a>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+                             {{-- Logout dropdown --}}
+                             <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
+                                 {{ __('Logout') }}
+                             </a>
+                             
+                             <form id="profile-form" action="{{ route('profile.edit') }}" method="POST" style="display: none;">
+                                 @csrf
+                             </form>
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                 @csrf
+                             </form>
+                         </div>
+                     </li>
+                 @endguest
+                </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </header>
+    <!-- //header -->
+
+    <main class="py-0">
+        @yield('content')
+    </main>
     </div>
 </body>
 </html>
