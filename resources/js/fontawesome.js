@@ -9,7 +9,19 @@ import {
     faEnvelope,
     faLock,
     faQuestion,
-    faUserAlt
+    faUserAlt,
+    faBars,
+    faSearch,
+    faComment,
+    faBell,
+    faTh,
+    faThLarge,
+    faDatabase,
+    faUserCheck,
+    faUserPlus,
+    faUserLock,
+    faFile,
+    faCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -18,7 +30,18 @@ library.add(
     faEnvelope,
     faLock,
     faQuestion,
-    faUserAlt
+    faUserAlt,
+    faBars,
+    faSearch,
+    faComment,
+    faBell,
+    faThLarge,
+    faDatabase,
+    faUserCheck,
+    faUserPlus,
+    faUserLock,
+    faFile,
+    faCircle,
 );
 
 dom.watch();
