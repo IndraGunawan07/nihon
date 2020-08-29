@@ -45,4 +45,6 @@ class User extends Authenticatable
         $user = DB::table('users')->where('username', $username)->first();
         return $user;
     }
+
+    
 }

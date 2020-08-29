@@ -361,6 +361,14 @@ li > a:only-child:after { content: ''; }
     text-transform: capitalize;
 }
 
+/* tambahan untuk contribute.blade */
+.banner-contribute {
+    background: url(../images/banner-contribute.jpg) no-repeat center;
+    min-height: 90vh;
+    background-size: cover;
+    position: relative;
+}
+
 .ser-lt span.fa {
     width: 90px;
     height: 90px;
@@ -407,7 +415,7 @@ p.iner {
 
 /*-- team --*/
 .secnd_sty4 {
-    background-color: #003666;
+    background-color: #8EDFD6;
 }
 .team-left img ,.team-middle img,.team-right img{
     border-radius: 50%;

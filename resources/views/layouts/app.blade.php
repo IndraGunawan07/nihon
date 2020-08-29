@@ -11,11 +11,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        
+    
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,10 +24,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         {{-- bootstrap --}}
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
-        
+
         {{-- style --}}
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
         <link href="//fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
 </head>			
 <body>
     <!-- header -->
@@ -49,6 +51,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @endif
                      @else
+                        <!-- Jika user role contribute maka ke page contribute -->
+                        @if ( Auth::user()->role === "Contributor")
+                            <li class="mr-lg-4 mr-3"><a href="{{ url('contribute') }}">Contribute</a></li>
+                        <!-- Jika user role validator maka ke page validator -->
+                        @elseif( Auth::user()->role === "Validator")
+                            <li class="mr-lg-4 mr-3"><a href="">Validate</a></li>
+                        @endif
                      <li class="nav-item dropdown">
                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                              {{ Auth::user()->username }} <span class="caret"></span>

@@ -20,9 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', function(){
-    return view('/admin');
-});
+Route::resource('/admin', 'AdminController');
 
 // Route untuk update profile
 Route::group(['middleware' => 'auth'], function (){
@@ -34,3 +32,6 @@ Route::group(['middleware' => 'auth'], function (){
 Route::get('/secret', 'Auth\ForgotPasswordController@index');
 
 Route::post('secret', 'Auth\ForgotPasswordController@checkSecretAnswer')->name('check');
+Route::get('/contribute', function(){
+    return view('layouts.contribute');
+});
