@@ -31,6 +31,10 @@ Route::group(['middleware' => 'auth'], function (){
     Route::patch('profile', 'ProfileController@update')->name('profile.update');
 });
 
+// Route untuk check username dan secret answer
 Route::get('/secret', 'Auth\ForgotPasswordController@index');
-
 Route::post('secret', 'Auth\ForgotPasswordController@checkSecretAnswer')->name('check');
+
+//Route buat reset password di forgot password
+Route::get('/reset', 'Auth\ResetPasswordController@index')->name('reset');
+Route::post('reset', 'Auth\ResetPasswordController@confirmPass')->name('confirmpass');

@@ -37,6 +37,7 @@ class ForgotPasswordController extends Controller
         if(($username === $user->getUser($username)->username) && ($userAnswer === $user->getUser($username)->secret_answer))
         {
             Log::info('berhasil');
+            return redirect('reset')->with('username', $username);
         }
     }
 }
