@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="padding-top: 10em;">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ $validUser->username }}'s Secret Question</div>
@@ -22,7 +22,7 @@
                                     <input type="text" class="form-control @error('secretanswer') is-invalid @enderror" name="secretanswer" value="{{ old('username') }}" required autocomplete="secretanswer" autofocus>
                                         <div class="input-group-append">
                                             <div class="input-group-text">
-                                            <span class="fas fa-stamp"></span>
+                                            <span class="fas fa-key"></span>
                                             </div>
                                         </div>
                                     </div>

@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class ResetPasswordController extends Controller
 {
@@ -27,4 +33,28 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    public function index()
+    {
+        return view('auth.newpassword');
+    }
+
+    public function confirmPass(Request $request)
+    {
+        // dd($request->all());
+        // Log::info('masuk');
+        if($request->validate([
+            'password' => 'required|confirmed',
+        ]))
+        {
+            Log::info('masuk');
+            // $user = new User;
+            // $user->setPassword($request->username, $request->password);
+            //$user->setRememberToken(Str::random(60));
+            $user = User::where('username', $request->username)->first();
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
+        return redirect('login');
+    }
 }
