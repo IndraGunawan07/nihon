@@ -51,8 +51,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @endif
                      @else
-                        <!-- Jika user role contribute maka ke page contribute -->
-                        @if ( Auth::user()->role === "Contributor")
+                        <!-- Jika user role contribute dan is_locked = 0 maka tab page contribute muncul -->
+                        @if ( Auth::user()->role === "Contributor" && Auth::user()->is_locked === 0)
                             <li class="mr-lg-4 mr-3"><a href="{{ url('contribute') }}">Contribute</a></li>
                         <!-- Jika user role validator maka ke page validator -->
                         @elseif( Auth::user()->role === "Validator")
