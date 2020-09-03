@@ -364,7 +364,7 @@ li > a:only-child:after { content: ''; }
 /* tambahan untuk contribute.blade */
 .banner-contribute {
     background: url(../images/banner-contribute.jpg) no-repeat center;
-    min-height: 90vh;
+    min-height: 100vh;
     background-size: cover;
     position: relative;
 }

@@ -119,60 +119,60 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
+                <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-database"></i>
-                <p>
-                    Data
-                    <span class="right badge badge-danger">New</span>
-                </p>
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>
+                        Data
+                        <span class="right badge badge-danger">New</span>
+                    </p>
+                    </a>
+                </li>
 
-            <!-- Users sidebar -->
-            <li class="nav-header">USERS</li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user-check"></i>
-                <p>
-                    Contributor
-                </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user-plus"></i>
-                <p>
-                    Validator
-                </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user-lock"></i>
-                <p>
-                    Blocked
-                </p>
-                </a>
-            </li>
-            <!-- //Users sidebar -->
+                <!-- Users sidebar -->
+                <li class="nav-header">USERS</li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-check"></i>
+                    <p>
+                        Contributor
+                    </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-plus"></i>
+                    <p>
+                        Validator
+                    </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-lock"></i>
+                    <p>
+                        Blocked
+                    </p>
+                    </a>
+                </li>
+                <!-- //Users sidebar -->
 
-            <li class="nav-header">Another menu?</li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-file"></i>
-                <p>Documentation</p>
-                </a>
-            </li>
-            <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Level 1</p>
-                </a>
-            </li>
+                <li class="nav-header">Another menu?</li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-file"></i>
+                    <p>Documentation</p>
+                    </a>
+                </li>
+                <li class="nav-header">MULTI LEVEL EXAMPLE</li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="fas fa-circle nav-icon"></i>
+                    <p>Level 1</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- //.Sidebar-menu -->

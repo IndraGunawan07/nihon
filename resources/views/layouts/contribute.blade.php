@@ -39,19 +39,18 @@
     </div>
     </div>
 <!-- //banner -->
-{{-- <div style="text-align: center">DISINI BUTTON PLAY VOICE DKK</div> --}}
-@endsection
-
-{{-- <script>
+<script>
     // console.log("Masuk gk sih");
-    $( document ).ready(function() {
     console.log( "ready!" );
-    $(".custom-file-input").on("change", function() {
+    document.addEventListener('DOMContentLoaded', function (){
+        $(".custom-file-input").on("change", function() {
       var fileName = $(this).val().split("\\").pop();
       $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
-    });
-</script> --}}
+    });   
+</script>
+@endsection
+
 
 
 

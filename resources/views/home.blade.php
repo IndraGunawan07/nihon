@@ -9,7 +9,7 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
-                            <div class="col-md-6" style="display: inline">{{ __('Dashboard') }}</div>
+                            <div class="col-md-6" style="display: inline">{{ __('Welcome') }}</div>
                             <div class="float-right">
                                 <a href= {{ route('homepage') }}><button class="btn btn-outline-danger btn-sm">X</button></a>
                             </div>

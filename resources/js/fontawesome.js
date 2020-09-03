@@ -21,7 +21,9 @@ import {
     faUserPlus,
     faUserLock,
     faFile,
-    faCircle
+    faCircle,
+    faStamp,
+    faKey
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -42,6 +44,8 @@ library.add(
     faUserLock,
     faFile,
     faCircle,
+    faStamp,
+    faKey,
 );
 
 dom.watch();
