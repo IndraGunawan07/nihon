@@ -21,7 +21,7 @@ class ProfileController extends Controller
             $request->all()
         );
 
-        return redirect()->route('home')->with('success', "Your profile has been updated");
+        return redirect()->route('homepage')->with('success', "Your profile has been updated");
     }
 
     

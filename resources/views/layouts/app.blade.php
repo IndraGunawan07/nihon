@@ -41,7 +41,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <h1> <a href="index.html" style="color: black">Nihonesia</a></h1>
                 </div>
                 <ul class="menu mt-lg-4">
-                    <li class="mr-lg-4 mr-3 active"><a href="{{ url('/') }}">Home</a></li>
+                    <li class="mr-lg-4 mr-3 active"><a href="{{ route('homepage') }}">Home</a></li>
                     <li class="mr-lg-4 mr-3"><a href="{{ url('/#about') }}">About</a></li>
                     <li class="mr-lg-4 mr-3"><a href="{{ url('/#team') }}">Team</a></li>
                     <!-- Authentication Links -->
@@ -52,7 +52,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         @endif
                      @else
                         <!-- Jika user role contribute dan is_locked = 0 maka tab page contribute muncul -->
-                        @if ( Auth::user()->role === "Contributor" && Auth::user()->is_locked === 0)
+                        @if ( Auth::user()->role === "Contributor")
                             <li class="mr-lg-4 mr-3"><a href="{{ url('contribute') }}">Contribute</a></li>
                         <!-- Jika user role validator maka ke page validator -->
                         @elseif( Auth::user()->role === "Validator")
