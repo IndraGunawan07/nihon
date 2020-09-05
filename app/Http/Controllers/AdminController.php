@@ -22,6 +22,14 @@ class AdminController extends Controller
         return view ('administator.index',compact('users'));
     }
 
+    public function approve(Request $request)
+    {
+        $user = User::where('username', $request->user)->first();
+        $user->is_locked = 0;
+        $user->save();
+        return back();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

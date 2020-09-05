@@ -31,12 +31,13 @@
   <!-- bootstrap -->
   <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
 
-  
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div id="app"></div>
-    <div class="wrapper">
+    <div class="wrapper" id="toggle">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -131,6 +132,7 @@
                     </a>
                 </li>
 
+<<<<<<< HEAD
                 <!-- Users sidebar -->
                 <li class="nav-header">USERS</li>
                 <li class="nav-item">
@@ -158,6 +160,35 @@
                     </a>
                 </li>
                 <!-- //Users sidebar -->
+=======
+            <!-- Users sidebar -->
+            <li class="nav-header">USERS</li>
+            <li v-on:click="isContributor()" class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-user-check"></i>
+                <p>
+                    Contributor
+                </p>
+                </a>
+            </li>
+            <li v-on:click="isValidator()" class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-user-plus"></i>
+                <p>
+                    Validator
+                </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-user-lock"></i>
+                <p>
+                    Blocked
+                </p>
+                </a>
+            </li>
+            <!-- //Users sidebar -->
+>>>>>>> admin-page
 
                 <li class="nav-header">Another menu?</li>
                 <li class="nav-item">
@@ -182,8 +213,33 @@
     <!-- //Main Sidebar Container -->
 
     <main class="py-0">
-        @yield('content')
+        <div v-if="contributor">
+            @yield('contributor')
+        </div>
+        <div v-if="validator">
+            @yield('validator')
+        </div>
     </main>
     </div>
+
+    <script>
+    new Vue({
+        el: '#toggle',
+        data: {
+            contributor: true,
+            validator: false
+        },
+        methods: {
+            isContributor: function(){
+                this.contributor = true,
+                this.validator = false
+            },
+            isValidator: function(){
+                this.contributor = false,
+                this.validator = true
+            }
+        }
+    })
+    </script>
 </body>
 </html>

@@ -40,3 +40,6 @@ Route::get('/contribute', function(){
 //Route buat reset password di forgot password
 Route::get('/reset', 'Auth\ResetPasswordController@index')->name('reset');
 Route::post('reset', 'Auth\ResetPasswordController@confirmPass')->name('confirmpass');
+
+// route approve user
+Route::post('/approve', 'AdminController@approve')->name('approve');
