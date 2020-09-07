@@ -3,13 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
-  
-  <!-- Theme js -->
-  <script src="{{ asset('js/admin.js') }}" defer></script>
 
+   <!-- Scripts -->
+   <script src="{{ asset('js/app.js') }}" defer></script>
+
+   <!-- Theme js -->
+   <script src="{{ asset('js/admin.js') }}" defer></script>
+
+   <!-- DataTables -->
+   <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/responsive.bootstrap4.min.css') }}">
+   
+   <script src="{{ asset('js/jquery.dataTables.min.js') }}" defer></script>
+    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}" defer></script>
+    <script src="{{ asset('js/dataTables.responsive.min.js') }}" defer></script>
+    <script src="{{ asset('js/responsive.bootstrap4.min.js') }}" defer></script>
+  
+  
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,13 +30,12 @@
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-
-  {{-- <link type="text/css" href="node_modules/overlayscrollbars/css/OverlayScrollbars.css" rel="stylesheet"/>
-  <!-- Plugin JS --> gk tau kenapa gk bisa :( 
-  <script type="text/javascript" src="node_modules/overlayscrollbars/js/OverlayScrollbars.js"></script> --}}
+  
+  <!-- OverlayScrollbar -->
   <script src="{{ asset('js/OverlayScrollbars.js') }}" defer></script>
   <link type="text/css" href="{{ asset('css/OverlayScrollbars.css') }}" rel="stylesheet"/>
-  
+
+ 
   
   <!-- bootstrap -->
   <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
@@ -132,50 +141,21 @@
                     </a>
                 </li>
 
-<<<<<<< HEAD
-                <!-- Users sidebar -->
-                <li class="nav-header">USERS</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-user-check"></i>
-                    <p>
-                        Contributor
-                    </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-user-plus"></i>
-                    <p>
-                        Validator
-                    </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-user-lock"></i>
-                    <p>
-                        Blocked
-                    </p>
-                    </a>
-                </li>
-                <!-- //Users sidebar -->
-=======
             <!-- Users sidebar -->
-            <li class="nav-header">USERS</li>
-            <li v-on:click="isContributor()" class="nav-item">
-                <a href="#" class="nav-link">
+            <li class="nav-header">System Setup</li>
+            <li class="nav-item">
+                <a href=" {{ url('/admin') }}" class="nav-link">
                 <i class="nav-icon fas fa-user-check"></i>
                 <p>
-                    Contributor
+                    Users
                 </p>
                 </a>
             </li>
-            <li v-on:click="isValidator()" class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user-plus"></i>
+            <li class="nav-item">
+            <a href="{{ url('/syllable') }}"  class="nav-link">
+                <i class="nav-icon fas fa-folder-plus"></i>
                 <p>
-                    Validator
+                     Syllable
                 </p>
                 </a>
             </li>
@@ -183,12 +163,11 @@
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-user-lock"></i>
                 <p>
-                    Blocked
+                    Content 
                 </p>
                 </a>
             </li>
             <!-- //Users sidebar -->
->>>>>>> admin-page
 
                 <li class="nav-header">Another menu?</li>
                 <li class="nav-item">
@@ -213,33 +192,8 @@
     <!-- //Main Sidebar Container -->
 
     <main class="py-0">
-        <div v-if="contributor">
-            @yield('contributor')
-        </div>
-        <div v-if="validator">
-            @yield('validator')
-        </div>
+        @yield('content')
     </main>
     </div>
-
-    <script>
-    new Vue({
-        el: '#toggle',
-        data: {
-            contributor: true,
-            validator: false
-        },
-        methods: {
-            isContributor: function(){
-                this.contributor = true,
-                this.validator = false
-            },
-            isValidator: function(){
-                this.contributor = false,
-                this.validator = true
-            }
-        }
-    })
-    </script>
 </body>
 </html>
