@@ -132,35 +132,6 @@
                     </a>
                 </li>
 
-<<<<<<< HEAD
-                <!-- Users sidebar -->
-                <li class="nav-header">USERS</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-user-check"></i>
-                    <p>
-                        Contributor
-                    </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-user-plus"></i>
-                    <p>
-                        Validator
-                    </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-user-lock"></i>
-                    <p>
-                        Blocked
-                    </p>
-                    </a>
-                </li>
-                <!-- //Users sidebar -->
-=======
             <!-- Users sidebar -->
             <li class="nav-header">USERS</li>
             <li v-on:click="isContributor()" class="nav-item">
