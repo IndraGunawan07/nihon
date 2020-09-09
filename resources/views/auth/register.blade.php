@@ -23,11 +23,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @if ($errors->has('username')) <p style="color:red;">{{ $errors->first('username') }}</p> @endif
                             </div>
                         </div>
 
@@ -58,11 +54,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @if ($errors->has('password')) <p style="color:red;">{{ $errors->first('password') }}</p> @endif
                             </div>
                         </div>
 
@@ -92,11 +84,7 @@
                                     <option value="What was your first pet?">What was your first pet ? </option>
                                 </select>
                                 {{-- <input id="secret_question" type="text" class="form-control @error('secret_question') is-invalid @enderror" name="secret_question" value="{{ old('secret_question') }}" required autocomplete="secret_question" autofocus> --}}
-                                @error('secret_question')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @if ($errors->has('secret_question')) <p style="color:red;">{{ $errors->first('secret_question') }}</p> @endif
                             </div>
                         </div>
 
@@ -112,11 +100,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @error('secret_answer')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @if ($errors->has('secret_answer')) <p style="color:red;">{{ $errors->first('secret_answer') }}</p> @endif
                             </div>
                         </div>
 

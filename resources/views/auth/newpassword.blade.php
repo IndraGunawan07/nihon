@@ -23,11 +23,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    @if ($errors->has('password')) <p style="color:red;">{{ $errors->first('password') }}</p> @endif
                                 </div>
                             </div>
 
@@ -42,11 +38,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @error('password_confirmation')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 

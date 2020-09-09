@@ -44,7 +44,7 @@ class ResetPasswordController extends Controller
         // dd($request->all());
         // Log::info('masuk');
         if($request->validate([
-            'password' => 'required|confirmed',
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]))
         {
             Log::info('masuk');

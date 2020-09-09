@@ -1,0 +1,1 @@
+<p>INI TEST INCLUDE</p>

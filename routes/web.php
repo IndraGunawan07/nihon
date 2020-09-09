@@ -41,5 +41,11 @@ Route::get('/contribute', function(){
 Route::get('/reset', 'Auth\ResetPasswordController@index')->name('reset');
 Route::post('reset', 'Auth\ResetPasswordController@confirmPass')->name('confirmpass');
 
-// route approve user
+// route buat approve user dari admin
 Route::post('/approve', 'AdminController@approve')->name('approve');
+// route buat add user dari admin
+Route::post('/add', 'AdminController@addUser')->name('addUser');
+// route buat delete user dari admin
+Route::post('/delete', 'AdminController@deleteUser')->name('deleteUser');
+// route buat edit user dari admin
+Route::post('/edit', 'AdminController@editUser')->name('editUser');

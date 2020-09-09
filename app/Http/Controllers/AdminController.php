@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 
 class AdminController extends Controller
 {
@@ -30,6 +34,43 @@ class AdminController extends Controller
         return back();
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data,[
+            'username' => ['required', 'string', 'max:255','unique:users,username'],
+            'role' => ['string', 'max:15'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'secret_answer' => ['required', 'string', 'max:255'],
+            'secret_question' => ['required', 'string', 'max:2024'],
+        ]);
+    }
+
+    public function addUser(Request $request)
+    {
+        //dd($request->username);
+        $this->validator($request->all())->validate();
+        User::create([
+            'username' => $request->username,
+            // 'email' => $data['email'],
+            'role' => "Contributor",
+            'remember_token' => Str::random(60),
+            'password' => Hash::make($request->password),
+            'secret_answer' => $request->secret_answer,
+            'secret_question' => $request->secret_question
+        ]);
+        $user = User::where('username', $request->username)->first();
+        $user->is_locked = 0;
+        $user->save();
+        return back();
+    }
+
+    public function deleteUser(Request $request)
+    {
+        $user = User::where('username', $request->user)->first();
+        $user->delete();
+        return back();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -37,7 +78,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
