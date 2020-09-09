@@ -1,6 +1,6 @@
 @extends('administator.admin')
 
-@section('contributor')
+@section('content')
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <div class="content-header">
@@ -140,91 +140,91 @@
   
   <!-- /.content-header -->
 
-  <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">User</th>
-            <th scope="col">Joined</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php $i=0; ?>
-          @foreach($users as $user)
-            {{-- @if($user->is_locked === 1) --}}
-              <?php
-                $i++;
-                echo "<tr>";
-                echo "<th scope='row'>". $i . "</th>";
-              ?>
-                  <td>{{ $user->username }}</td>
-                  <td>{{ $user->created_at }}</td>
-                  <td>
-                    <div class="m-1">
-                      <form action="{{ route('approve') }}" method="post">
-                        @csrf
-                        @if($user->is_locked)
-                        <button class="btn btn-success btn-sm">Approve</button>
-                        <input type="hidden" name="user" value="{{ $user->username }}">
-                        @endif
-                      </form>
-                    </div>
-                    <div class="m-1">
-                      <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Edit</button>
-                    </div>
-                    <div class="m-1">
-                      <form action="{{ route('deleteUser') }}" method="post">
-                        @csrf
-                        <button class="btn btn-danger btn-sm">Delete</button>
-                        <input type="hidden" name="user" value="{{ $user->username }}">
-                      </form>
-                    </div>
-                  </td>
-                <?php 
-                  echo "</tr>";
-                ?>
-              {{-- @endif --}}
-            @endforeach
-        </tbody>
-      </table>
-    </div><!-- /.container-fluid -->
-  </section>
-  <!-- /.content -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">DataTable with default features</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                  <tr>
+                    <th width="5%">#</th>
+                    <th width="20%">Username</th>
+                    <th width="20%">Joined</th>
+                    <th width="20%">Role</th>
+                    <th width="15%">Approve</th>
+                    <th width="20%">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php $i=0; ?>
+                  @foreach($users as $user)
+                      <?php
+                        $i++;
+                        echo "<tr>";
+                        echo "<th scope='row'>". $i . "</th>";
+                      ?>
+                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->created_at }}</td>
+                        <td>{{ $user->role }}</td>
+                        <td>
+                          <form action="{{ route('approve') }}" method="post">
+                            @csrf
+                            @if($user->is_locked)
+                              <button class="btn btn-info btn-sm">Approve</button>
+                              <input type="hidden" name="user" value="{{ $user->username }}">
+                            @else
+                            <button class="btn btn-info btn-sm" disabled>Approve</button>
+                            @endif
+                          </form>
+                        </td>                  
+                        <td>
+                          {{-- untuk button edit --}}
+                          <form action="" method="post">
+                            @csrf
+                            <button class="btn btn-primary btn-sm">Edit</span></button>
+                            <input type="hidden" name="user" value="{{ $user->username }}">
+                          </form>
+        
+                          {{-- untuk button delete --}}
+                          <form action="" method="post">
+                            @csrf
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                            <input type="hidden" name="user" value="{{ $user->username }}">
+                          </form>
+                        </td>
+                        <?php echo "</tr>"; ?>
+                    @endforeach
+                </tbody>
+              </table>
+            </div>
+             <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
 </div>
-@endsection
 
-@section('validator')
-<div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Validating User</h1>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v1</li>
-          </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
+<script>
+  console.log('readi');
+  document.addEventListener('DOMContentLoaded', function (){
+    $('#example1').DataTable({
+      "responsive": true,
+      "autoWidth": false,
+      
+    });
+  });
+</script>
 
-  <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-      
-      
-      
-    </div><!-- /.container-fluid -->
-  </section>
-  <!-- /.content -->
-</div>
 @endsection

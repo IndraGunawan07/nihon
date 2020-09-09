@@ -37,6 +37,9 @@ Route::get('/contribute', function(){
     return view('layouts.contribute');
 });
 
+// Route untuk syllable 
+Route::resource('/syllable','SyllableController');
+
 //Route buat reset password di forgot password
 Route::get('/reset', 'Auth\ResetPasswordController@index')->name('reset');
 Route::post('reset', 'Auth\ResetPasswordController@confirmPass')->name('confirmpass');

@@ -23,7 +23,12 @@ import {
     faFile,
     faCircle,
     faStamp,
-    faKey
+    faKey,
+    faMicrophone,
+    faFolderPlus,
+    faEdit,
+    faTrash,
+    faCheck
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -40,12 +45,15 @@ library.add(
     faThLarge,
     faDatabase,
     faUserCheck,
-    faUserPlus,
+    faFolderPlus ,
     faUserLock,
     faFile,
     faCircle,
     faStamp,
     faKey,
+    faEdit,
+    faTrash,
+    faCheck
 );
 
 dom.watch();
