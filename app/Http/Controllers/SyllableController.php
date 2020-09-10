@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Terms;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 
 class SyllableController extends Controller
 {
@@ -14,7 +18,8 @@ class SyllableController extends Controller
     public function index()
     {
         //
-        return view('administator.syllable');
+        $terms = Terms::all();
+        return view('administator.syllable', compact('terms'));
     }
 
     /**
@@ -25,6 +30,18 @@ class SyllableController extends Controller
     public function create()
     {
         //
+       
+
+    }
+
+    private function validator(array $data)
+    {
+        return Validator::make($data,[
+            'jws' => ['required', 'string', 'max:255','unique:terms,in_jws'],
+            'rws' => ['required', 'string', 'max:15'],
+            'bahasa_translation' => ['required', 'string', 'max:255'],
+            'sound_file_url' => ['string', 'max:255'],
+        ]);
     }
 
     /**
@@ -35,7 +52,20 @@ class SyllableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->translate);
+        // Untuk validasi input
+        $this->validator($request->all())->validate();
+        Terms::create([
+            'in_jws' => $request->jws,
+            'in_rws' => $request->rws,
+            'bahasa_translation' => $request->bahasa_translation,
+            'sound_file_url' => "shdadak",
+        ]);
+        $terms = Terms::where('in_jws', $request->jws)->first();
+        // $user->is_locked = 0;
+        $terms->save();
+
+        return back()->with('success', "Your Terms has been created");
     }
 
     /**
@@ -58,6 +88,7 @@ class SyllableController extends Controller
     public function edit($id)
     {
         //
+        dd($request->in_jws);
     }
 
     /**
@@ -78,8 +109,17 @@ class SyllableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $id)
     {
         //
+        
+    }
+
+    public function softdeleteterms(Request $request){
+        // dd($request->in_jws);
+        $deleted = Terms::where('in_jws', $request->in_jws)->first();
+        // dd($deleted);
+        $deleted->delete();
+        return back();
     }
 }

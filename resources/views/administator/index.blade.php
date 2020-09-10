@@ -146,7 +146,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">DataTable with default features</h3>
+              <h3 class="card-title">DataTable Users</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -158,6 +158,7 @@
                     <th width="20%">Joined</th>
                     <th width="20%">Role</th>
                     <th width="15%">Approve</th>
+                    <th width="10%">Action</th>
                     <th width="20%">Action</th>
                   </tr>
                 </thead>
@@ -190,9 +191,10 @@
                             <button class="btn btn-primary btn-sm">Edit</span></button>
                             <input type="hidden" name="user" value="{{ $user->username }}">
                           </form>
-        
+                        </td>
+                        <td>
                           {{-- untuk button delete --}}
-                          <form action="" method="post">
+                          <form action="{{ route('deleteUser') }}" method="post">
                             @csrf
                             <button class="btn btn-danger btn-sm">Delete</button>
                             <input type="hidden" name="user" value="{{ $user->username }}">

@@ -20,6 +20,7 @@ class CreateTermsTable extends Migration
             $table->string('bahasa_translation', 255);
             $table->string('sound_file_url');
             $table->timestamps();
+            $table->softDeletes();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->integer('deleted_by')->nullable();
