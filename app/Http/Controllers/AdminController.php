@@ -45,6 +45,15 @@ class AdminController extends Controller
         ]);
     }
 
+    protected function editValidator(array $data)
+    {
+        return Validator::make($data,[
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'secret_answer' => ['required', 'string', 'max:255'],
+            'secret_question' => ['required', 'string', 'max:2024'],
+        ]);
+    }
+
     public function addUser(Request $request)
     {
         //dd($request->username);
@@ -61,7 +70,7 @@ class AdminController extends Controller
         $user = User::where('username', $request->username)->first();
         $user->is_locked = 0;
         $user->save();
-        return back();
+        return back()->with('success', 'User Successfully Added');
     }
 
     public function deleteUser(Request $request)
@@ -69,6 +78,20 @@ class AdminController extends Controller
         $user = User::where('username', $request->user)->first();
         $user->delete();
         return back();
+    }
+
+    public function editUser(Request $request)
+    {
+        $this->editValidator($request->all())->validate();
+        //dd($request);
+        $editedUser = User::where('username', $request->username);
+        $editedUser->update([
+            'password' => Hash::make($request->password),
+            'secret_question' => $request->secret_question,
+            'secret_answer' => $request->secret_answer
+        ]);
+        
+        return back()->with('success', 'User Successfully Updated!');
     }
 
     /**

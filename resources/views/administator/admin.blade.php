@@ -219,5 +219,22 @@
         }
     })
     </script>
+    
+    <script>
+        $('#myEdit').on('show.bs.modal', function(event){
+            console.log('modal opened')
+            var button = $(event.relatedTarget)
+            var username = button.data('myusername')
+            var password = button.data('mypassword')
+            var question = button.data('question')
+            var answer = button.data('answer')
+            console.log(question)
+            var modal = $(this)
+            modal.find('.modal-body #username').val(username)
+            modal.find('.modal-body #hiddenUsername').val(username)
+            modal.find('.modal-body #secret_question').val(question)
+            modal.find('.modal-body #secret_answer').val(answer)
+        })
+    </script>
 </body>
 </html>
