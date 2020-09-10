@@ -263,7 +263,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">DataTable with default features</h3>
+              <h3 class="card-title">DataTable Users</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -275,6 +275,7 @@
                     <th width="20%">Joined</th>
                     <th width="20%">Role</th>
                     <th width="15%">Approve</th>
+                    <th width="10%">Action</th>
                     <th width="20%">Action</th>
                   </tr>
                 </thead>
@@ -306,8 +307,9 @@
                             @csrf
                             <button type="button" class="btn btn-info btn-sm m-1" data-myusername="{{ $user->username }}" data-mypassword="{{ $user->password }}" data-question="{{ $user->secret_question }}" data-answer="{{ $user->secret_answer }}" data-toggle="modal" data-target="#myEdit">Edit</button>
                           </form>
-                          
-        
+
+                        </td>
+                        <td>
                           {{-- untuk button delete --}}
                           <form action="{{ route('deleteUser') }}" method="post">
                             @csrf
