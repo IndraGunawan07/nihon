@@ -25,6 +25,14 @@
           @endforeach
         </ul>
       @endif
+      @if(Session::has('success'))
+        <div class="alert alert-success alert-dismissible fade show">
+            {{ Session::get('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+      @endif
       <!-- Add User Modal -->
       <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
