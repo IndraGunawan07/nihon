@@ -56,20 +56,22 @@ class AdminController extends Controller
 
     public function addUser(Request $request)
     {
-        //dd($request->username);
+        //dd($request->fileupload->getClientOriginalName());
+        $fileName = $request->fileupload->getClientOriginalName();
         $this->validator($request->all())->validate();
         User::create([
             'username' => $request->username,
-            // 'email' => $data['email'],
             'role' => "Contributor",
             'remember_token' => Str::random(60),
             'password' => Hash::make($request->password),
             'secret_answer' => $request->secret_answer,
-            'secret_question' => $request->secret_question
+            'secret_question' => $request->secret_question,
+            'imageUrl' => $fileName
         ]);
         $user = User::where('username', $request->username)->first();
         $user->is_locked = 0;
         $user->save();
+        $request->fileupload->storeAs('images', $fileName, 'public');
         return back()->with('success', 'User Successfully Added');
     }
 

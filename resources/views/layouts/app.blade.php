@@ -28,6 +28,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         {{-- style --}}
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
         <link href="//fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <style>
+            img{
+                width: 30px;
+                height: 30px;
+                margin-right: 5px;
+            }
+        </style>
 
 </head>			
 <body>
@@ -57,10 +64,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <!-- Jika user role validator maka ke page validator -->
                         @elseif( Auth::user()->role === "Validator")
                             <li class="mr-lg-4 mr-3"><a href="">Validate</a></li>
-                        @endif
+                        @endif    
                      <li class="nav-item dropdown">
                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                             {{ Auth::user()->username }} <span class="caret"></span>
+                            @if( Auth::user()->imageUrl === NULL )
+                                <img src="https://www.gravatar.com/avatar/" alt="" class="rounded-circle">
+                            @else
+                                <img src="{{ asset('storage/images/'.Auth::user()->imageUrl)}}" alt="" class="rounded-circle">
+                            @endif
                          </a>
                          {{-- Profile user --}}
                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

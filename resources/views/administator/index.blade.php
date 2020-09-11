@@ -50,7 +50,7 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
-            <form method="POST" action="{{ route('addUser') }}">
+            <form method="POST" action="{{ route('addUser') }}" enctype="multipart/form-data">
               @csrf
 
               {{-- Username --}}
@@ -125,6 +125,22 @@
                           </span>
                       @enderror
                   </div>
+              </div>
+
+              <!-- Upload File -->
+              <div class="form-group row">
+                <label for="fileupload" class="col-md-4 col-form-label text-md-right">{{ __('File Input') }}</label>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <input class="custom-file-input @error('fileupload') is-invalid @enderror"  id="fileupload" type="file" name="fileupload" value="" required autocomplete="fileupload">
+                    <label class="custom-file-label" for="fileupload">Choose file</label>
+                  </div>
+                  @error('fileupload')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                </div>
               </div>
 
               {{-- Submit Button --}}
@@ -342,6 +358,11 @@
       "responsive": true,
       "autoWidth": false,
       
+    });
+    console.log( "ready!" );
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
   });
 </script>

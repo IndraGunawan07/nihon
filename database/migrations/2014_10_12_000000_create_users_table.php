@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('secret_answer', 255);
             $table->string('role', 15);
             $table->boolean('is_locked')->default(true);
+            $table->string('imageUrl')->nullable();
             $table->softDeletes();
             $table->timestamps();
             $table->integer('created_by')->nullable();
