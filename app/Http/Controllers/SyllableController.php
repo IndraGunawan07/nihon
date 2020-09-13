@@ -91,35 +91,26 @@ class SyllableController extends Controller
         dd($request->in_jws);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Request $id)
-    {
-        //
-        
-    }
-
     public function softdeleteterms(Request $request){
         // dd($request->in_jws);
         $deleted = Terms::where('in_jws', $request->in_jws)->first();
         // dd($deleted);
         $deleted->delete();
         return back();
+    }
+
+    public function updatesyllable(Request $request){
+        // dd($request->id);
+        $this->validator($request->all())->validate();
+
+        $editterms = Terms::where('id', $request->id);
+        // dd($editterms);
+        $editterms->update([
+            'in_jws' => $request->jws,
+            'in_rws' => $request->rws,
+            'bahasa_translation' => $request->bahasa_translation,
+            'sound_file_url' => "shdadak",
+        ]);
+        return back()->with('success', 'User Successfully Updated!');
     }
 }

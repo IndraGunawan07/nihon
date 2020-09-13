@@ -235,6 +235,21 @@
             modal.find('.modal-body #secret_question').val(question)
             modal.find('.modal-body #secret_answer').val(answer)
         })
+        $('#editModal').on('show.bs.modal', function(event){
+            console.log('modal opened')
+            var button = $(event.relatedTarget)
+            var jws = button.data('jws')
+            var rws = button.data('rws')
+            var bahasa_translation = button.data('translate')
+            var filename = button.data('filename')
+            var idterms = button.data('id')
+            console.log(idterms)
+            var modal = $(this)
+            modal.find('.modal-body #jws').val(jws)
+            modal.find('.modal-body #rws').val(rws)
+            modal.find('.modal-body #bahasa_translation').val(bahasa_translation)
+            modal.find('.modal-body #hiddenid').val(idterms)
+        })
     </script>
 </body>
 </html>

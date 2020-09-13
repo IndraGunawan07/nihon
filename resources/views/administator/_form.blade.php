@@ -1,4 +1,4 @@
-<!-- Add User Modal -->
+<!-- Edit Syllable Modal -->
 <div class="modal fade" id="editModal" role="dialog">
 <div class="modal-dialog">
 
@@ -8,17 +8,18 @@
       <h4 class="modal-title">Edit Syllable</h4>
       <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
-    <div class="modal-body">
-      <form method="POST" action="">
+    <form method="POST" action="{{ route('updateterms') }}" >
         @csrf
-
+        <div class="modal-body">
         {{-- JWS --}}
         <div class="form-group row">
             <label for="jws" class="col-md-4 col-form-label text-md-right">{{ __('JWS') }}</label>
             <div class="col-md-6">
                 <div class="input-group mb-3">
-                    <input id="jws" type="text" class="form-control @error('jws') is-invalid @enderror" name="jws" value="{{ old('in_jws', $key->in_jws) }}">
+                    <input id="jws" type="text" class="form-control @error('jws') is-invalid @enderror" name="jws" required autocomplete="jws" autofocus>
+                    <input type="hidden" id="hiddenid" name="id" value="">
                 </div>
+                
                 @error('jws')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -32,7 +33,7 @@
             <label for="rws" class="col-md-4 col-form-label text-md-right">{{ __('RWS') }}</label>
             <div class="col-md-6">
                 <div class="input-group mb-3">
-                <input id="rws" type="text" class="form-control @error('rws') is-invalid @enderror" name="rws" value="{{ old('in_rws', $key->in_rws) }}">
+                <input id="rws" type="text" class="form-control @error('rws') is-invalid @enderror" name="rws">
                 </div>
                 @error('rws')
                     <span class="invalid-feedback" role="alert">
@@ -47,7 +48,7 @@
             <label for="translate" class="col-md-4 col-form-label text-md-right">{{ __('Translate') }}</label>
             <div class="col-md-6">
                 <div class="input-group mb-3">
-                <input id="bahasa_translation" type="text" class="form-control @error('bahasa_translation') is-invalid @enderror" name="bahasa_translation" value="{{ old('bahasa_translation', $key->bahasa_translation) }}">
+                <input id="bahasa_translation" type="text" class="form-control @error('bahasa_translation') is-invalid @enderror" name="bahasa_translation">
                 </div>
                 @error('bahasa_translation')
                     <span class="invalid-feedback" role="alert">
@@ -62,7 +63,7 @@
             <label for="fileupload" class="col-md-4 col-form-label text-md-right">{{ __('File Input') }}</label>
             <div class="col-md-6">
                 <div class="input-group mb-3">
-                <input class="custom-file-input @error('fileupload') is-invalid @enderror"  id="fileupload" type="file" name="fileupload" value="" required autocomplete="fileupload">
+                <input class="custom-file-input @error('fileupload') is-invalid @enderror" id="fileupload" type="file" name="fileupload" required autocomplete="fileupload">
                 <label class="custom-file-label" for="fileupload">Choose file</label>
                 </div>
                 @error('fileupload')

@@ -57,3 +57,7 @@ Route::post('/edit', 'AdminController@editUser')->name('editUser');
 
 // route untuk softdelete syllable 
 Route::post('/deleteterms', 'SyllableController@softdeleteterms')->name('deleteterms');
+
+// route untuk softdelete syllable 
+Route::post('/update', 'SyllableController@updatesyllable')->name('updateterms');
+

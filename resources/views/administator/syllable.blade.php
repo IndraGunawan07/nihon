@@ -125,6 +125,9 @@
           
         </div>
       </div>
+
+      <!-- Edit Sylable Modal -->
+      @include ('administator._form')
       
     </div>
 
@@ -163,20 +166,13 @@
                             <td>{{ $key->sound_file_url }}</td>
                             <td>
                               {{-- untuk button edit --}}
-                              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal">Edit</button>
-                              @if(count($errors) > 0)
-                                <ul>
-                                  @foreach($errors->all() as $error)
-                                    <li class="alert alert-danger">{{ $error }}</li>
-                                  @endforeach
-                                </ul>
-                                @endif
-                              {{-- <form action="" method="post"> --}}
-                                @include ('administator._form', ['buttonText' => "Edit"])
-                                {{-- @csrf --}}
+                              <form action="{{ route('updateterms') }}" method="post">
+                                
+                                @csrf
+                              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-jws="{{ $key->in_jws }}" data-rws="{{ $key->in_rws }}" data-translate="{{ $key->bahasa_translation }}" data-filename="{{ $key->sound_file_url }}" data-id = "{{ $key->id }}" data-target="#editModal">Edit</button>
                                 {{-- <button class="btn btn-primary btn-sm">Edit</span></button> --}}
                                 {{-- <input type="hidden" name="user" value="{{ $key->in_jws }}"> --}}
-                              {{-- </form> --}}
+                              </form>
                             </td>
                             <td>
                               {{-- untuk button delete --}}
