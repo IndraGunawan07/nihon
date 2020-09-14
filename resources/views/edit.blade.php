@@ -8,15 +8,41 @@
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
-                    <img class="profile-user-img img-fluid img-circle"
-                            src="https://www.gravatar.com/avatar/"
-                            alt="User profile picture">
-                    </div>
-
-                    <div class="card-body">
                         <form method="POST" action="{{ route('profile.update') }}">
                             @method('patch')
                             @csrf
+                        @if( Auth::user()->imageUrl === NULL )
+                            <img class="profile-user-img img-fluid rounded-circle"
+                                    src="https://www.gravatar.com/avatar/"
+                                    alt="User profile picture">
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <div class="input-group mb-3">
+                                        <input class="custom-file-input @error('fileupload') is-invalid @enderror"  id="fileupload" type="file" name="fileupload" value="" required autocomplete="fileupload">
+                                        <label class="custom-file-label" for="fileupload">Choose file</label>
+                                        <input type="hidden" name="username" value="{{ Auth::user()->username }}">
+                                    </div>
+                                </div>
+                            </div>
+                        @else 
+                            <div class="img-wrap">
+                                <img class="profile-user-img img-fluid rounded-circle"
+                                        src="{{ asset('storage/images/'.Auth::user()->imageUrl)}}"
+                                        alt="User profile picture">
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <input class="custom-file-input @error('fileupload') is-invalid @enderror"  id="fileupload" type="file" name="fileupload" value="" required autocomplete="fileupload">
+                                            <label class="custom-file-label" for="fileupload">Choose file</label>
+                                            <input type="hidden" name="username" value="{{ Auth::user()->username }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="card-body">
 
                             <!-- User Name Edit Profile -->
                             <div class="form-group row">

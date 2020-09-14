@@ -17,11 +17,17 @@ class ProfileController extends Controller
 
     // untuk proses update profile
     public function update(UpdateProfileRequest $request){
-        $request->user()->update(
-            $request->all()
-        );
+        dd($request);
+        // if($request->hasFile('fileupload'))
+        // {
+        //     $fileName = $request->fileupload->getClientOriginalName();
+        //     $request->fileupload->storeAs('images',$filename,'public');
+        // }
+        // $request->user()->update(
+        //     $request->all()
+        // );
 
-        return redirect()->route('homepage')->with('success', "Your profile has been updated");
+        // return redirect()->route('homepage')->with('success', "Your profile has been updated");
     }
 
     

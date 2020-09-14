@@ -57,7 +57,6 @@ class AdminController extends Controller
     public function addUser(Request $request)
     {
         //dd($request->fileupload->getClientOriginalName());
-        $fileName = $request->fileupload->getClientOriginalName();
         $this->validator($request->all())->validate();
         User::create([
             'username' => $request->username,
@@ -65,13 +64,19 @@ class AdminController extends Controller
             'remember_token' => Str::random(60),
             'password' => Hash::make($request->password),
             'secret_answer' => $request->secret_answer,
-            'secret_question' => $request->secret_question,
-            'imageUrl' => $fileName
+            'secret_question' => $request->secret_question
         ]);
         $user = User::where('username', $request->username)->first();
         $user->is_locked = 0;
+        if($request->hasFile('fileupload'))
+        {
+            $fileName = $request->fileupload->getClientOriginalName();
+            $request->fileupload->storeAs('images', $fileName, 'public');
+            $user->update([
+                'imageUrl' => $fileName
+            ]);
+        }
         $user->save();
-        $request->fileupload->storeAs('images', $fileName, 'public');
         return back()->with('success', 'User Successfully Added');
     }
 

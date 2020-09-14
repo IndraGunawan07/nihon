@@ -34,6 +34,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 height: 30px;
                 margin-right: 5px;
             }
+            
+            .profile-user-img{
+                width: 60px;
+                height: 60px;
+                margin-right: 5px;
+            }
+            .profile-user-img:hover{
+                filter: brightness(80%);
+            }
+            .imgDesc{
+                visibility: hidden;
+                opacity: 0;
+                color: black;
+            }
+            .img-wrap:hover .imgDesc{
+                visibility: visible;
+                opacity: 1;
+            }
         </style>
 
 </head>			
@@ -68,7 +86,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                      <li class="nav-item dropdown">
                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             @if( Auth::user()->imageUrl === NULL )
-                                <img src="https://www.gravatar.com/avatar/" alt="" class="rounded-circle">
+                                <img src="https://www.gravatar.com/avatar/" alt="" class="rounded-circle home">
                             @else
                                 <img src="{{ asset('storage/images/'.Auth::user()->imageUrl)}}" alt="" class="rounded-circle">
                             @endif
