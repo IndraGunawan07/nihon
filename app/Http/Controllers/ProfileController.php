@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateProfileRequest;
+use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -14,15 +17,23 @@ class ProfileController extends Controller
         ]);
     }
 
-
     // untuk proses update profile
     public function update(UpdateProfileRequest $request){
-        dd($request);
-        // if($request->hasFile('fileupload'))
-        // {
-        //     $fileName = $request->fileupload->getClientOriginalName();
-        //     $request->fileupload->storeAs('images',$filename,'public');
-        // }
+        // dd($request->username);
+        // dd($request->hasFile('avatar'));
+        // dd($request->id)
+
+        if($request->hasFile('avatar'))
+        {
+           $destinationPath = 'public/images/'; // upload path
+           $fileName = date('Ymd') . "." . $request->file('avatar')->getClientOriginalExtension();
+        
+           // pindahin file ke path image. 
+        //    $request->file('avatar')->move($destinationPath, $fileName);
+        //    $insert['file_name'] = "$fileName";
+        //  $fileName = $request->fileupload->getClientOriginalName();
+        //  $request->fileupload->storeAs('images',$filename,'public');
+        }
         // $request->user()->update(
         //     $request->all()
         // );
@@ -30,5 +41,28 @@ class ProfileController extends Controller
         // return redirect()->route('homepage')->with('success', "Your profile has been updated");
     }
 
+    public function editpass(Request $request){
+        // dd($request->user);
+        return view('editpas',[
+            'user' => $request->user()
+        ]);
+    }
+
+    public function updatepass(Request $request)
+    {
+        // dd($request->all());
+        // Log::info('masuk');
+        if($request->validate([
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]))
+        {
+            // dd($request->all());
+        //     Log::info('masuk');
+            $user = User::where('username', $request->username)->first();
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
+        return redirect('/')->with('success', "Your password has been changed");
+    }
     
 }

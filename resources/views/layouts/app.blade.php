@@ -36,8 +36,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             }
             
             .profile-user-img{
-                width: 60px;
-                height: 60px;
+                width: 150px;
+                height: 150px;
                 margin-right: 5px;
             }
             .profile-user-img:hover{
@@ -52,6 +52,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 visibility: visible;
                 opacity: 1;
             }
+            .image-upload>input {
+            display: none;
+            }
+            
         </style>
 
 </head>			
@@ -99,9 +103,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                              <div role="none" class="dropdown-divider"></div>
                  
                              {{-- Edit Profile user  --}}
-                             <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                             <a class="dropdown-item" href="{{ route('profile.edit') }}" onclick="event.preventDefault();
+                             document.getElementById('profile-form').submit();">
                                  {{ __('Edit Profile') }}
                              </a>
+
+                             {{-- Edit Password user  --}}
+                             <a class="dropdown-item" href="" onclick="event.preventDefault();
+                             document.getElementById('password-form').submit();">
+                                {{ __('Edit Password') }}
+                            </a>
 
                              {{-- Logout dropdown --}}
                              <a class="dropdown-item" href="{{ route('logout') }}"
@@ -111,11 +122,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                              </a>
                              
                              <form id="profile-form" action="{{ route('profile.edit') }}" method="POST" style="display: none;">
+                                @method('GET')
                                  @csrf
                              </form>
                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                  @csrf
                              </form>
+                             <form id="password-form" action="{{ route('profile.editpassword') }}" method="GET" style="display: none;">
+                                @csrf
+                            </form>
                          </div>
                      </li>
                  @endguest

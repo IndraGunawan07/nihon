@@ -31,6 +31,7 @@ class UpdateProfileRequest extends FormRequest
                 'required', 'string', 'max:255',
                 Rule::unique('users', 'username')->ignore(Auth::user()->id)
             ],
+            'avatar' => 'file|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 }

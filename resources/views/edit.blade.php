@@ -8,40 +8,29 @@
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
-                        <form method="POST" action="{{ route('profile.update') }}">
+                        <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                             @method('patch')
                             @csrf
                         @if( Auth::user()->imageUrl === NULL )
-                            <img class="profile-user-img img-fluid rounded-circle"
-                                    src="https://www.gravatar.com/avatar/"
-                                    alt="User profile picture">
-                            <div class="form-group row">
-                                <div class="col-md-6">
-                                    <div class="input-group mb-3">
-                                        <input class="custom-file-input @error('fileupload') is-invalid @enderror"  id="fileupload" type="file" name="fileupload" value="" required autocomplete="fileupload">
-                                        <label class="custom-file-label" for="fileupload">Choose file</label>
-                                        <input type="hidden" name="username" value="{{ Auth::user()->username }}">
-                                    </div>
-                                </div>
-                            </div>
+                        <!-- Ketika user klik image profile, maka akan muncul file upload -->
+                        <div class="image-upload img-wrap">
+                            <label for="file-input">
+                                <img id="blah" class="profile-user-img img-fluid rounded-circle" src="https://www.gravatar.com/avatar/" alt="User profile picture">                                
+                            </label>
+                            <input id="file-input" type="file" name="avatar" onchange="readURL(this)" />
+                        </div>
                         @else 
-                            <div class="img-wrap">
-                                <img class="profile-user-img img-fluid rounded-circle"
-                                        src="{{ asset('storage/images/'.Auth::user()->imageUrl)}}"
-                                        alt="User profile picture">
-                                <div class="form-group row">
-                                    <div class="col-md-6">
-                                        <div class="input-group mb-3">
-                                            <input class="custom-file-input @error('fileupload') is-invalid @enderror"  id="fileupload" type="file" name="fileupload" value="" required autocomplete="fileupload">
-                                            <label class="custom-file-label" for="fileupload">Choose file</label>
-                                            <input type="hidden" name="username" value="{{ Auth::user()->username }}">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <!-- Ketika user klik image profile, maka akan muncul file upload -->
+                        <div class="img-wrap image-upload">
+                            <label for="file-input">
+                            <img id="blah" class="profile-user-img img-fluid rounded-circle"
+                                    src="{{ asset('storage/images/'.Auth::user()->imageUrl)}}"
+                                    alt="User profile picture">
+                            </label>
+                            <input id="file-input" type="file" name="avatar" onchange="readURL(this)" />
+                        </div>
                         @endif
                     </div>
-
                     <div class="card-body">
 
                             <!-- User Name Edit Profile -->
@@ -49,6 +38,7 @@
                                 <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('User Name') }}</label>
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username', $user->username) }}" autocomplete="username" autofocus>
+                                    <input type="hidden" id="hiddenid" name="id" value="{{ $user->id }}">
                                     @error('username')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -57,10 +47,11 @@
                                 </div>
                             </div>
 
+                            <!-- Update Password -->
                              {{-- <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password', $user->password) }}" autocomplete="password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="" autocomplete="password">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -84,4 +75,20 @@
         </div> <!-- col-md -->
     </div>
 </div>
+<script>
+    // ketika user upload gambar maka, tampilkan gambarnya
+    function readURL(input) {
+        console.log(input.files);
+        console.log(input.files[0]);
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 @endsection 

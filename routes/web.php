@@ -27,6 +27,10 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('profile', 'ProfileController@edit')->name('profile.edit');
 
     Route::patch('profile', 'ProfileController@update')->name('profile.update');
+
+    Route::get('editpass', 'ProfileController@editpass')->name('profile.editpassword');
+
+    Route::patch('editpass', 'ProfileController@updatepass')->name('profile.updatepassword');
 });
 
 // Route untuk check username dan secret answer
