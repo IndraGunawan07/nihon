@@ -23,22 +23,19 @@ class ProfileController extends Controller
         // dd($request->hasFile('avatar'));
         // dd($request->id)
 
+        $user = User::where('id', $request->id)->first();
         if($request->hasFile('avatar'))
         {
-           $destinationPath = 'public/images/'; // upload path
-           $fileName = date('Ymd') . "." . $request->file('avatar')->getClientOriginalExtension();
-        
-           // pindahin file ke path image. 
-        //    $request->file('avatar')->move($destinationPath, $fileName);
-        //    $insert['file_name'] = "$fileName";
-        //  $fileName = $request->fileupload->getClientOriginalName();
-        //  $request->fileupload->storeAs('images',$filename,'public');
+        //    $destinationPath = 'public/images/'; // upload path
+           $fileName = date('Ymd') . "." . $request->avatar->getClientOriginalName();;
+        //    dd($fileName);
+            $request->avatar->storeAs('images',$fileName,'public');
+            $user->update([
+                'imageUrl' => $fileName
+            ]);
         }
-        // $request->user()->update(
-        //     $request->all()
-        // );
-
-        // return redirect()->route('homepage')->with('success', "Your profile has been updated");
+        $user->update($request->all());
+        return redirect()->route('homepage')->with('success', "Your profile has been updated");
     }
 
     public function editpass(Request $request){
