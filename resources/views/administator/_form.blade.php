@@ -8,7 +8,7 @@
       <h4 class="modal-title">Edit Syllable</h4>
       <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
-    <form method="POST" action="{{ route('updateterms') }}" >
+    <form method="POST" action="{{ route('updateterms') }}" enctype="multipart/form-data">
         @csrf
         <div class="modal-body">
         {{-- JWS --}}
@@ -63,8 +63,8 @@
             <label for="fileupload" class="col-md-4 col-form-label text-md-right">{{ __('File Input') }}</label>
             <div class="col-md-6">
                 <div class="input-group mb-3">
-                <input class="custom-file-input @error('fileupload') is-invalid @enderror" id="fileupload" type="file" name="fileupload" required autocomplete="fileupload">
-                <label class="custom-file-label" for="fileupload">Choose file</label>
+                <input class="custom-file-input @error('fileupload') is-invalid @enderror" type="file" name="fileupload" autocomplete="fileupload">
+                <label class="custom-file-label" id="uploadfile" for="fileupload" >Choose file</label>
                 </div>
                 @error('fileupload')
                         <span class="invalid-feedback" role="alert">

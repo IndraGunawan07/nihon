@@ -243,12 +243,13 @@
             var bahasa_translation = button.data('translate')
             var filename = button.data('filename')
             var idterms = button.data('id')
-            console.log(idterms)
+            console.log(filename)
             var modal = $(this)
             modal.find('.modal-body #jws').val(jws)
             modal.find('.modal-body #rws').val(rws)
             modal.find('.modal-body #bahasa_translation').val(bahasa_translation)
             modal.find('.modal-body #hiddenid').val(idterms)
+            modal.find('.modal-body #uploadfile').val(filename)
         })
     </script>
 </body>

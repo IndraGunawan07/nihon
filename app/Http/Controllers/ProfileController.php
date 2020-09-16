@@ -27,7 +27,7 @@ class ProfileController extends Controller
         if($request->hasFile('avatar'))
         {
         //    $destinationPath = 'public/images/'; // upload path
-           $fileName = date('Ymd') . "." . $request->avatar->getClientOriginalName();;
+           $fileName = date('Ymd') . "." . $request->avatar->getClientOriginalName();
         //    dd($fileName);
             $request->avatar->storeAs('images',$fileName,'public');
             $user->update([

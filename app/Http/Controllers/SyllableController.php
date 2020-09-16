@@ -40,7 +40,7 @@ class SyllableController extends Controller
             'jws' => ['required', 'string', 'max:255','unique:terms,in_jws'],
             'rws' => ['required', 'string', 'max:15'],
             'bahasa_translation' => ['required', 'string', 'max:255'],
-            'sound_file_url' => ['string', 'max:255'],
+            'sound_file_url' => ['string', 'file|image|mimes:mp3|max:2048'],
         ]);
     }
 
@@ -52,15 +52,19 @@ class SyllableController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->translate);
+        // dd($request->all());
+
         // Untuk validasi input
         $this->validator($request->all())->validate();
+        $fileName = "sound_" . $request->fileupload->getClientOriginalName();
         Terms::create([
             'in_jws' => $request->jws,
             'in_rws' => $request->rws,
             'bahasa_translation' => $request->bahasa_translation,
-            'sound_file_url' => "shdadak",
+            'sound_file_url' => $fileName,
         ]);
+        // Disimpan di file storage
+        $request->fileupload->storeAs('sound', $fileName, 'public');
         $terms = Terms::where('in_jws', $request->jws)->first();
         // $user->is_locked = 0;
         $terms->save();
@@ -100,8 +104,9 @@ class SyllableController extends Controller
     }
 
     public function updatesyllable(Request $request){
-        // dd($request->id);
+        // dd($request->all());
         $this->validator($request->all())->validate();
+        $fileName = "sound_" . $request->fileupload->getClientOriginalName();
 
         $editterms = Terms::where('id', $request->id);
         // dd($editterms);
@@ -109,8 +114,9 @@ class SyllableController extends Controller
             'in_jws' => $request->jws,
             'in_rws' => $request->rws,
             'bahasa_translation' => $request->bahasa_translation,
-            'sound_file_url' => "shdadak",
+            'sound_file_url' => $fileName,
         ]);
+        $request->fileupload->storeAs('sound', $fileName, 'public');
         return back()->with('success', 'User Successfully Updated!');
     }
 }

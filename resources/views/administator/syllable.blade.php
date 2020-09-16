@@ -44,7 +44,7 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-              <form method="POST" action="{{ route('syllable.store') }}">
+              <form method="POST" action="{{ route('syllable.store') }}" enctype="multipart/form-data">
                 @csrf
   
                 {{-- JWS --}}
