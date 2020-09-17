@@ -37,9 +37,7 @@ Route::group(['middleware' => 'auth'], function (){
 Route::get('/secret', 'Auth\ForgotPasswordController@index');
 Route::post('secret', 'Auth\ForgotPasswordController@checkSecretAnswer')->name('check');
 
-Route::get('/contribute', function(){
-    return view('layouts.contribute');
-});
+Route::get('/contribute', 'ContributeController@index')->name('contribute');
 
 // Route untuk syllable 
 Route::resource('/syllable','SyllableController');
