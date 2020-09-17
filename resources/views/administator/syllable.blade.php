@@ -198,6 +198,10 @@
           <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
+        <audio controls>
+          <source src="{{ asset('storage/sound/' . $key->sound_file_url )}}" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
 </div>
 
 <script>

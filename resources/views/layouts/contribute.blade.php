@@ -13,7 +13,13 @@
                 <h6 class="my-" style="color: black">Artinya</h6>
         </div>
 
-        <div style="text-align: center; padding-top: 12px;"> DISINI ISI DARI PLAY BUTTON VOICE DAN RECORD</div>
+        <div style="text-align: center; padding-top: 12px;">
+            <audio controls>
+                <source src="{{ Auth::user()-> }}" type="audio/ogg">
+                <source src="horse.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+              </audio>
+        </div>
     </div>
     </div>
 <!-- //banner -->
