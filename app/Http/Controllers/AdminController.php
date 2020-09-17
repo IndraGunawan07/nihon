@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 
 class AdminController extends Controller
@@ -97,6 +98,15 @@ class AdminController extends Controller
             'secret_question' => $request->secret_question,
             'secret_answer' => $request->secret_answer
         ]);
+
+        if($request->hasFile('fileupload'))
+        {
+            $fileName = $request->fileupload->getClientOriginalName();
+            $request->fileupload->storeAs('images', $fileName, 'public');
+            $editedUser->update([
+                'imageUrl' => $fileName
+            ]);
+        }
         
         return back()->with('success', 'User Successfully Updated!');
     }
