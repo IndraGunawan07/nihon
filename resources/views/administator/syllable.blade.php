@@ -163,7 +163,12 @@
                             <td>{{ $key->in_rws }}</td>
                             <td>{{ $key->bahasa_translation }}</td>
                             <td>{{ $key->created_at }}</td>
-                            <td>{{ $key->sound_file_url }}</td>
+                            <td>
+                              <audio controls>
+                                <source src="{{ asset('storage/sound/' . $key->sound_file_url )}}" type="audio/mpeg">
+                              Your browser does not support the audio element.
+                              </audio>
+                            </td>
                             <td>
                               {{-- untuk button edit --}}
                               <form action="{{ route('updateterms') }}" method="post">

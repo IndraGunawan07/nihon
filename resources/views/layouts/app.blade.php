@@ -82,7 +82,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                      @else
                         <!-- Jika user role contribute dan is_locked = 0 maka tab page contribute muncul -->
                         @if ( Auth::user()->role === "Contributor")
-                            <li class="mr-lg-4 mr-3"><a href="{{ url('contribute') }}">Contribute</a></li>
+                            <li class="mr-lg-4 mr-3"><a href="{{ route('contribute') }}">Contribute</a></li>
                         <!-- Jika user role validator maka ke page validator -->
                         @elseif( Auth::user()->role === "Validator")
                             <li class="mr-lg-4 mr-3"><a href="">Validate</a></li>
