@@ -18,18 +18,51 @@
                 <source src="{{ asset('storage/sound/' . $terms->sound_file_url )}}" type="audio/mpeg">
               Your browser does not support the audio element.
               </audio>
-            {{-- <button onclick="togglePlay()" type="button">Play Audio</button> --}}
-            {{-- <button onclick="pauseAudio()" type="button">Pause Audio</button> --}}
+        </div>
+        <div style="text-align: center; padding-top: 12px;">
+            <p>The Audio will record for 5 seconds when you press start</p>
+            <button id="start">Start</button>
+            <div class="audio" id="audio"></div>
+            <a id="download" style="display: none;">Download</a>
         </div>
     </div>
     </div>
 <!-- //banner -->
 
 <script>
-    var x = document.getElementById("myAudio"); 
-    
-    function togglePlay() {
-        return x.paused ? x.play() : x.pause();
+    const startButton = document.getElementById('start');
+    const downloadButton = document.getElementById('download');
+
+    startButton.addEventListener('click', function(){
+        console.log("start is clicked");
+        var device = navigator.mediaDevices.getUserMedia({audio: true});
+        device.then(handleSuccess);
+    });
+
+    const handleSuccess = function(stream)
+    {
+      var items = [];
+        var recorder = new MediaRecorder(stream);
+        recorder.ondataavailable = e => {
+          items.push(e.data);
+          if(recorder.state == 'inactive')
+          {
+            var blob = new Blob(items, {type: 'audio/webm'});
+            var audio = document.getElementById('audio');
+            var mainaudio = document.createElement('audio');
+            mainaudio.setAttribute('controls', 'controls');
+            audio.appendChild(mainaudio);
+            mainaudio.innerHTML = '<source src="' + URL.createObjectURL(blob) + '"type="video/webm"/>';
+            downloadButton.href = URL.createObjectURL(blob);
+            console.log(URL.createObjectURL(blob));
+            downloadButton.download = "sound_test.mp3";
+            downloadButton.style.display = "inline";
+          }
+        }
+        recorder.start();
+        setTimeout(()=>{
+          recorder.stop();
+        }, 6000);
     };
-    </script>
+</script>
 @endsection

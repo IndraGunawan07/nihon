@@ -18,7 +18,7 @@ class ContributeController extends Controller
         // get one random record
         // User::inRandomOrder()->first();
         // $terms = Terms::inRandomOrder()->first(); ini random
-        $terms = Terms::whereId(22)->first(); // coba doang
+        $terms = Terms::whereId(1)->first(); // coba doang
         // dd($terms);
         return view('layouts.contribute', compact('terms'));
     }
