@@ -22,6 +22,7 @@
         <div style="text-align: center; padding-top: 12px;">
             <p>The Audio will record for 5 seconds when you press start</p>
             <button id="start">Start</button>
+            <button id="stop">Stop</button>
             <div class="audio" id="audio"></div>
             <form action="{{ route('saveAudio') }}" method="POST">
                 @csrf
@@ -37,12 +38,12 @@
 
 <script>
     const startButton = document.getElementById('start');
-    const downloadButton = document.getElementById('download');
+    const stopButton = document.getElementById('stop');
     let recorded = document.getElementById('recordedAudio');
+    var device = navigator.mediaDevices.getUserMedia({audio: true});
 
     startButton.addEventListener('click', function(){
         console.log("start is clicked");
-        var device = navigator.mediaDevices.getUserMedia({audio: true});
         device.then(handleSuccess);
         if(audio.childNodes.length > 0)
         {
@@ -67,6 +68,9 @@
             recorded.value = URL.createObjectURL(blob);
           }
         }
+        stopButton.addEventListener('click', function(){
+            recorder.stop();
+        })
         recorder.start();
         setTimeout(()=>{
           recorder.stop();
