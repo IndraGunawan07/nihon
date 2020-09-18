@@ -23,7 +23,13 @@
             <p>The Audio will record for 5 seconds when you press start</p>
             <button id="start">Start</button>
             <div class="audio" id="audio"></div>
-            <a id="download" style="display: none;">Download</a>
+            <form action="{{ route('saveAudio') }}" method="POST">
+                @csrf
+                <input type="text" id="recordedAudio" name="audioFile" value="">
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Save') }}
+                </button>
+            </form>
         </div>
     </div>
     </div>
@@ -32,11 +38,16 @@
 <script>
     const startButton = document.getElementById('start');
     const downloadButton = document.getElementById('download');
+    let recorded = document.getElementById('recordedAudio');
 
     startButton.addEventListener('click', function(){
         console.log("start is clicked");
         var device = navigator.mediaDevices.getUserMedia({audio: true});
         device.then(handleSuccess);
+        if(audio.childNodes.length > 0)
+        {
+          audio.removeChild(audio.childNodes[0]);
+        }
     });
 
     const handleSuccess = function(stream)
@@ -53,10 +64,7 @@
             mainaudio.setAttribute('controls', 'controls');
             audio.appendChild(mainaudio);
             mainaudio.innerHTML = '<source src="' + URL.createObjectURL(blob) + '"type="video/webm"/>';
-            downloadButton.href = URL.createObjectURL(blob);
-            console.log(URL.createObjectURL(blob));
-            downloadButton.download = "sound_test.mp3";
-            downloadButton.style.display = "inline";
+            recorded.value = URL.createObjectURL(blob);
           }
         }
         recorder.start();

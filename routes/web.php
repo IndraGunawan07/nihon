@@ -37,7 +37,11 @@ Route::group(['middleware' => 'auth'], function (){
 Route::get('/secret', 'Auth\ForgotPasswordController@index');
 Route::post('secret', 'Auth\ForgotPasswordController@checkSecretAnswer')->name('check');
 
+//Route untuk contribute
 Route::get('/contribute', 'ContributeController@index')->name('contribute');
+//Route untuk post recorded file
+Route::post('/contribute', 'ContributeController@saveAudio')->name('saveAudio');
+
 
 // Route untuk syllable 
 Route::resource('/syllable','SyllableController');

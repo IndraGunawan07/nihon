@@ -22,4 +22,9 @@ class ContributeController extends Controller
         // dd($terms);
         return view('layouts.contribute', compact('terms'));
     }
+
+    public function saveAudio(Request $request)
+    {
+        dd($request);
+    }
 }
