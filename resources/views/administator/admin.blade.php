@@ -243,7 +243,7 @@
             var bahasa_translation = button.data('translate')
             var filename = button.data('filename')
             var idterms = button.data('id')
-            console.log(filename)
+            console.log(idterms)
             var modal = $(this)
             modal.find('.modal-body #jws').val(jws)
             modal.find('.modal-body #rws').val(rws)

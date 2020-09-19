@@ -18,13 +18,9 @@ class ContributeController extends Controller
         // get one random record
         // User::inRandomOrder()->first();
         // $terms = Terms::inRandomOrder()->first(); ini random
-        $terms = Terms::whereId(1)->first(); // coba doang
+        $terms = Terms::inRandomOrder()->first(); // coba doang
         // dd($terms);
         return view('layouts.contribute', compact('terms'));
-    }
-
-    public function saveAudio(Request $request)
-    {
-        dd($request);
+        //dd($request);
     }
 }

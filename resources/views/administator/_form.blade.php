@@ -9,6 +9,7 @@
       <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
     <form method="POST" action="{{ route('updateterms') }}" enctype="multipart/form-data">
+        
         @csrf
         <div class="modal-body">
         {{-- JWS --}}
