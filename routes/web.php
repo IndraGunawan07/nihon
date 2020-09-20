@@ -67,3 +67,5 @@ Route::post('/deleteterms', 'SyllableController@softdeleteterms')->name('deletet
 // route untuk softdelete syllable 
 Route::post('/update', 'SyllableController@updatesyllable')->name('updateterms');
 
+// route untuk validator
+Route::get('/validate', 'ValidateController@index')->name('validate');

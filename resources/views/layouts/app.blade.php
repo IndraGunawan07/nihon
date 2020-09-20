@@ -85,7 +85,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li class="mr-lg-4 mr-3"><a href="{{ route('contribute') }}">Contribute</a></li>
                         <!-- Jika user role validator maka ke page validator -->
                         @elseif( Auth::user()->role === "Validator")
-                            <li class="mr-lg-4 mr-3"><a href="">Validate</a></li>
+                            <li class="mr-lg-4 mr-3"><a href="{{ route('validate') }}">Validate</a></li>
                         @endif    
                      <li class="nav-item dropdown">
                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
