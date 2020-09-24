@@ -14,7 +14,7 @@ class BlameableObserver
     }
     
     public function creating(Model $model)
-    {
+    {   
         $model->created_by = Auth::user()->id;
         $model->updated_by = Auth::user()->id;
     }
