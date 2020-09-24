@@ -10,6 +10,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     
         <!-- Scripts -->
@@ -28,6 +29,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         {{-- style --}}
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
         <link href="//fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+        {{-- Ajax --}}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
         <style>
             img{
                 width: 30px;

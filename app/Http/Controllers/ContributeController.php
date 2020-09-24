@@ -21,6 +21,11 @@ class ContributeController extends Controller
         $terms = Terms::inRandomOrder()->first(); // coba doang
         // dd($terms);
         return view('layouts.contribute', compact('terms'));
-        //dd($request);
+    }
+
+    public function saveAudio(Request $request)
+    {
+        $files = $request->file('audio');
+        $files->storeAs('sound', 'test.mp3', 'public');
     }
 }
