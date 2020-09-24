@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Terms;
 
-class ContributeController extends Controller
+class ValidateController extends Controller
 {
     //
     /**
@@ -15,11 +15,9 @@ class ContributeController extends Controller
      */
     public function index()
     {
-        // get one random record
-        // User::inRandomOrder()->first();
-        // $terms = Terms::inRandomOrder()->first(); ini random
+        //
         $terms = Terms::inRandomOrder()->first(); // coba doang
         // dd($terms);
-        return view('layouts.contribute', compact('terms'));
+        return view('layouts.validate', compact('terms'));
     }
 }

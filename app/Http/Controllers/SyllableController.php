@@ -34,10 +34,32 @@ class SyllableController extends Controller
 
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+       
+
+    }
+
     private function validator(array $data)
     {
         return Validator::make($data,[
             'jws' => ['required', 'string', 'max:255','unique:terms,in_jws'],
+            'rws' => ['required', 'string', 'max:15'],
+            'bahasa_translation' => ['required', 'string', 'max:255'],
+            'sound_file_url' => ['string', 'file|image|mimes:mp3|max:2048'],
+        ]);
+    }
+
+    private function validatedit(array $data)
+    {
+        return Validator::make($data,[
+            'jws' => ['required', 'string', 'max:255'],
             'rws' => ['required', 'string', 'max:15'],
             'bahasa_translation' => ['required', 'string', 'max:255'],
             'sound_file_url' => ['string', 'file|image|mimes:mp3|max:2048'],
@@ -56,6 +78,7 @@ class SyllableController extends Controller
 
         // Untuk validasi input
         $this->validator($request->all())->validate();
+        // dd($request->all());
         $fileName = "sound_" . $request->fileupload->getClientOriginalName();
         Terms::create([
             'in_jws' => $request->jws,
@@ -99,24 +122,33 @@ class SyllableController extends Controller
         // dd($request->in_jws);
         $deleted = Terms::where('in_jws', $request->in_jws)->first();
         // dd($deleted);
-        $deleted->delete();
+        $deleted->delete(); // untuk delete datanya
+        $deleted->save(); // untuk deleted_by
         return back();
     }
 
     public function updatesyllable(Request $request){
         // dd($request->all());
-        $this->validator($request->all())->validate();
-        $fileName = "sound_" . $request->fileupload->getClientOriginalName();
+        $this->validatedit($request->all())->validate();
 
-        $editterms = Terms::where('id', $request->id);
-        // dd($editterms);
+        $editterms = Terms::where('id', $request->id)->first();
         $editterms->update([
             'in_jws' => $request->jws,
             'in_rws' => $request->rws,
             'bahasa_translation' => $request->bahasa_translation,
-            'sound_file_url' => $fileName,
+            // 'sound_file_url' => $fileName,
         ]);
-        $request->fileupload->storeAs('sound', $fileName, 'public');
+
+        // Untuk cek apakah ada file yg di ubah
+        if($request->hasFile('fileupload'))
+        {
+            $fileName = "sound_" . $request->fileupload->getClientOriginalName();
+            $request->fileupload->storeAs('sound', $fileName, 'public');
+            $editterms->update([
+                'sound_file_url' => $fileName
+            ]);
+        }
+        $editterms->save();
         return back()->with('success', 'User Successfully Updated!');
     }
 }

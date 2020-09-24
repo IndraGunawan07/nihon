@@ -85,6 +85,7 @@ class AdminController extends Controller
     {
         $user = User::where('username', $request->user)->first();
         $user->delete();
+        $user->save();
         return back();
     }
 
@@ -92,7 +93,7 @@ class AdminController extends Controller
     {
         $this->editValidator($request->all())->validate();
         //dd($request);
-        $editedUser = User::where('username', $request->username);
+        $editedUser = User::where('username', $request->username)->first();
         $editedUser->update([
             'password' => Hash::make($request->password),
             'secret_question' => $request->secret_question,
@@ -107,6 +108,7 @@ class AdminController extends Controller
                 'imageUrl' => $fileName
             ]);
         }
+        $editedUser->save();
         
         return back()->with('success', 'User Successfully Updated!');
     }
