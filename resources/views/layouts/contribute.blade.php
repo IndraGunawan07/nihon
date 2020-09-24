@@ -24,13 +24,9 @@
             <button id="start">Start</button>
             <button id="stop">Stop</button>
             <div class="audio" id="audio"></div>
-            <form action="{{ route('saveAudio') }}" method="POST">
-                @csrf
-                <input type="text" id="recordedAudio" name="audioFile" value="">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Save') }}
-                </button>
-            </form>
+            <div id="audio-form" action="{{ route('saveAudio') }}">
+              <button id="save">Save</button>
+            </div>
         </div>
     </div>
     </div>
@@ -39,8 +35,11 @@
 <script>
     const startButton = document.getElementById('start');
     const stopButton = document.getElementById('stop');
+    const saveButton = document.getElementById('save');
     let recorded = document.getElementById('recordedAudio');
     var device = navigator.mediaDevices.getUserMedia({audio: true});
+    var blob;
+    
 
     startButton.addEventListener('click', function(){
         console.log("start is clicked");
@@ -51,6 +50,28 @@
         }
     });
 
+    saveButton.addEventListener('click', function(){
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+      var saveUrl = $('#audio-form').attr('action');
+      //console.log(saveUrl);
+      var fd = new FormData();
+            fd.append('audio', blob);
+            $.ajax({
+              
+                type: 'POST',
+                url: saveUrl,
+                data: fd,
+                processData: false,
+                contentType: false
+            }).done(function(data) {
+                   console.log(data);
+            });
+    });
+
     const handleSuccess = function(stream)
     {
       var items = [];
@@ -59,13 +80,12 @@
           items.push(e.data);
           if(recorder.state == 'inactive')
           {
-            var blob = new Blob(items, {type: 'audio/webm'});
+            blob = new Blob(items, {type: 'audio/webm'});
             var audio = document.getElementById('audio');
             var mainaudio = document.createElement('audio');
             mainaudio.setAttribute('controls', 'controls');
             audio.appendChild(mainaudio);
             mainaudio.innerHTML = '<source src="' + URL.createObjectURL(blob) + '"type="video/webm"/>';
-            recorded.value = URL.createObjectURL(blob);
           }
         }
         stopButton.addEventListener('click', function(){

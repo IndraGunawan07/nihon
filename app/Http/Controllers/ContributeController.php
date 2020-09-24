@@ -22,4 +22,10 @@ class ContributeController extends Controller
         // dd($terms);
         return view('layouts.contribute', compact('terms'));
     }
+
+    public function saveAudio(Request $request)
+    {
+        $files = $request->file('audio');
+        $files->storeAs('sound', 'test.mp3', 'public');
+    }
 }
