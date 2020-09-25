@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Observers\BlameableObserver;
-use App\User;
+use App\Terms;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        // User::observe(BlameableObserver::class);
+        Terms::observe(BlameableObserver::class);
     }
 }

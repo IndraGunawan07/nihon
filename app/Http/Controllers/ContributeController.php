@@ -25,7 +25,11 @@ class ContributeController extends Controller
 
     public function saveAudio(Request $request)
     {
+        dd($request);
         $files = $request->file('audio');
-        $files->storeAs('sound', 'test.mp3', 'public');
+        dd($files);
+        // $request->user()->donations()->create($request);
+        // $files->storeAs('sound', 'test.mp3', 'public');
     }
+
 }

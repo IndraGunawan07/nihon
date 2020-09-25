@@ -22,7 +22,7 @@ class CreateDonationsTable extends Migration
             $table->integer('validated_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('deleted_by');
+            $table->integer('deleted_by')->nullable();
         });
     }
 
