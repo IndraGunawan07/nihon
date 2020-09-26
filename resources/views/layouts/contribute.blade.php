@@ -24,9 +24,12 @@
             <button id="start">Start</button>
             <button id="stop">Stop</button>
             <div class="audio" id="audio"></div>
+            <div class="id" id="id"></div>
             <div id="audio-form" action="{{ route('saveAudio') }}">
               <button id="save">Save</button>
             </div>
+            {{-- <div id="hidsddenid" value="{{ $terms->id }}"></div> --}}
+            <input type="hidden" id="hiddenid" name="idhidden" value="{{ $terms->id }}">
         </div>
     </div>
     </div>
@@ -36,9 +39,12 @@
     const startButton = document.getElementById('start');
     const stopButton = document.getElementById('stop');
     const saveButton = document.getElementById('save');
+    console.log(saveButton);
     let recorded = document.getElementById('recordedAudio');
     var device = navigator.mediaDevices.getUserMedia({audio: true});
     var blob;
+    let id = $('#hiddenid').attr('value');
+    console.log(id);
     
 
     startButton.addEventListener('click', function(){
@@ -57,18 +63,19 @@
         }
     });
       var saveUrl = $('#audio-form').attr('action');
-      //console.log(saveUrl);
+      console.log(saveUrl);
       var fd = new FormData();
             fd.append('audio', blob);
+            fd.append('id', id);
+            console.log(fd);
             $.ajax({
-              
                 type: 'POST',
                 url: saveUrl,
                 data: fd,
                 processData: false,
                 contentType: false
             }).done(function(data) {
-                   console.log(data);
+                  //  console.log(data);
             });
     });
 

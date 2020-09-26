@@ -11,6 +11,11 @@ class DonationController extends Controller
 {
     
     //
+    public function __construct(){
+        // make sure user udah sign in
+        $this->middleware('auth');
+    }
+
     /* Display a listing of the resource.
     *
     * @return \Illuminate\Http\Response

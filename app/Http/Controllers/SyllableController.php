@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class SyllableController extends Controller
 {
+    public function __construct(){
+        // make sure user udah sign in
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *

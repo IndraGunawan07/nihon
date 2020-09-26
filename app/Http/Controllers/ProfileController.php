@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+    public function __construct(){
+        // make sure user udah sign in
+        $this->middleware('auth');
+    }
+    
     //untuk direct ke page edit profile
     public function edit(Request $request){
         return view('edit',[

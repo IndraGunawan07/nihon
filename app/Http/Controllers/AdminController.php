@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
+    public function __construct(){
+        // make sure user sudah sign in
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
