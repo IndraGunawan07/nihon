@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Terms;
 use App\Donations;
-use Illuminate\Support\Facades\Auth;
 
 class ContributeController extends Controller
 {
@@ -40,20 +39,12 @@ class ContributeController extends Controller
             'donation_file_url' => 'test.mp3'
         ]);
         $files = $request->file('audio');
-<<<<<<< HEAD
         $fileName = "test.mp3";
         $files->storeAs('sound', $fileName, 'public');
-=======
         $files->storeAs('sound', 'test.mp3', 'public');
         
         // dd($request);
         // $user->save();
-
-        
-        
-
-        
->>>>>>> 1d77d3d86fc9eb03c9872f71c7b7319b207be51f
     }
 
 }
