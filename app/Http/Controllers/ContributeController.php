@@ -42,7 +42,7 @@ class ContributeController extends Controller
         $fileName = "test.mp3";
         $files->storeAs('sound', $fileName, 'public');
         $files->storeAs('sound', 'test.mp3', 'public');
-        
+        return view('auth.login');
         // dd($request);
         // $user->save();
     }

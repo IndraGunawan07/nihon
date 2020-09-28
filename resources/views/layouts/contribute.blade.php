@@ -26,7 +26,7 @@
             <div class="audio" id="audio"></div>
             <div class="id" id="id"></div>
             <div id="audio-form" action="{{ route('saveAudio') }}">
-              <button id="save">Save</button>
+              <button id="save" style="display: none;">Save</button>
             </div>
             {{-- <div id="hidsddenid" value="{{ $terms->id }}"></div> --}}
             <input type="hidden" id="hiddenid" name="idhidden" value="{{ $terms->id }}">
@@ -61,7 +61,7 @@
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    });
+      });
       var saveUrl = $('#audio-form').attr('action');
       console.log(saveUrl);
       var fd = new FormData();
@@ -77,6 +77,7 @@
             }).done(function(data) {
                   //  console.log(data);
             });
+      //location.reload();
     });
 
     const handleSuccess = function(stream)
@@ -93,6 +94,7 @@
             mainaudio.setAttribute('controls', 'controls');
             audio.appendChild(mainaudio);
             mainaudio.innerHTML = '<source src="' + URL.createObjectURL(blob) + '"type="video/webm"/>';
+            saveButton.style.display = "inline";
           }
         }
         stopButton.addEventListener('click', function(){
