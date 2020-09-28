@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Terms;
 
 class ContributeController extends Controller
@@ -26,6 +27,7 @@ class ContributeController extends Controller
     public function saveAudio(Request $request)
     {
         $files = $request->file('audio');
-        $files->storeAs('sound', 'test.mp3', 'public');
+        $fileName = "test.mp3";
+        $files->storeAs('sound', $fileName, 'public');
     }
 }
