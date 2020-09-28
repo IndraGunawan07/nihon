@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class SyllableController extends Controller
 {
+    public function __construct(){
+        // make sure user udah sign in
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -50,7 +55,7 @@ class SyllableController extends Controller
     {
         return Validator::make($data,[
             'jws' => ['required', 'string', 'max:255','unique:terms,in_jws'],
-            'rws' => ['required', 'string', 'max:15'],
+            'rws' => ['required', 'string', 'max:255'],
             'bahasa_translation' => ['required', 'string', 'max:255'],
             'sound_file_url' => ['string', 'file|image|mimes:mp3|max:2048'],
         ]);
@@ -60,7 +65,7 @@ class SyllableController extends Controller
     {
         return Validator::make($data,[
             'jws' => ['required', 'string', 'max:255'],
-            'rws' => ['required', 'string', 'max:15'],
+            'rws' => ['required', 'string', 'max:255'],
             'bahasa_translation' => ['required', 'string', 'max:255'],
             'sound_file_url' => ['string', 'file|image|mimes:mp3|max:2048'],
         ]);

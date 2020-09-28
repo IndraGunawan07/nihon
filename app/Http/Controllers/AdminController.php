@@ -3,22 +3,43 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Terms;
+use App\Donations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 
 class AdminController extends Controller
 {
+    public function __construct(){
+        // make sure user sudah sign in
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        //
+        // Log::info();
+        // $users = User::where('role', '!=', auth()->id())->get(); untuk user curr gk ikut
+        $users = User::where('role', '!=', 'Admin')->get()->count();
+        // $users = $users->count();
+        $terms = Terms::all()->count();
+        $valdonation = Donations::where('validate_at', '!=', NULL)->count();
+        $donation = Donations::where('validate_at', '==', NULL)->count();
+        return view ('administator.home',compact(['users', 'terms', 'valdonation', 'donation']));
+    }
+
+    public function showuser()
     {
         //
         // Log::info();
@@ -69,6 +90,7 @@ class AdminController extends Controller
         ]);
         $user = User::where('username', $request->username)->first();
         $user->is_locked = 0;
+        $user->created_by = Auth::user()->id;
         if($request->hasFile('fileupload'))
         {
             $fileName = $request->fileupload->getClientOriginalName();
@@ -84,8 +106,8 @@ class AdminController extends Controller
     public function deleteUser(Request $request)
     {
         $user = User::where('username', $request->user)->first();
+        $user->deleted_by = Auth::user()->id;
         $user->delete();
-        $user->save();
         return back();
     }
 
@@ -99,7 +121,7 @@ class AdminController extends Controller
             'secret_question' => $request->secret_question,
             'secret_answer' => $request->secret_answer
         ]);
-
+        $editedUser->updated_by = Auth::user()->id;
         if($request->hasFile('fileupload'))
         {
             $fileName = $request->fileupload->getClientOriginalName();

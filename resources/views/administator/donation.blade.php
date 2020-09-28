@@ -1,0 +1,89 @@
+@extends('administator.admin')
+
+@section('content')
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-12">
+            <h1 class="m-0 text-dark">Donation Management</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </div>
+
+
+    <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">DataTable Donation</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th width="5%">#</th>
+                        <th width="15%">ID Terms</th>
+                        <th width="15%">ID User</th>
+                        <th width="20%">Created At</th>
+                        <th width="20%">Validated By</th>
+                        <th width="15%">Sound File</th>
+                        <th width="10%"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        @foreach ($donation as $key) 
+                        <tr>
+                          <td><?=$i++?></td>
+                          <td>{{ $key->user_id }}</td>
+                          <td>{{ $key->term_id }}</td>
+                          <td>{{ $key->created_at }}</td>
+                          <td>
+                            @if ($key->validated_by == NULL)
+                                Not Validated
+                            @else 
+                                {{ $key->validated_by }}
+                            @endif
+                          </td>
+                          <td>
+                            <audio controls>
+                              <source src="{{ asset('storage/sound/' . $key->donation_file_url )}}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td>
+                            {{-- untuk button delete --}}
+                            <form action="{{ route('donation.destroy', $key->id) }}" method="post">
+                                {{ method_field('DELETE')}}
+                                @csrf
+                              <button class="btn btn-danger btn-sm">Delete</button>
+                              <input type="hidden" name="id" value="{{ $key->id }}">
+                            </form>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                </div>
+                 <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+</div>
+
+
+@endsection

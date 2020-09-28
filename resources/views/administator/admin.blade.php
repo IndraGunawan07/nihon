@@ -136,7 +136,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.index') }}"class="nav-link">
                     <i class="nav-icon fas fa-database"></i>
                     <p>
                         Data
@@ -148,7 +148,7 @@
             <!-- Users sidebar -->
             <li class="nav-header">System Setup</li>
             <li class="nav-item">
-                <a href=" {{ url('/admin') }}" class="nav-link">
+                <a href="{{ route('showusers') }}" class="nav-link">
                 <i class="nav-icon fas fa-user-check"></i>
                 <p>
                     Users
@@ -173,11 +173,11 @@
             </li>
             <!-- //Users sidebar -->
 
-                <li class="nav-header">Another menu?</li>
+                <li class="nav-header">Data</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-file"></i>
-                    <p>Documentation</p>
+                    <a href="{{ url('/donation') }}" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Donation</p>
                     </a>
                 </li>
                 <li class="nav-header">MULTI LEVEL EXAMPLE</li>

@@ -26,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        // Terms::observe(BlameableObserver::class);
+        Terms::observe(BlameableObserver::class);
     }
 }

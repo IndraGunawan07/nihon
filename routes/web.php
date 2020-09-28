@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('admin/users', 'AdminController@showuser')->name('showusers');;
 Route::resource('/admin', 'AdminController');
 
 // Route untuk update profile
@@ -69,3 +70,6 @@ Route::post('/update', 'SyllableController@updatesyllable')->name('updateterms')
 
 // route untuk validator
 Route::get('/validate', 'ValidateController@index')->name('validate');
+
+// Route untuk syllable 
+Route::resource('/donation','DonationController');

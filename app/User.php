@@ -15,7 +15,7 @@ class User extends Authenticatable
 {
     use Notifiable;
     use SoftDeletes;
-    use Blameable; 
+    // use Blameable; 
 
     /**
      * The attributes that are mass assignable.
@@ -51,5 +51,9 @@ class User extends Authenticatable
         return $user;
     }
 
+    // define relationship method 
+    public function donations(){
+        return $this->hasMany(Donations::class);
+    }
     
 }

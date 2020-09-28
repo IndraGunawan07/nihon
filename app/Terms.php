@@ -14,9 +14,14 @@ class Terms extends Model
 
     protected $fillable = ['in_jws', 'in_rws', 'bahasa_translation','sound_file_url'];
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'created_at'];
 
     protected $hidden = ['in_jws'];
+
+    // define relationship method 
+    public function donations(){
+        return $this->hasMany(Donations::class);
+    }
 
 
 }
