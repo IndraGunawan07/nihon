@@ -20,8 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('admin/users', 'AdminController@showuser')->name('showusers');;
-Route::resource('/admin', 'AdminController');
+
+Route::group(['middleware' => 'checkadmin'], function(){
+    Route::get('admin/users', 'AdminController@showuser')->name('showusers');
+    Route::resource('/admin', 'AdminController');
+});
 
 // Route untuk update profile
 Route::group(['middleware' => 'auth'], function (){

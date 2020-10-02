@@ -13,7 +13,8 @@ class DonationController extends Controller
     //
     public function __construct(){
         // make sure user udah sign in
-        $this->middleware('auth');
+        // $this->middleware('auth');
+        $this->middleware('checkadmin');
     }
 
     /* Display a listing of the resource.

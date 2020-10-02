@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function __construct(){
-        // make sure user sudah sign in
+        // make sure user sudah sign in dan dia admin
         $this->middleware('auth');
+        $this->middleware('checkadmin');
     }
     
     /**

@@ -13,6 +13,7 @@ class SyllableController extends Controller
     public function __construct(){
         // make sure user udah sign in
         $this->middleware('auth');
+        $this->middleware('checkadmin');
     }
     
     /**
