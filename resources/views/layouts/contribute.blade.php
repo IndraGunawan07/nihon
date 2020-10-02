@@ -6,23 +6,25 @@
     <div class="container">
         <div class="ser-lt" style="padding-top: 10em; text-align: center;">
                 <span class="line my-4"></span>
-                <h2 class="my-3 banner-sub" style="color: black">{{ $terms->in_jws }}</h2>
-                <span class="line my-4"></span>
+                <h2 class="my-3 banner-sub" style="color: black; display: inline;">{{ $terms->in_jws }} / {{ $terms->in_rws }} / {{ $terms->bahasa_translation }}</h2>
+                <span class="fas fa-play-circle fa-2x pl-3" id="playAudio"></span>
+                {{-- <span class="line my-4"></span>
                 <h4 class="my-3 banner-sub" style="color: black; font-size: 30px;">{{ $terms->in_rws }}</h4>
                 <span class="line my-4"></span>
-                <h6 class="my-" style="color: black">{{ $terms->bahasa_translation }}</h6>
+                <h6 class="my-" style="color: black">{{ $terms->bahasa_translation }}</h6> --}}
         </div>
 
         <div style="text-align: center; padding-top: 12px;"> 
-            <audio controls>
+            <audio id="dataAudio">
                 <source src="{{ asset('storage/sound/' . $terms->sound_file_url )}}" type="audio/mpeg">
               Your browser does not support the audio element.
               </audio>
         </div>
         <div style="text-align: center; padding-top: 12px;">
             <p>The Audio will record for 5 seconds when you press start</p>
-            <button id="start">Start</button>
-            <button id="stop">Stop</button>
+            {{-- <button id="start">Start</button>
+            <button id="stop">Stop</button> --}}
+            <i class="fas fa-microphone fa-7x" id="record"></i>
             <div class="audio" id="audio"></div>
             <div class="id" id="id"></div>
             <div id="audio-form" action="{{ route('saveAudio') }}">
@@ -40,22 +42,59 @@
     const startButton = document.getElementById('start');
     const stopButton = document.getElementById('stop');
     const saveButton = document.getElementById('save');
+    const playButton = document.getElementById('playAudio');
+    const dataAudio = document.getElementById('dataAudio');
+    const recordButton = document.getElementById('record');
+
     console.log(saveButton);
     let recorded = document.getElementById('recordedAudio');
     var device = navigator.mediaDevices.getUserMedia({audio: true});
     var blob;
+    var isPlaying = 0;
+    var isRecording = 0;
+    var time = 6000;
+    var clicked = 0;
     let id = $('#hiddenid').attr('value');
+
     let rws = $('#hiddenrws').attr('value');
     console.log(rws);
     
+    console.log(id);
 
-    startButton.addEventListener('click', function(){
-        console.log("start is clicked");
+    playButton.addEventListener('click', function(){
+      if(!isPlaying)
+      {
+        dataAudio.play();
+        isPlaying = !isPlaying;
+      }
+      else{
+        dataAudio.pause();
+        isPlaying = !isPlaying;
+      }
+    });
+
+    // startButton.addEventListener('click', function(){
+    //     console.log("start is clicked");
+    //     device.then(handleSuccess);
+    //     if(audio.childNodes.length > 0)
+    //     {
+    //       audio.removeChild(audio.childNodes[0]);
+    //     }
+    // });
+
+    recordButton.addEventListener('click', function(){
+      console.log("start is clicked");
+      var stop = 0;
+      if(!isRecording)
+      {
         device.then(handleSuccess);
         if(audio.childNodes.length > 0)
         {
           audio.removeChild(audio.childNodes[0]);
         }
+      }
+      clicked = 1;
+      isRecording = !isRecording;
     });
 
     saveButton.addEventListener('click', function(){
@@ -100,13 +139,17 @@
             saveButton.style.display = "inline";
           }
         }
-        stopButton.addEventListener('click', function(){
-            recorder.stop();
-        })
+        recordButton.addEventListener('click', function(){
+          recorder.stop();
+          stop = 1;
+        });
         recorder.start();
         setTimeout(()=>{
-          recorder.stop();
-        }, 6000);
+          if(stop)
+          {
+            recorder.stop();
+          }
+        }, time);
     };
 </script>
 @endsection

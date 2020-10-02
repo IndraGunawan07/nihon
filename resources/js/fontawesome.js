@@ -28,7 +28,7 @@ import {
     faFolderPlus,
     faEdit,
     faTrash,
-    faCheck
+    faCheck, faPlay, faPlayCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -53,7 +53,9 @@ library.add(
     faKey,
     faEdit,
     faTrash,
-    faCheck
+    faCheck,
+    faPlayCircle,
+    faMicrophone
 );
 
 dom.watch();
