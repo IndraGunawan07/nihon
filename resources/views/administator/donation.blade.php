@@ -85,5 +85,17 @@
         <!-- /.content -->
 </div>
 
+<script>
+  console.log('readi');
+  document.addEventListener('DOMContentLoaded', function (){
+    $('#example1').DataTable({
+      "responsive": true,
+      "autoWidth": false,
+      
+    });
+    
+  });
+</script>
+
 
 @endsection
