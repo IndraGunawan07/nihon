@@ -13,6 +13,7 @@ class ContributeController extends Controller
     public function __construct(){
         // make sure user udah sign in
         $this->middleware('auth');
+    
     }
     
     /**
@@ -33,15 +34,16 @@ class ContributeController extends Controller
     public function saveAudio(Request $request)
     {
         // Untuk input
+        // $request->fileupload->getClientOriginalName();
+        $files = $request->file('audio');
+        $fileName = Auth::user()->username . "_" . $request->rws . "_" . date('Ymd') . ".mp3";
         Donations::create([
             'user_id' => Auth::user()->id,
             'term_id' => $request->id,
-            'donation_file_url' => 'test.mp3'
+            'donation_file_url' => $fileName,
         ]);
-        $files = $request->file('audio');
-        $fileName = "test.mp3";
-        $files->storeAs('sound', $fileName, 'public');
-        $files->storeAs('sound', 'test.mp3', 'public');
+        $files->storeAs('sound', $fileName , 'public');
+        // $files->storeAs('sound', 'test.mp3', 'public');
         return view('auth.login');
         // dd($request);
         // $user->save();

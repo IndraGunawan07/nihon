@@ -30,6 +30,7 @@
             </div>
             {{-- <div id="hidsddenid" value="{{ $terms->id }}"></div> --}}
             <input type="hidden" id="hiddenid" name="idhidden" value="{{ $terms->id }}">
+            <input type="hidden" id="hiddenrws" name="rwshidden" value="{{ $terms->in_rws }}">
         </div>
     </div>
     </div>
@@ -44,7 +45,8 @@
     var device = navigator.mediaDevices.getUserMedia({audio: true});
     var blob;
     let id = $('#hiddenid').attr('value');
-    console.log(id);
+    let rws = $('#hiddenrws').attr('value');
+    console.log(rws);
     
 
     startButton.addEventListener('click', function(){
@@ -67,6 +69,7 @@
       var fd = new FormData();
             fd.append('audio', blob);
             fd.append('id', id);
+            fd.append('rws', rws);
             console.log(fd);
             $.ajax({
                 type: 'POST',

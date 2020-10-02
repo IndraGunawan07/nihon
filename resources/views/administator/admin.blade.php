@@ -61,9 +61,6 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('admin.index') }}" class="nav-link">Home</a>
         </li>
-        {{-- <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
-        </li> --}}
         </ul>
 
         <!-- SEARCH FORM -->
@@ -81,12 +78,6 @@
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <!-- Notifications Dropdown Menu -->
-            {{-- <li class="nav-item">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fas fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
-                </a>
-            </li> --}}
             <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                 <i class="fas fa-th-large"></i>
@@ -180,13 +171,7 @@
                         <p>Donation</p>
                     </a>
                 </li>
-                <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="fas fa-circle nav-icon"></i>
-                    <p>Level 1</p>
-                    </a>
-                </li>
+                
             </ul>
         </nav>
         <!-- //.Sidebar-menu -->

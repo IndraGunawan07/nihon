@@ -32,15 +32,16 @@ class AdminController extends Controller
         //
         // Log::info();
         // $users = User::where('role', '!=', auth()->id())->get(); untuk user curr gk ikut
-        if(Auth::user()->role !== 'Admin'){
-            abort(404);
-            // TESTING
-        }
+        // if(Auth::user()->role !== 'Admin'){
+        //     abort(404);
+        //     // TESTING
+        // }
         $users = User::where('role', '!=', 'Admin')->get()->count();
         // $users = $users->count();
         $terms = Terms::all()->count();
-        $valdonation = Donations::where('validate_at', '!=', NULL)->count();
-        $donation = Donations::where('validate_at', '==', NULL)->count();
+        $valdonation = Donations::where('is_valid', '!=', false)->get()->count();
+        $donation = Donations::where('is_valid', '==', false)->get()->count();
+        // dd($valdonation);
         return view ('administator.home',compact(['users', 'terms', 'valdonation', 'donation']));
     }
 
@@ -48,8 +49,8 @@ class AdminController extends Controller
     {
         //
         // Log::info();
-        // $users = User::where('role', '!=', auth()->id())->get(); untuk user curr gk ikut
-        $users = User::where('role', '!=', 'Admin')->get();
+        $users = User::where('id', '!=', auth()->id())->get(); //untuk user curr gk ikut
+        // $users = User::where('role', '!=', 'Admin')->get();
         return view ('administator.index',compact('users'));
     }
 

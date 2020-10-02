@@ -6,7 +6,7 @@
     <div class="container">
         <div class="banner-main ser-lt">
                 <span class="line my-4"></span>
-                <h2 class="my-3 banner-sub" style="color: black">Lorem ipsum dolor consectetur</h2>
+                <h2 class="my-3 banner-sub" style="color: black">Welcome to Nihonesia</h2>
                 <span class="line my-4"></span>
                 <h6 class="my-" style="color: black">posuere eget sed risus. Quisque consectetur</h6>
         </div>
@@ -46,8 +46,8 @@
             <div class="row">
                 <div class="col-md-4 p-0 pt-5 team-left text-center">
                     <img src="" class="img-fluid mb-5" alt="">
-                    <h4>Laura Carl</h4>
-                    <p>Morbi non elit sed neque init rhoncus maximus ac enim elit sed neque init.</p>
+                    <h4>Indra Gunawan</h4>
+                    <p>Lahir di dunia, gender pria, suka makan, hobi bernapas. single 2020.</p>
                     <div class="team-social py-4 text-center">
                         <ul class="social-icons text-center">
                             <li>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="col-md-4 p-0 pt-md-0 pt-5 team-middle text-center">
                     <img src="" class="img-fluid mb-5" alt="">
-                    <h4>Laura Carl</h4>
+                    <h4>Julio Christian Young</h4>
                     <p>Morbi non elit sed neque init rhoncus maximus ac enim elit sed neque init.</p>
                     <div class="team-social py-4 text-center">
                         <ul class="social-icons text-center">
@@ -94,7 +94,7 @@
                 </div>
                 <div class="col-md-4 p-0 pt-5 team-right text-center">
                     <img src="" class="img-fluid mb-5" alt="">
-                    <h4>Laura Carl</h4>
+                    <h4>Bella Anggraini</h4>
                     <p>Morbi non elit sed neque init rhoncus maximus ac enim elit sed neque init.</p>
                     <div class="team-social py-4 text-center">
                         <ul class="social-icons text-center">

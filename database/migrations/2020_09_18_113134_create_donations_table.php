@@ -20,6 +20,7 @@ class CreateDonationsTable extends Migration
             $table->string('donation_file_url');
             $table->timestamp('validate_at')->nullable();
             $table->integer('validated_by')->nullable();
+            $table->integer('is_valid')->default(false);
             $table->timestamps();
             $table->softDeletes();
             $table->integer('deleted_by')->nullable();

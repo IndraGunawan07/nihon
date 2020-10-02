@@ -43,10 +43,9 @@
               <h4 class="modal-title">Add New Sylable</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body">
-              <form method="POST" action="{{ route('syllable.store') }}" enctype="multipart/form-data">
-                @csrf
-  
+            <form method="POST" action="{{ route('syllable.store') }}" enctype="multipart/form-data">
+              @csrf
+              <div class="modal-body">
                 {{-- JWS --}}
                 <div class="form-group row">
                     <label for="jws" class="col-md-4 col-form-label text-md-right">{{ __('JWS') }}</label>
@@ -107,20 +106,16 @@
                         @enderror
                   </div>
                 </div>
-
+              </div>
+              <div class="modal-footer">
                 {{-- Submit Button --}}
-                <div class="form-group row mb-0">
-                  <div class="col-md-6 offset-md-4">
-                      <button type="submit" class="btn btn-primary">
-                          {{ __('Add Sylable') }}
-                      </button>
-                  </div>
+                <div class="col-md-6 offset-md-4">
+                  <button type="submit" class="btn btn-primary">
+                    {{ __('Add Sylable') }}
+                  </button>
+                </div>
               </div>
             </form>
-            </div>
-            <div class="modal-footer">
-              {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
-            </div>
           </div>
           
         </div>
@@ -162,7 +157,7 @@
                             <td>{{ $key->in_jws }}</td>
                             <td>{{ $key->in_rws }}</td>
                             <td>{{ $key->bahasa_translation }}</td>
-                            <td>{{ $key->created_at }}</td>
+                            <td>{{ date('Y-M-d', strtotime($key->created_at)) }}</td>
                             <td>
                               <audio controls>
                                 <source src="{{ asset('storage/sound/' . $key->sound_file_url )}}" type="audio/mpeg">
