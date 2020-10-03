@@ -76,3 +76,6 @@ Route::get('/validate', 'ValidateController@index')->name('validate');
 
 // Route untuk syllable 
 Route::resource('/donation','DonationController');
+
+// Route untuk content
+Route::get('/content', 'ContentController@index')->name('content');
