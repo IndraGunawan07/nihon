@@ -48,8 +48,8 @@
     var blob;
     var isPlaying = 0;
     var isRecording = 0;
+    
     let id = $('#hiddenid').attr('value');
-
     let rws = $('#hiddenrws').attr('value');
     console.log(rws);
     

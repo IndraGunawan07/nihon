@@ -23,11 +23,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @if ($errors->has('username')) <p style="color:red;">{{ $errors->first('username') }}</p> @endif
                             </div>
                         </div>
 
@@ -43,11 +39,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
 
