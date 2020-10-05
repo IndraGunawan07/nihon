@@ -78,4 +78,4 @@ Route::get('/validate', 'ValidateController@index')->name('validate');
 Route::resource('/donation','DonationController');
 
 // Route untuk content
-Route::get('/content', 'ContentController@index')->name('content');
+Route::resource('/content', 'ContentController')->only(['store', 'edit', 'update', 'destroy', 'index']);

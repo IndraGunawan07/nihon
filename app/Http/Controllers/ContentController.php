@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contents;
+use Illuminate\Support\Facades\Auth;
 
 class ContentController extends Controller
 {
@@ -21,9 +23,36 @@ class ContentController extends Controller
     public function index()
     {
         //
-        // $terms = Terms::inRandomOrder()->first(); // coba doang
+        $content = Contents::all(); // coba doang
         // dd($terms);
-        return view('administator.content');
+        return view('administator.content', compact('content'));
     }
+
+
+    public function update(Request $request, $id)
+    {
+        //
+        // dd($request->value);
+        $editcontent = Contents::where('id', $id)->first();
+        // dd($editcontent);
+        $editcontent->update([
+            'reference_key' => $request->reference_key,
+            'value' => $request->value,
+            'updated_by' => Auth::user()->id,
+        ]);
+        $editcontent->save();
+
+        // redirect jan lupa
+        return back()->with('success', "Your question has been updated.");
+    }
+
+    public function destroy(Request $request, $id){
+        // dd($id);
+        $content = Contents::where('id', $request->id)->first();
+        $content->deleted_by = Auth::user()->id;
+        $content->delete();
+        return back();
+   }
+
 }
 

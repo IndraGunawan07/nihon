@@ -31,12 +31,37 @@
                         <th width="5%">#</th>
                         <th width="15%">References Key</th>
                         <th width="35%">Value</th>
-                        <th width="20%">Created By</th>
+                        <th width="15%">Created By</th>
+                        <th width="10%"></th>
                         <th width="10%"></th>
                       </tr>
                     </thead>
                     <tbody>
-                        
+                      <?php $i = 1; ?>
+                      @foreach ($content as $key) 
+                      <tr>
+                        <td><?=$i++?></td>
+                        <td>{{ $key->reference_key }}</td>
+                        <td>{{ $key->value }}</td>
+                        <td>{{ $key->created_by }}</td>
+                        <td>{{-- untuk button edit --}}
+                          <form action="{{ route('content.update', $key->id) }}" method="POST">
+                            {{ method_field('PUT') }}
+                            @csrf
+                            <button type="button" class="btn btn-info btn-sm m-1" data-toggle="modal" data-target="#myModal">Edit</button>
+                          </form>
+                        </td>
+                        <td>
+                          {{-- untuk button delete --}}
+                          <form action="{{ route('content.destroy', $key->id) }}" method="post">
+                              {{ method_field('DELETE')}}
+                              @csrf
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                            <input type="hidden" name="id" value="{{ $key->id }}">
+                          </form>
+                        </td>
+                      </tr>
+                    @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -52,6 +77,66 @@
         </section>
         <!-- /.content -->
 </div>
+
+<!-- Add User Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Content</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <form method="POST" action="{{ route('content.update', $key->id) }}" enctype="multipart/form-data">
+        {{ method_field('PUT')}}
+        @csrf
+         <div class="modal-body">
+           {{-- Reference Key --}}
+           <div class="form-group row">
+            <label for="reference_key" class="col-md-4 col-form-label text-md-right">{{ __('Reference_Key') }}</label>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <input id="reference_key" type="text" class="form-control @error('reference_key') is-invalid @enderror" name="reference_key" value="{{ old('reference_key', $key->reference_key) }}" autocomplete="reference_key" autofocus>
+                </div>
+                @error('reference_key')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+             </div>
+           </div>
+
+            {{-- Value --}}
+            <div class="form-group row">
+                <label for="value" class="col-md-4 col-form-label text-md-right">{{ __('Value') }}</label>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <textarea class="form-control @error('value') is-invalid @enderror" rows="5" id="value" name="value" required autocomplete="value" autofocus>{{ $key->value }}</textarea>
+                        {{-- <input id="value" type="textarea" class="form-control @error('value') is-invalid @enderror" name="value" value="{{ old('value', $key->value) }}" required autocomplete="value" autofocus> --}}
+                    </div>
+                    @error('value')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          {{-- Submit Button --}}
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-primary">
+                {{ __('Edit Content') }}
+            </button>
+          </div>
+          {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End of Add User Modal -->
 
 <script>
   console.log('readi');

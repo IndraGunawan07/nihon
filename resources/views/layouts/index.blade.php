@@ -6,7 +6,7 @@
     <div class="container">
         <div class="banner-main ser-lt">
                 <span class="line my-4"></span>
-                <h2 class="my-3 banner-sub" style="color: black">Welcome to Nihonesia</h2>
+                <h2 class="my-3 banner-sub" style="color: black">{{ get_username() }}</h2>
                 <span class="line my-4"></span>
                 <h6 class="my-" style="color: black">posuere eget sed risus. Quisque consectetur</h6>
         </div>

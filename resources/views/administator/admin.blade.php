@@ -155,7 +155,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('content')}}" class="nav-link">
+                <a href="{{ route('content.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-user-lock"></i>
                 <p>
                     Content 
