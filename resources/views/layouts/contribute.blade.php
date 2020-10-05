@@ -22,8 +22,6 @@
         </div>
         <div style="text-align: center; padding-top: 12px;">
             <p>The Audio will record for 5 seconds when you press start</p>
-            {{-- <button id="start">Start</button>
-            <button id="stop">Stop</button> --}}
             <i class="fas fa-microphone fa-7x" id="record"></i>
             <div class="audio" id="audio"></div>
             <div class="id" id="id"></div>
@@ -39,8 +37,6 @@
 <!-- //banner -->
 
 <script>
-    const startButton = document.getElementById('start');
-    const stopButton = document.getElementById('stop');
     const saveButton = document.getElementById('save');
     const playButton = document.getElementById('playAudio');
     const dataAudio = document.getElementById('dataAudio');
@@ -52,8 +48,6 @@
     var blob;
     var isPlaying = 0;
     var isRecording = 0;
-    var time = 6000;
-    var clicked = 0;
     let id = $('#hiddenid').attr('value');
 
     let rws = $('#hiddenrws').attr('value');
@@ -84,7 +78,7 @@
 
     recordButton.addEventListener('click', function(){
       console.log("start is clicked");
-      var stop = 0;
+      saveButton.style.display = "none";
       if(!isRecording)
       {
         device.then(handleSuccess);
@@ -93,7 +87,6 @@
           audio.removeChild(audio.childNodes[0]);
         }
       }
-      clicked = 1;
       isRecording = !isRecording;
     });
 
@@ -126,6 +119,7 @@
     {
       var items = [];
         var recorder = new MediaRecorder(stream);
+        console.log(recorder.state);
         recorder.ondataavailable = e => {
           items.push(e.data);
           if(recorder.state == 'inactive')
@@ -139,17 +133,18 @@
             saveButton.style.display = "inline";
           }
         }
-        recordButton.addEventListener('click', function(){
-          recorder.stop();
-          stop = 1;
-        });
         recorder.start();
-        setTimeout(()=>{
-          if(stop)
+
+        recordButton.addEventListener('click', function(){
+          if(recorder.state == 'recording')
           {
             recorder.stop();
+            clearTimeout(timeOut);
           }
-        }, time);
+        });
+        var timeOut = setTimeout(() => {
+          recorder.stop();
+        }, 6000);
     };
 </script>
 @endsection
