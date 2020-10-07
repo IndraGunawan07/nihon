@@ -32,6 +32,8 @@ import {
     faCheckSquare, faFileAudio, faPlus, faMinus
 } from '@fortawesome/free-solid-svg-icons';
 
+import { faFacebook, faGooglePlusG, faInstagram, faInstagramSquare, faTwitter, faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
+
 library.add(
     faCaretDown,
     faUser,
@@ -59,7 +61,8 @@ library.add(
     faMicrophone,
     faCheckSquare,
     faFileAudio,
-    faPlus, faMinus
+    faPlus, faMinus,
+    faTwitter, faInstagram, faGooglePlusG
 );
 
 dom.watch();

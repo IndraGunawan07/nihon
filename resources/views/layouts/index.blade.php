@@ -8,7 +8,7 @@
                 <span class="line my-4"></span>
                 <h2 class="my-3 banner-sub" style="color: black">{{ get_username() }}</h2>
                 <span class="line my-4"></span>
-                <h6 class="my-" style="color: black">posuere eget sed risus. Quisque consectetur</h6>
+                <h6 class="my-" style="color: black">Bantu kami mengumpulkan voice dataset dalam bahasa jepang</h6>
         </div>
     </div>
     </div>
@@ -24,11 +24,11 @@
 
                     <div class="row">
                             <div class="col-lg-4 mb-lg-0 mb-5 about-left">
-                                <h2 class="">Lorem ipsum dolor sit amet consectetur adipiscing elit</h2>
+                                <h2 class="">Nihonesia to pendek, how to panjangin ?</h2>
                             </div>
                             <div class="col-lg-8 about-right pl-4">
-                                <span>s</span><p class="right-text">lorem ipsum amet consectetur maximus vitae enim ac, suscipit mollis purus. Morbi dictum nibh vel pellentesque congue. Cras ut purus tellus. Duis rhoncus sem nec arcu tincidunt tincidunt Morbi dictum nibh vel pellentesque congue.</p>
-                                <p class="my-3">maximus vitae enim ac, suscipit mollis purus. Morbi dictum nibh vel pellentesque congue. Cras ut purus tellus. Duis rhoncus sem nec arcu tincidunt tincidunt.</p>
+                                <span>N</span><p class="right-text">ihonesia merupakan website pengumpulan speech dataset dalam bahasa jepang. Website ini mengumpulkan rekaman suara pengguna saat membaca huruf jepang.</p>
+                                <p class="my-3">website ini dikembangkan oleh Universitas Multimedia Nusantara, diharapkan dengan adanya website ini dapat membantu penelitian tentang speech recognition.</p>
                             </div>
                     </div>
                     <img src="" class="img-fluid mt-5" alt="">
@@ -52,17 +52,17 @@
                         <ul class="social-icons text-center">
                             <li>
                                 <a href="#">
-                                    <i class="fa fa-facebook-f"></i>
+                                    <i class="fab fa-instagram"></i>
                                 </a>
                             </li>
                             <li class="mx-3">
                                 <a href="#">
-                                    <i class="fa fa-twitter"></i>
+                                    <i class="fab fa-twitter"></i>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="fa fa-google-plus"></i>
+                                    <i class="fab fa-google-plus-g"></i>
                                 </a>
                             </li>
                         </ul>
@@ -76,17 +76,17 @@
                         <ul class="social-icons text-center">
                             <li>
                                 <a href="#">
-                                    <i class="fa fa-facebook-f"></i>
+                                    <i class="fab fa-instagram"></i>
                                 </a>
                             </li>
                             <li class="mx-3">
                                 <a href="#">
-                                    <i class="fa fa-twitter"></i>
+                                    <i class="fab fa-twitter"></i>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="fa fa-google-plus"></i>
+                                    <i class="fab fa-google-plus-g"></i>
                                 </a>
                             </li>
                         </ul>
@@ -94,23 +94,24 @@
                 </div>
                 <div class="col-md-4 p-0 pt-5 team-right text-center">
                     <img src="" class="img-fluid mb-5" alt="">
-                    <h4>Bella Anggraini</h4>
+                    <h4>Bella Anggraini Utomo</h4>
                     <p>Morbi non elit sed neque init rhoncus maximus ac enim elit sed neque init.</p>
                     <div class="team-social py-4 text-center">
                         <ul class="social-icons text-center">
                             <li>
                                 <a href="#">
-                                    <i class="fa fa-facebook-f"></i>
+                                    {{-- <i class="fa fa-facebook-f"></i> --}}
+                                    <i class="fab fa-instagram"></i>
                                 </a>
                             </li>
                             <li class="mx-3">
                                 <a href="#">
-                                    <i class="fa fa-twitter"></i>
+                                    <i class="fab fa-twitter"></i>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="fa fa-google-plus"></i>
+                                    <i class="fab fa-google-plus-g"></i>
                                 </a>
                             </li>
                         </ul>
