@@ -10,7 +10,7 @@ class Donations extends Model
     //
     use SoftDeletes;
 
-    protected $fillable = ['donation_file_url', 'user_id', 'term_id'];
+    protected $fillable = ['donation_file_url', 'user_id', 'terms_id'];
 
     //define inverse relationship method 
     public function users(){

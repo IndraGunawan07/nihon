@@ -35,11 +35,12 @@ class ContributeController extends Controller
     {
         // Untuk input
         // $request->fileupload->getClientOriginalName();
+        // dd($request->id);
         $files = $request->file('audio');
         $fileName = Auth::user()->username . "_" . $request->rws . "_" . date('Ymd') . ".mp3";
         Donations::create([
             'user_id' => Auth::user()->id,
-            'term_id' => $request->id,
+            'terms_id' => $request->id,
             'donation_file_url' => $fileName,
         ]);
         $files->storeAs('sound', $fileName , 'public');

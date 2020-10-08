@@ -22,7 +22,8 @@ class ValidateController extends Controller
     {
         //
         $terms = Terms::inRandomOrder()->first(); // coba doang
-        // dd($terms);
+        // dd($donations);
+
         return view('layouts.validate', compact('terms'));
     }
 }

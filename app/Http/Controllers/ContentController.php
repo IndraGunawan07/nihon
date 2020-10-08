@@ -29,11 +29,11 @@ class ContentController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function contentupdate(Request $request)
     {
         //
-        // dd($request->value);
-        $editcontent = Contents::where('id', $id)->first();
+        // dd($request);
+        $editcontent = Contents::where('id', $request->id)->first();
         // dd($editcontent);
         $editcontent->update([
             'reference_key' => $request->reference_key,

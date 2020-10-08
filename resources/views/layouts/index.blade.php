@@ -6,9 +6,10 @@
     <div class="container">
         <div class="banner-main ser-lt">
                 <span class="line my-4"></span>
-                <h2 class="my-3 banner-sub" style="color: black">{{ get_username() }}</h2>
+                <h2 class="my-3 banner-sub" style="color: black">{{ get_username('head') }}</h2>
                 <span class="line my-4"></span>
-                <h6 class="my-" style="color: black">Bantu kami mengumpulkan voice dataset dalam bahasa jepang</h6>
+                <h6 class="my-" style="color: black">{{ get_username('sub judul')}}</h6>
+                {{-- nihonesia is an audio dataset consisting of short clip of human speech in japanese.  --}}
         </div>
     </div>
     </div>
@@ -24,15 +25,15 @@
 
                     <div class="row">
                             <div class="col-lg-4 mb-lg-0 mb-5 about-left">
-                                <h2 class="">Nihonesia to pendek, how to panjangin ?</h2>
+                                <h2 class="" style="padding-top: 70px;">{{ get_username('about left') }}</h2>
                             </div>
                             <div class="col-lg-8 about-right pl-4">
-                                <span>N</span><p class="right-text">ihonesia merupakan website pengumpulan speech dataset dalam bahasa jepang. Website ini mengumpulkan rekaman suara pengguna saat membaca huruf jepang.</p>
-                                <p class="my-3">website ini dikembangkan oleh Universitas Multimedia Nusantara, diharapkan dengan adanya website ini dapat membantu penelitian tentang speech recognition.</p>
+                                <span>{{ get_username('about word') }}</span><p class="right-text">uara yang dikeluarkan manusia adalah salah satu media untuk berkomunikasi dengan sesama manusia. Suara yang dikeluarkan manusia pada dasarnya unik untuk setiap individu. Dengan berkembangnya teknologi, mesin dapat mengenali suara manusia. Namun data suara yang dibutuhkan untuk membangun aplikasi sangat sedikit.</p>
+                                <p class="my-3">Nihonesia adalah website pengumpulan voice dataset dalam bahasa jepang yang bertujuan untuk membantu semua orang membangun sistem pengenalan suara atau jenis aplikasi lainnya yang membutuhkan data suara. Nihonesia dikebangkan oleh mahasiswa umn dan berfokus untuk menyediakan lebih banyak data suara untuk semua orang yang ingin membangun teknologi berbasis suara. </p>
                             </div>
                     </div>
-                    <img src="" class="img-fluid mt-5" alt="">
-                    <p class="iner mt-4"> Nunc fermentum adipiscing tempor cursus nascetur adipiscing adipiscing. Primis aliquam mus lacinia lobortis phasellus suscipit. Fermentum lobortis non tristique ante proin sociis accumsan lobortis. Auctor etiam porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum consequat integer interdum integer purus sapien. Nibh eleifend nulla nascetur pharetra commodo mi augue interdum tellus. Ornare cursus augue feugiat sodales velit lorem. Semper elementum ullamcorper lacinia natoque aenean scelerisque.</p>
+                    {{-- <img src="" class="img-fluid mt-5" alt=""> --}}
+                    {{-- <p class="iner mt-4"> Nunc fermentum adipiscing tempor cursus nascetur adipiscing adipiscing. Primis aliquam mus lacinia lobortis phasellus suscipit. Fermentum lobortis non tristique ante proin sociis accumsan lobortis. Auctor etiam porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum consequat integer interdum integer purus sapien. Nibh eleifend nulla nascetur pharetra commodo mi augue interdum tellus. Ornare cursus augue feugiat sodales velit lorem. Semper elementum ullamcorper lacinia natoque aenean scelerisque.</p> --}}
             </div>
     </div>
 <!-- //about -->

@@ -43,7 +43,7 @@
                         <tr>
                           <td><?=$i++?></td>
                           <td>{{ $key->user_id }}</td>
-                          <td>{{ $key->term_id }}</td>
+                          <td>{{ $key->terms_id }}</td>
                           <td>{{ date('Y-M-d', strtotime($key->created_at)) }}</td>
                           <td>
                             @if ($key->validated_by == NULL)

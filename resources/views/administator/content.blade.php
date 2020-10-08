@@ -45,10 +45,10 @@
                         <td>{{ $key->value }}</td>
                         <td>{{ $key->created_by }}</td>
                         <td>{{-- untuk button edit --}}
-                          <form action="{{ route('content.update', $key->id) }}" method="POST">
-                            {{ method_field('PUT') }}
+                          <form action="{{ route('updatecontent') }}" method="POST">
+                            {{-- {{ method_field('PUT') }} --}}
                             @csrf
-                            <button type="button" class="btn btn-info btn-sm m-1" data-toggle="modal" data-target="#myModal">Edit</button>
+                            <button type="button" class="btn btn-info btn-sm m-1" data-toggle="modal" data-target="#myModal" data-reference_key="{{ $key->reference_key }}" data-value="{{ $key->value }}" data-id="{{ $key->id }}">Edit</button>
                           </form>
                         </td>
                         <td>
@@ -88,8 +88,8 @@
         <h4 class="modal-title">Edit Content</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <form method="POST" action="{{ route('content.update', $key->id) }}" enctype="multipart/form-data">
-        {{ method_field('PUT')}}
+      <form method="POST" action="{{ route('updatecontent') }}" enctype="multipart/form-data">
+        {{-- {{ method_field('PUT')}} --}}
         @csrf
          <div class="modal-body">
            {{-- Reference Key --}}
@@ -97,7 +97,8 @@
             <label for="reference_key" class="col-md-4 col-form-label text-md-right">{{ __('Reference_Key') }}</label>
             <div class="col-md-6">
                 <div class="input-group mb-3">
-                    <input id="reference_key" type="text" class="form-control @error('reference_key') is-invalid @enderror" name="reference_key" value="{{ old('reference_key', $key->reference_key) }}" autocomplete="reference_key" autofocus>
+                    <input id="reference_key" type="text" class="form-control @error('reference_key') is-invalid @enderror" name="reference_key" value="" autocomplete="reference_key" autofocus>
+                    <input type="hidden" id="id" name="id" value="">
                 </div>
                 @error('reference_key')
                     <span class="invalid-feedback" role="alert">
@@ -112,7 +113,7 @@
                 <label for="value" class="col-md-4 col-form-label text-md-right">{{ __('Value') }}</label>
                 <div class="col-md-6">
                     <div class="input-group mb-3">
-                        <textarea class="form-control @error('value') is-invalid @enderror" rows="5" id="value" name="value" required autocomplete="value" autofocus>{{ $key->value }}</textarea>
+                        <textarea class="form-control @error('value') is-invalid @enderror" rows="5" id="value" name="value" required autocomplete="value" autofocus></textarea>
                         {{-- <input id="value" type="textarea" class="form-control @error('value') is-invalid @enderror" name="value" value="{{ old('value', $key->value) }}" required autocomplete="value" autofocus> --}}
                     </div>
                     @error('value')
