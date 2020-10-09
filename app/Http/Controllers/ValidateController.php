@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Terms;
+use App\Donations;
 
 class ValidateController extends Controller
 {
@@ -21,9 +23,38 @@ class ValidateController extends Controller
     public function index()
     {
         //
-        $terms = Terms::inRandomOrder()->first(); // coba doang
-        // dd($donations);
+        // $terms = Terms::inRandomOrder()->first(); // coba doang
+        // $donations = Donations::inRandomOrder()->first();
+        $donations = Donations::where('is_valid', 0)->where('validate_at', null)->inRandomOrder()->first();
+        $terms = $donations->Terms;
+        // $terms = Terms::inRandomOrder()->first();
+        // $donations = $terms->Donations->where('is_valid', 0)->where('validate_at', null)->first();
+        // dd($terms);
 
-        return view('layouts.validate', compact('terms'));
+        return view('layouts.validate', compact('terms', 'donations'));
+    }
+
+    public function validation(Request $request)
+    {
+        $donation_id = $request->donation_id;
+        $updateValid = Donations::where('id', $donation_id);
+        if($request->has('yes'))
+        {
+            $updateValid->update([
+                'validate_at' => date('ymd'),
+                'validated_by' => Auth::user()->id,
+                'is_valid' => 1
+            ]);
+            return redirect('/')->with('success');
+        }
+        else
+        {
+            $updateValid->update([
+                'validate_at' => date('ymdhms'),
+                'validated_by' => Auth::user()->id,
+                'is_valid' => 0
+            ]);
+            return redirect('/')->with('success');
+        }
     }
 }

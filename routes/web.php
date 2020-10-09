@@ -73,6 +73,7 @@ Route::post('/update', 'SyllableController@updatesyllable')->name('updateterms')
 
 // route untuk validator
 Route::get('/validate', 'ValidateController@index')->name('validate');
+Route::post('/validate', 'ValidateController@validation')->name('validation');
 
 // Route untuk syllable 
 Route::resource('/donation','DonationController');
