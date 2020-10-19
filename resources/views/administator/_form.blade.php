@@ -58,6 +58,25 @@
                 </div>
             </div>
 
+            {{-- Bahasa --}}
+            <div class="form-group row">
+                <label for="translate" class="col-md-4 col-form-label text-md-right">{{ __('Bahasa') }}</label>
+                <div class="col-md-6">
+                    <select id="bahasa" class="input-group mb-3 form-control p-2 @error('secret_question') is-invalid @enderror" name="bahasa" value="" required
+                      style="height: 35px">
+                        <option value="" disabled selected>Pilih kategori bahasa</option>  
+                        <option value="Jepang">Jepang </option>
+                        <option value="Korea">Korea</option>
+                        <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                    </select> 
+                    @error('bahasa')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            </div>
+
             <!-- Upload File -->
             <div class="form-group row">
                 <label for="fileupload" class="col-md-4 col-form-label text-md-right">{{ __('File Input') }}</label>
