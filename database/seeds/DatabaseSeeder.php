@@ -35,7 +35,47 @@ class DatabaseSeeder extends Seeder
             'deleted_at' => null,
             'created_by' => 1,
             'updated_by' => 1,
+            'bahasa' => 'Korea',
             'deleted_by' => null
         ]);
+
+        DB::table('contents')->insert([[
+            'reference_key' => 'head',
+            'value' => 'Welcome to Nihonesia',
+            'created_by' => null,
+            'updated_by' => null,
+            'deleted_by' => null,
+            'created_at' => null,
+            'updated_at' => null,
+            'deleted_at' => null,
+        ], [
+            'reference_key' => 'sub judul',
+            'value' => 'nihonesia is an audio dataset consisting of short clip of human speech in japanese.',
+            'created_by' => null,
+            'updated_by' => null,
+            'deleted_by' => null,
+            'created_at' => null,
+            'updated_at' => null,
+            'deleted_at' => null,
+        ], [
+            'reference_key' => 'about word',
+            'value' => 'S',
+            'created_by' => null,
+            'updated_by' => null,
+            'deleted_by' => null,
+            'created_at' => null,
+            'updated_at' => null,
+            'deleted_at' => null,
+        ], 
+        [
+            'reference_key' => 'about left',
+            'value' => 'Nihonesia Speech Dataset',
+            'created_by' => null,
+            'updated_by' => null,
+            'deleted_by' => null,
+            'created_at' => null,
+            'updated_at' => null,
+            'deleted_at' => null,
+        ]]);
     }
 }

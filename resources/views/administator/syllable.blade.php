@@ -91,11 +91,32 @@
                     </div>
                 </div>
 
+                {{-- Bahasa --}}
+                <div class="form-group row">
+                  <label for="bahasa" class="col-md-4 col-form-label text-md-right">{{ __('Kategori Bahasa') }}</label>
+                  <div class="col-md-6">
+                    {{-- <div class="input-group mb-3"> --}}
+                      <select id="bahasa" class="input-group mb-3 form-control p-2 @error('secret_question') is-invalid @enderror" name="bahasa" value="" required
+                      style="height: 35px">
+                        <option value="" disabled selected>Pilih kategori bahasa</option>  
+                        <option value="Jepang">Jepang </option>
+                        <option value="Korea">Korea</option>
+                        <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                      </select> 
+                    {{-- </div>  --}}
+                      @error('bahasa')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div>
+
                 <!-- Upload File -->
                 <div class="form-group row">
                   <label for="fileupload" class="col-md-4 col-form-label text-md-right">{{ __('File Input') }}</label>
                   <div class="col-md-6">
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3"  style="height: 35px">
                       <input class="custom-file-input @error('fileupload') is-invalid @enderror"  id="fileupload" type="file" name="fileupload" value="" required autocomplete="fileupload">
                       <label class="custom-file-label" for="fileupload">Choose file</label>
                     </div>
@@ -169,7 +190,9 @@
                               <form action="{{ route('updateterms') }}" method="post">
                                 
                                 @csrf
-                              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-jws="{{ $key->in_jws }}" data-rws="{{ $key->in_rws }}" data-translate="{{ $key->bahasa_translation }}" data-filename="{{ $key->sound_file_url }}" data-id = "{{ $key->id }}" data-target="#editModal">Edit</button>
+                              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-jws="{{ $key->in_jws }}" data-rws="{{ $key->in_rws }}" 
+                                data-translate="{{ $key->bahasa_translation }}" data-filename="{{ $key->sound_file_url }}" 
+                              data-id = "{{ $key->id }}" data-target="#editModal" data-bahasa="{{ $key->bahasa }}">Edit</button>
                                 {{-- <button class="btn btn-primary btn-sm">Edit</span></button> --}}
                                 {{-- <input type="hidden" name="user" value="{{ $key->in_jws }}"> --}}
                               </form>

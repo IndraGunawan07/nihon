@@ -59,6 +59,7 @@ class SyllableController extends Controller
             'rws' => ['required', 'string', 'max:255'],
             'bahasa_translation' => ['required', 'string', 'max:255'],
             'sound_file_url' => ['string', 'file|image|mimes:mp3|max:2048'],
+            'bahasa' => ['string', 'max:255'],
         ]);
     }
 
@@ -69,6 +70,7 @@ class SyllableController extends Controller
             'rws' => ['required', 'string', 'max:255'],
             'bahasa_translation' => ['required', 'string', 'max:255'],
             'sound_file_url' => ['string', 'file|image|mimes:mp3|max:2048'],
+            'bahasa' => ['string', 'max:255'],
         ]);
     }
 
@@ -80,7 +82,7 @@ class SyllableController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        // dd($request->bahasa);
 
         // Untuk validasi input
         $this->validator($request->all())->validate();
@@ -90,6 +92,7 @@ class SyllableController extends Controller
             'in_jws' => $request->jws,
             'in_rws' => $request->rws,
             'bahasa_translation' => $request->bahasa_translation,
+            'bahasa' => $request->bahasa,
             'sound_file_url' => $fileName,
         ]);
         // Disimpan di file storage
@@ -142,6 +145,7 @@ class SyllableController extends Controller
             'in_jws' => $request->jws,
             'in_rws' => $request->rws,
             'bahasa_translation' => $request->bahasa_translation,
+            'bahasa' => $request->bahasa,
             // 'sound_file_url' => $fileName,
         ]);
 
