@@ -22,8 +22,13 @@ class ValidateController extends Controller
      */
     public function index()
     {
-        //
-        // $terms = Terms::inRandomOrder()->first(); // coba doang
+        // Cek user valid 
+        if(Auth::user()->is_locked === 1){
+            toaster()->add('Add message here');
+            return back();
+        }
+        else {
+            // $terms = Terms::inRandomOrder()->first(); // coba doang
         // $donations = Donations::inRandomOrder()->first();
         $donations = Donations::where('is_valid', 0)->where('validate_at', null)->inRandomOrder()->first();
         $terms = $donations->Terms;
@@ -32,6 +37,8 @@ class ValidateController extends Controller
         // dd($terms);
 
         return view('layouts.validate', compact('terms', 'donations'));
+        }
+        
     }
 
     public function validation(Request $request)

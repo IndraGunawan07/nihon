@@ -12,7 +12,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
 

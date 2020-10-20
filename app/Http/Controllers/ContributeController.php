@@ -23,12 +23,20 @@ class ContributeController extends Controller
      */
     public function index()
     {
-        // get one random record
-        // User::inRandomOrder()->first();
-        // $terms = Terms::inRandomOrder()->first(); ini random
-        $terms = Terms::inRandomOrder()->first(); // coba doang
-        // dd($terms);
-        return view('layouts.contribute', compact('terms'));
+        // Cek apakah user status udah di acc
+        if(Auth::user()->is_locked === 1){
+            // dd("ada");
+            toaster()->add('Add message here')->speed(500);
+            return back();
+        }
+        else {
+            // get one random record
+            // User::inRandomOrder()->first();
+            // $terms = Terms::inRandomOrder()->first(); ini random
+            $terms = Terms::inRandomOrder()->first(); // coba doang
+            // dd($terms);
+            return view('layouts.contribute', compact('terms'));
+        }
     }
 
     public function saveAudio(Request $request)
