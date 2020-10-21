@@ -11,7 +11,7 @@ class ContentController extends Controller
     //
     public function __construct(){
         // make sure user udah sign in
-        $this->middleware('checkadmin');
+        // $this->middleware('checkadmin');
         $this->middleware('auth');
     }
     
@@ -23,9 +23,15 @@ class ContentController extends Controller
     public function index()
     {
         //
-        $content = Contents::all(); // coba doang
-        // dd($terms);
-        return view('administator.content', compact('content'));
+        if(Auth::user()->role !== 'Admin'){
+            abort(404);
+            // TESTING
+        } else {
+            $content = Contents::all(); // coba doang
+            // dd($terms);
+            return view('administator.content', compact('content'));
+        }
+        
     }
 
 

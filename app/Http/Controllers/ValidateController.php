@@ -23,20 +23,20 @@ class ValidateController extends Controller
     public function index()
     {
         // Cek user valid 
-        if(Auth::user()->is_locked === 1){
-            toaster()->add('Add message here');
-            return back();
+        if(Auth::user()->role !== "Validator" || Auth::user()->is_locked === 1){
+            // toastr()->add('Add message here');
+            return redirect("/")->with("not_authorized", 'Sorry you gak punya akses');
         }
         else {
             // $terms = Terms::inRandomOrder()->first(); // coba doang
-        // $donations = Donations::inRandomOrder()->first();
-        $donations = Donations::where('is_valid', 0)->where('validate_at', null)->inRandomOrder()->first();
-        $terms = $donations->Terms;
-        // $terms = Terms::inRandomOrder()->first();
-        // $donations = $terms->Donations->where('is_valid', 0)->where('validate_at', null)->first();
-        // dd($terms);
+            // $donations = Donations::inRandomOrder()->first();
+            $donations = Donations::where('is_valid', 0)->where('validate_at', null)->inRandomOrder()->first();
+            $terms = $donations->Terms;
+            // $terms = Terms::inRandomOrder()->first();
+            // $donations = $terms->Donations->where('is_valid', 0)->where('validate_at', null)->first();
+            // dd($terms);
 
-        return view('layouts.validate', compact('terms', 'donations'));
+            return view('layouts.validate', compact('terms', 'donations'));
         }
         
     }
@@ -52,16 +52,16 @@ class ValidateController extends Controller
                 'validated_by' => Auth::user()->id,
                 'is_valid' => 1
             ]);
-            return redirect('/')->with('success');
+            return redirect('/')->with('success_update',"Thanks for validating our voice");
         }
         else
         {
-            $updateValid->update([
-                'validate_at' => date('ymdhms'),
-                'validated_by' => Auth::user()->id,
-                'is_valid' => 0
-            ]);
-            return redirect('/')->with('success');
+            // $updateValid->update([
+            //     'validate_at' => date('ymdhms'),
+            //     'validated_by' => Auth::user()->id,
+            //     'is_valid' => 0
+            // ]);
+            return redirect('/')->with('success_update',"Thanks for validating our voice");
         }
     }
 }

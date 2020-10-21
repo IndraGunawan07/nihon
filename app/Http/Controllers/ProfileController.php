@@ -40,7 +40,7 @@ class ProfileController extends Controller
             ]);
         }
         $user->update($request->all());
-        return redirect()->route('homepage')->with('success', "Your profile has been updated");
+        return redirect()->route('homepage')->with('success_update', "Your profile has been updated");
     }
 
     public function editpass(Request $request){
@@ -64,7 +64,7 @@ class ProfileController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
         }
-        return redirect('/')->with('success', "Your password has been changed");
+        return redirect('/')->with('success_update', "Your password has been changed");
     }
     
 }

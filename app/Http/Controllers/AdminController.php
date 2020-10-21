@@ -19,7 +19,7 @@ class AdminController extends Controller
     public function __construct(){
         // make sure user sudah sign in dan dia admin
         $this->middleware('auth');
-        $this->middleware('checkadmin');
+        // $this->middleware('checkadmin');
     }
     
     /**
@@ -32,17 +32,19 @@ class AdminController extends Controller
         //
         // Log::info();
         // $users = User::where('role', '!=', auth()->id())->get(); untuk user curr gk ikut
-        // if(Auth::user()->role !== 'Admin'){
-        //     abort(404);
-        //     // TESTING
-        // }
-        $users = User::where('role', '!=', 'Admin')->get()->count();
-        // $users = $users->count();
-        $terms = Terms::all()->count();
-        $valdonation = Donations::where('is_valid', '!=', false)->get()->count();
-        $donation = Donations::where('is_valid', '==', false)->get()->count();
-        // dd($valdonation);
-        return view ('administator.home',compact(['users', 'terms', 'valdonation', 'donation']));
+        if(Auth::user()->role !== 'Admin'){
+            abort(404);
+            // TESTING
+        } else {
+            $users = User::where('role', '!=', 'Admin')->get()->count();
+            // $users = $users->count();
+            $terms = Terms::all()->count();
+            $valdonation = Donations::where('is_valid', '!=', false)->get()->count();
+            $donation = Donations::where('is_valid', '==', false)->get()->count();
+            // dd($valdonation);
+            return view ('administator.home',compact(['users', 'terms', 'valdonation', 'donation']));
+        }
+        
     }
 
     public function showuser()
@@ -55,11 +57,12 @@ class AdminController extends Controller
     }
 
     public function approve(Request $request)
-    {
+    {   
+        // dd($request->user);
         $user = User::where('username', $request->user)->first();
         $user->is_locked = 0;
         $user->save();
-        return back();
+        return back()->with("success_crud", $request->user . ' Has Been Approved');
     }
 
     protected function validator(array $data)
@@ -106,7 +109,7 @@ class AdminController extends Controller
             ]);
         }
         $user->save();
-        return back()->with('success', 'User Successfully Added');
+        return back()->with('success_crud', $request->username . ' Successfully Added');
     }
 
     public function deleteUser(Request $request)
@@ -114,7 +117,7 @@ class AdminController extends Controller
         $user = User::where('username', $request->user)->first();
         $user->deleted_by = Auth::user()->id;
         $user->delete();
-        return back();
+        return back()->with("success_crud", $request->user . ' Has Been Deleted');
     }
 
     public function editUser(Request $request)
@@ -138,7 +141,7 @@ class AdminController extends Controller
         }
         $editedUser->save();
         
-        return back()->with('success', 'User Successfully Updated!');
+        return back()->with('success_crud',  $request->username . ' Successfully Updated!');
     }
 
     /**

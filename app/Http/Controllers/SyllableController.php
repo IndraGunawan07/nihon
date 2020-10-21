@@ -7,13 +7,14 @@ use App\Terms;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class SyllableController extends Controller
 {
     public function __construct(){
         // make sure user udah sign in
         $this->middleware('auth');
-        $this->middleware('checkadmin');
+        // $this->middleware('checkadmin');
     }
     
     /**
@@ -24,8 +25,14 @@ class SyllableController extends Controller
     public function index()
     {
         //
-        $terms = Terms::all();
-        return view('administator.syllable', compact('terms'));
+        if(Auth::user()->role !== 'Admin'){
+            abort(404);
+            // TESTING
+        }else {
+            $terms = Terms::all();
+            return view('administator.syllable', compact('terms'));
+        }
+       
     }
 
     /**
@@ -101,7 +108,7 @@ class SyllableController extends Controller
         // $user->is_locked = 0;
         $terms->save();
 
-        return back()->with('success', "Your Terms has been created");
+        return back()->with('success_crud', "Your Terms Has Been Created");
     }
 
     /**
@@ -133,7 +140,7 @@ class SyllableController extends Controller
         // dd($deleted);
         $deleted->delete(); // untuk delete datanya
         $deleted->save(); // untuk deleted_by
-        return back();
+        return back()->with("success_crud", "Your Terms Has Been Deleted");
     }
 
     public function updatesyllable(Request $request){
@@ -159,6 +166,6 @@ class SyllableController extends Controller
             ]);
         }
         $editterms->save();
-        return back()->with('success', 'User Successfully Updated!');
+        return back()->with('success_crud', 'Your Terms Successfully Updated!');
     }
 }

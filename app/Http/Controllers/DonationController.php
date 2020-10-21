@@ -34,6 +34,6 @@ class DonationController extends Controller
         $donation->deleted_by = Auth::user()->id;
         $donation->delete();
         $donation->save();
-        return back();
+        return back()->with("success_crud", "This Donations Has Been Deleted");
    }
 }

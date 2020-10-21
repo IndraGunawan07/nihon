@@ -32,6 +32,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         {{-- Ajax --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+        {{-- Toaster --}}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" type="text/css" media="all">
+       
+
         <style>
             img{
                 width: 30px;
@@ -149,5 +153,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         @yield('content')
     </main>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    @if(Session::has('not_authorized'))
+        <script>
+            toastr.warning("{!!Session::get('not_authorized')!!}");
+        </script>
+    @elseif(Session::has('success_update'))
+        <script>
+            toastr.success("{!!Session::get('success_update')!!}");
+        </script>
+    @endif
 </body>
 </html>

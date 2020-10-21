@@ -14,7 +14,7 @@
    <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}">
    <link rel="stylesheet" href="{{ asset('css/responsive.bootstrap4.min.css') }}">
    
-   <script src="{{ asset('js/jquery.dataTables.min.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}" defer></script>
     <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}" defer></script>
     <script src="{{ asset('js/dataTables.responsive.min.js') }}" defer></script>
     <script src="{{ asset('js/responsive.bootstrap4.min.js') }}" defer></script>
@@ -39,12 +39,14 @@
   
   <!-- bootstrap -->
   <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
-
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+   {{-- Toaster --}}
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" type="text/css" media="all">
+       
 
 </head>
 
@@ -252,5 +254,13 @@
             modal.find('.modal-body #id').val(idcontent)
         })
     </script>
+
+    {{-- Toaster --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    @if(Session::has('success_crud'))
+        <script>
+            toastr.success("{!!Session::get('success_crud')!!}");
+        </script>
+    @endif
 </body>
 </html>

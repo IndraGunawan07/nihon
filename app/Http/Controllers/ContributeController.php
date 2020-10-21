@@ -24,10 +24,13 @@ class ContributeController extends Controller
     public function index()
     {
         // Cek apakah user status udah di acc
-        if(Auth::user()->is_locked === 1){
-            // dd("ada");
-            toaster()->add('Add message here')->speed(500);
-            return back();
+        if(Auth::user()->is_locked === 1 || Auth::user()->role !== "Contributor"){
+            // $notification = array(
+            //     'message' => 'Post created successfully!',
+            //     'alert-type' => 'warning',
+            //     'positionClass' => 'toast-top-center',
+            // );
+            return redirect("/")->with('not_authorized', "Sorry gak punya akses");
         }
         else {
             // get one random record
