@@ -44,7 +44,6 @@ class AdminController extends Controller
             // dd($valdonation);
             return view ('administator.home',compact(['users', 'terms', 'valdonation', 'donation']));
         }
-        
     }
 
     public function showuser()

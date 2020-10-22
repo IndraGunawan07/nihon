@@ -13,7 +13,8 @@ class ContributeController extends Controller
     public function __construct(){
         // make sure user udah sign in
         $this->middleware('auth');
-    
+        // user is_locked udah 0
+        
     }
     
     /**

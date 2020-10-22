@@ -62,6 +62,7 @@ class ValidateController extends Controller
             //     'is_valid' => 0
             // ]);
             return redirect('/')->with('success_update',"Thanks for validating our voice");
+
         }
     }
 }
