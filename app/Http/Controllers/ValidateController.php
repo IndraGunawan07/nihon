@@ -45,7 +45,7 @@ class ValidateController extends Controller
                 'validated_by' => Auth::user()->id,
                 'is_valid' => 1
             ]);
-            return redirect('/')->with('success');
+            return redirect('/')->with('success', 'Your validation has been submitted. Thank You ^_^');
         }
         else
         {
@@ -54,7 +54,7 @@ class ValidateController extends Controller
                 'validated_by' => Auth::user()->id,
                 'is_valid' => 0
             ]);
-            return redirect('/')->with('success');
+            return redirect('/')->with('success', 'Your validation has been submitted. Thank You ^_^');
         }
     }
 }

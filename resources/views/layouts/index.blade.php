@@ -10,6 +10,17 @@
                 <span class="line my-4"></span>
                 <h6 class="my-" style="color: black">{{ get_username('sub judul')}}</h6>
                 {{-- nihonesia is an audio dataset consisting of short clip of human speech in japanese.  --}}
+                @if(Session::has('success'))
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="alert alert-success alert-dismissible fade show col-md-4 p-3 pr-5">
+                            {{ Session::get('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
         </div>
     </div>
     </div>

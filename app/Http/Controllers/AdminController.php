@@ -29,13 +29,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
-        // Log::info();
-        // $users = User::where('role', '!=', auth()->id())->get(); untuk user curr gk ikut
-        // if(Auth::user()->role !== 'Admin'){
-        //     abort(404);
-        //     // TESTING
-        // }
         $users = User::where('role', '!=', 'Admin')->get()->count();
         // $users = $users->count();
         $terms = Terms::all()->count();
