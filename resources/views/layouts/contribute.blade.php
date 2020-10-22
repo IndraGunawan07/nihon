@@ -111,8 +111,10 @@
                 contentType: false
             }).done(function(data) {
                   //  console.log(data);
+                  //  alert("Berhasilll woyy","Data udah masuk cok");
+                  toastr.success("success_update", "Kamu berasil");
             });
-      //location.reload();
+      // location.reload(); ini dikasih waktu biar yahuddzz
     });
 
     const handleSuccess = function(stream)
