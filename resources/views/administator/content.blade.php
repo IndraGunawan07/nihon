@@ -31,8 +31,7 @@
                         <th width="5%">#</th>
                         <th width="15%">References Key</th>
                         <th width="35%">Value</th>
-                        <th width="15%">Created By</th>
-                        <th width="10%"></th>
+                        {{-- <th width="15%">Created By</th> --}}
                         <th width="10%"></th>
                       </tr>
                     </thead>
@@ -43,14 +42,13 @@
                         <td><?=$i++?></td>
                         <td>{{ $key->reference_key }}</td>
                         <td>{{ $key->value }}</td>
-                        <td>{{ $key->created_by }}</td>
-                        <td>{{-- untuk button edit --}}
+                        {{-- <td>{{ $key->created_by }}</td> --}}
+                        {{-- <td>untuk button edit
                           <form action="{{ route('updatecontent') }}" method="POST">
-                            {{-- {{ method_field('PUT') }} --}}
                             @csrf
                             <button type="button" class="btn btn-info btn-sm m-1" data-toggle="modal" data-target="#myModal" data-reference_key="{{ $key->reference_key }}" data-value="{{ $key->value }}" data-id="{{ $key->id }}">Edit</button>
                           </form>
-                        </td>
+                        </td> --}}
                         <td>
                           {{-- untuk button delete --}}
                           <form action="{{ route('content.destroy', $key->id) }}" method="post">
@@ -78,8 +76,8 @@
         <!-- /.content -->
 </div>
 
-<!-- Add User Modal -->
-<div class="modal fade" id="myModal" role="dialog">
+<!-- Edit Content Modal -->
+{{-- <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
   
     <!-- Modal content-->
@@ -89,11 +87,10 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <form method="POST" action="{{ route('updatecontent') }}" enctype="multipart/form-data">
-        {{-- {{ method_field('PUT')}} --}}
         @csrf
          <div class="modal-body">
            {{-- Reference Key --}}
-           <div class="form-group row">
+           {{-- <div class="form-group row">
             <label for="reference_key" class="col-md-4 col-form-label text-md-right">{{ __('Reference_Key') }}</label>
             <div class="col-md-6">
                 <div class="input-group mb-3">
@@ -106,15 +103,14 @@
                     </span>
                 @enderror
              </div>
-           </div>
+           </div> --}}
 
             {{-- Value --}}
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <label for="value" class="col-md-4 col-form-label text-md-right">{{ __('Value') }}</label>
                 <div class="col-md-6">
                     <div class="input-group mb-3">
                         <textarea class="form-control @error('value') is-invalid @enderror" rows="5" id="value" name="value" required autocomplete="value" autofocus></textarea>
-                        {{-- <input id="value" type="textarea" class="form-control @error('value') is-invalid @enderror" name="value" value="{{ old('value', $key->value) }}" required autocomplete="value" autofocus> --}}
                     </div>
                     @error('value')
                         <span class="invalid-feedback" role="alert">
@@ -123,21 +119,20 @@
                     @enderror
                 </div>
             </div>
-        </div>
-        <div class="modal-footer">
+        </div> --}}
+        {{-- <div class="modal-footer"> --}}
           {{-- Submit Button --}}
-          <div class="col-md-6">
+          {{-- <div class="col-md-6">
             <button type="submit" class="btn btn-primary">
                 {{ __('Edit Content') }}
             </button>
           </div>
-          {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
         </div>
       </form>
     </div>
   </div>
-</div>
-<!-- End of Add User Modal -->
+</div> --}}
+<!-- End of Edit Content Modal -->
 
 <script>
   console.log('readi');

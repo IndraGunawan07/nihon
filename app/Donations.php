@@ -14,12 +14,12 @@ class Donations extends Model
 
     //define inverse relationship method 
     public function users(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     //define inverse relationship method 
     public function terms(){
-        return $this->belongsTo(Terms::class);
+        return $this->belongsTo(Terms::class);   
     }
     
 }
