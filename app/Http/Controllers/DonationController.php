@@ -25,7 +25,9 @@ class DonationController extends Controller
    public function index()
    {
 //    $donation = Donations::all()->with('user'); // coba doang
-        $donation = Donations::with('users')->with('terms')->get();
+        // $donation = Donations::with('users')->with('terms')->get(); udah oke
+        
+        $donation = Donations::with('users')->with('terms')->paginate(5);
 //    dd($donation);
        return view('administator.donation', compact('donation'));
    }

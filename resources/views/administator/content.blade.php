@@ -43,21 +43,21 @@
                         <td>{{ $key->reference_key }}</td>
                         <td>{{ $key->value }}</td>
                         {{-- <td>{{ $key->created_by }}</td> --}}
-                        {{-- <td>untuk button edit
+                        <td>
                           <form action="{{ route('updatecontent') }}" method="POST">
                             @csrf
                             <button type="button" class="btn btn-info btn-sm m-1" data-toggle="modal" data-target="#myModal" data-reference_key="{{ $key->reference_key }}" data-value="{{ $key->value }}" data-id="{{ $key->id }}">Edit</button>
                           </form>
-                        </td> --}}
-                        <td>
+                        </td>
+                        {{-- <td> --}}
                           {{-- untuk button delete --}}
-                          <form action="{{ route('content.destroy', $key->id) }}" method="post">
+                          {{-- <form action="{{ route('content.destroy', $key->id) }}" method="post">
                               {{ method_field('DELETE')}}
                               @csrf
                             <button class="btn btn-danger btn-sm">Delete</button>
-                            <input type="hidden" name="id" value="{{ $key->id }}">
-                          </form>
-                        </td>
+                            <input type="hidden" name="id" value="{{ $key->id }}"> --}}
+                          {{-- </form> --}}
+                        {{-- </td> --}}
                       </tr>
                     @endforeach
                     </tbody>
@@ -77,7 +77,7 @@
 </div>
 
 <!-- Edit Content Modal -->
-{{-- <div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
   
     <!-- Modal content-->
@@ -89,13 +89,15 @@
       <form method="POST" action="{{ route('updatecontent') }}" enctype="multipart/form-data">
         @csrf
          <div class="modal-body">
+
            {{-- Reference Key --}}
-           {{-- <div class="form-group row">
+           <div class="form-group row">
             <label for="reference_key" class="col-md-4 col-form-label text-md-right">{{ __('Reference_Key') }}</label>
             <div class="col-md-6">
                 <div class="input-group mb-3">
-                    <input id="reference_key" type="text" class="form-control @error('reference_key') is-invalid @enderror" name="reference_key" value="" autocomplete="reference_key" autofocus>
+                    <input id="reference_key" type="text" class="form-control @error('reference_key') is-invalid @enderror" name="reference_key" value="" autocomplete="reference_key" autofocus disabled>
                     <input type="hidden" id="id" name="id" value="">
+                    <input id="rkey" type="hidden" name="rkey" value="">
                 </div>
                 @error('reference_key')
                     <span class="invalid-feedback" role="alert">
@@ -103,10 +105,10 @@
                     </span>
                 @enderror
              </div>
-           </div> --}}
+           </div>
 
             {{-- Value --}}
-            {{-- <div class="form-group row">
+            <div class="form-group row">
                 <label for="value" class="col-md-4 col-form-label text-md-right">{{ __('Value') }}</label>
                 <div class="col-md-6">
                     <div class="input-group mb-3">
@@ -119,10 +121,10 @@
                     @enderror
                 </div>
             </div>
-        </div> --}}
-        {{-- <div class="modal-footer"> --}}
+        </div>
+        <div class="modal-footer">
           {{-- Submit Button --}}
-          {{-- <div class="col-md-6">
+          <div class="col-md-6">
             <button type="submit" class="btn btn-primary">
                 {{ __('Edit Content') }}
             </button>
@@ -131,7 +133,7 @@
       </form>
     </div>
   </div>
-</div> --}}
+</div>
 <!-- End of Edit Content Modal -->
 
 <script>
@@ -140,9 +142,7 @@
     $('#example1').DataTable({
       "responsive": true,
       "autoWidth": false,
-      
     });
-    
   });
 </script>
 

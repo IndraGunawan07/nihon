@@ -173,6 +173,12 @@
                         <p>Donation</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ url('/vdownload') }}" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Download Voice</p>
+                    </a>
+                </li>
                 
             </ul>
         </nav>
@@ -241,18 +247,20 @@
             modal.find('.modal-body #uploadfile').val(filename)
             modal.find('.modal-body #bahasa').val(bahasa)
         })
-        // $('#myModal').on('show.bs.modal', function(event){
-        //     console.log('modal opened')
-        //     var button = $(event.relatedTarget)
-        //     var reference_key = button.data('reference_key')
-        //     var value = button.data('value')
-        //     var idcontent = button.data('id')
-        //     console.log(idcontent)
-        //     var modal = $(this)
-        //     modal.find('.modal-body #reference_key').val(reference_key)
-        //     modal.find('.modal-body #value').val(value)
-        //     modal.find('.modal-body #id').val(idcontent)
-        // })
+        $('#myModal').on('show.bs.modal', function(event){
+            console.log('modal opened')
+            var button = $(event.relatedTarget)
+            var reference_key = button.data('reference_key')
+            var value = button.data('value')
+            var idcontent = button.data('id')
+            var rkey = button.data('reference_key')
+            console.log(idcontent)
+            var modal = $(this)
+            modal.find('.modal-body #reference_key').val(reference_key)
+            modal.find('.modal-body #value').val(value)
+            modal.find('.modal-body #id').val(idcontent)
+            modal.find('.modal-body #rkey').val(rkey)
+        })
     </script>
 
     {{-- Toaster --}}

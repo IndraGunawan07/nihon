@@ -42,7 +42,7 @@
                         @foreach ($donation as $key) 
                         <tr>
                           <td><?=$i++?></td>
-                          <td>{{ $key->terms->in_jws }}</td>
+                          <td>{{ $key->terms->in_rws }}</td>
                           <td>{{ $key->users->username }}</td>
                           <td>{{ date('Y-M-d', strtotime($key->created_at)) }}</td>
                           <td>
@@ -69,8 +69,9 @@
                           </td>
                         </tr>
                       @endforeach
-                    </tbody>
+                      </tbody>
                   </table>
+                  {{ $donation->links() }}
                 </div>
                  <!-- /.card-body -->
                 </div>
@@ -91,9 +92,10 @@
     $('#example1').DataTable({
       "responsive": true,
       "autoWidth": false,
-      
-    });
-    
+      "paging": false,
+      "ordering": true,
+      "info": true,
+    });  
   });
 </script>
 

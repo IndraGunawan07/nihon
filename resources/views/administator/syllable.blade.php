@@ -209,6 +209,7 @@
                         @endforeach
                     </tbody>
                   </table>
+                  {{ $terms->links() }}
                 </div>
                  <!-- /.card-body -->
                 </div>
@@ -229,6 +230,9 @@
     $('#example1').DataTable({
       "responsive": true,
       "autoWidth": false,
+      "paging": false,
+      "ordering": true,
+      "info": true,
       
     });
     console.log( "ready!" );
