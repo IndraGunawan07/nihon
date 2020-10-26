@@ -21,6 +21,8 @@ class CreateDonationsTable extends Migration
             $table->timestamp('validate_at')->nullable();
             $table->integer('validated_by')->nullable();
             $table->integer('is_valid')->default(false);
+            $table->timestamp('downloaded_at')->nullable();
+            $table->unsignedInteger('downloaded_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->integer('deleted_by')->nullable();

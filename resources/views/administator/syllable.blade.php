@@ -181,7 +181,7 @@
                             <td>{{ date('Y-M-d', strtotime($key->created_at)) }}</td>
                             <td>
                               <audio controls>
-                                <source src="{{ asset('storage/sound/' . $key->sound_file_url )}}" type="audio/mpeg">
+                                <source src="{{ asset('storage/sound/'.$key->sound_file_url )}}" type="audio/mpeg">
                               Your browser does not support the audio element.
                               </audio>
                             </td>

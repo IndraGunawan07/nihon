@@ -108,8 +108,9 @@ class SyllableController extends Controller
         $terms = Terms::where('in_jws', $request->jws)->first();
         // $user->is_locked = 0;
         $terms->save();
+        $terms = Terms::paginate(10);
 
-        return back()->with('success_crud', "Your Terms Has Been Created");
+        return view('administator.syllable', compact('terms'))->with('success_crud', "Your Terms Has Been Created");
     }
 
     /**

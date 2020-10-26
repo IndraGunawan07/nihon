@@ -49,7 +49,7 @@ class ContributeController extends Controller
         // $request->fileupload->getClientOriginalName();
         // dd($request->id);
         $files = $request->file('audio');
-        $fileName = Auth::user()->username . "_" . $request->rws . "_" . date('Ymd') . ".mp3";
+        $fileName = Auth::user()->username . "_" . $request->rws . "_" . date('Ymd_his') . ".mp3";
         Donations::create([
             'user_id' => Auth::user()->id,
             'terms_id' => $request->id,

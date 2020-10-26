@@ -84,3 +84,4 @@ Route::post('/editcontent', 'ContentController@contentupdate')->name('updatecont
 
 //Route untuk download voice
 Route::resource('/vdownload', 'VDownloadController')->only('index');
+Route::post('/download', 'VDownloadController@downloadLink')->name('download');

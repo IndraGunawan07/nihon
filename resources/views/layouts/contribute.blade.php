@@ -114,7 +114,9 @@
                   //  alert("Berhasilll woyy","Data udah masuk cok");
                   toastr.success("success_update", "Kamu berasil");
             });
-      // location.reload(); ini dikasih waktu biar yahuddzz
+      var pending = setTimeout(() => {
+        location.reload();
+      }, 2000);
     });
 
     const handleSuccess = function(stream)
