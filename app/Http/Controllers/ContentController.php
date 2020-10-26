@@ -34,31 +34,31 @@ class ContentController extends Controller
         
     }
 
-
+    
     public function contentupdate(Request $request)
     {
-        //
         // dd($request);
         $editcontent = Contents::where('id', $request->id)->first();
-        // dd($editcontent);
+        // dd($request->rkey);
         $editcontent->update([
-            'reference_key' => $request->reference_key,
+            'reference_key' => $request->rkey,
             'value' => $request->value,
             'updated_by' => Auth::user()->id,
         ]);
         $editcontent->save();
 
         // redirect jan lupa
-        return back()->with('success', "Your question has been updated.");
+        return back()->with('success_crud', "This Content Has Heen Updated.");
     }
 
-    public function destroy(Request $request, $id){
-        // dd($id);
-        $content = Contents::where('id', $request->id)->first();
-        $content->deleted_by = Auth::user()->id;
-        $content->delete();
-        return back();
-   }
+// Di hide untuk sementara
+//     public function destroy(Request $request, $id){
+//         // dd($id);
+//         $content = Contents::where('id', $request->id)->first();
+//         $content->deleted_by = Auth::user()->id;
+//         $content->delete();
+//         return back()->with("success_crud", "This Content Has Been Deleted");
+//    }
 
 }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Donations;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 
 class DonationController extends Controller
@@ -23,8 +24,11 @@ class DonationController extends Controller
     */
    public function index()
    {
-       $donation = Donations::all(); // coba doang
-       // dd($terms);
+//    $donation = Donations::all()->with('user'); // coba doang
+        // $donation = Donations::with('users')->with('terms')->get(); udah oke
+        
+        $donation = Donations::with('users')->with('terms')->paginate(5);
+//    dd($donation);
        return view('administator.donation', compact('donation'));
    }
 

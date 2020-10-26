@@ -29,7 +29,8 @@ class SyllableController extends Controller
             abort(404);
             // TESTING
         }else {
-            $terms = Terms::all();
+            // $terms = Terms::all()
+            $terms = Terms::paginate(10);
             return view('administator.syllable', compact('terms'));
         }
        

@@ -31,8 +31,7 @@
                         <th width="5%">#</th>
                         <th width="15%">References Key</th>
                         <th width="35%">Value</th>
-                        <th width="15%">Created By</th>
-                        <th width="10%"></th>
+                        {{-- <th width="15%">Created By</th> --}}
                         <th width="10%"></th>
                       </tr>
                     </thead>
@@ -43,23 +42,22 @@
                         <td><?=$i++?></td>
                         <td>{{ $key->reference_key }}</td>
                         <td>{{ $key->value }}</td>
-                        <td>{{ $key->created_by }}</td>
-                        <td>{{-- untuk button edit --}}
+                        {{-- <td>{{ $key->created_by }}</td> --}}
+                        <td>
                           <form action="{{ route('updatecontent') }}" method="POST">
-                            {{-- {{ method_field('PUT') }} --}}
                             @csrf
                             <button type="button" class="btn btn-info btn-sm m-1" data-toggle="modal" data-target="#myModal" data-reference_key="{{ $key->reference_key }}" data-value="{{ $key->value }}" data-id="{{ $key->id }}">Edit</button>
                           </form>
                         </td>
-                        <td>
+                        {{-- <td> --}}
                           {{-- untuk button delete --}}
-                          <form action="{{ route('content.destroy', $key->id) }}" method="post">
+                          {{-- <form action="{{ route('content.destroy', $key->id) }}" method="post">
                               {{ method_field('DELETE')}}
                               @csrf
                             <button class="btn btn-danger btn-sm">Delete</button>
-                            <input type="hidden" name="id" value="{{ $key->id }}">
-                          </form>
-                        </td>
+                            <input type="hidden" name="id" value="{{ $key->id }}"> --}}
+                          {{-- </form> --}}
+                        {{-- </td> --}}
                       </tr>
                     @endforeach
                     </tbody>
@@ -78,7 +76,7 @@
         <!-- /.content -->
 </div>
 
-<!-- Add User Modal -->
+<!-- Edit Content Modal -->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
   
@@ -89,16 +87,17 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <form method="POST" action="{{ route('updatecontent') }}" enctype="multipart/form-data">
-        {{-- {{ method_field('PUT')}} --}}
         @csrf
          <div class="modal-body">
+
            {{-- Reference Key --}}
            <div class="form-group row">
             <label for="reference_key" class="col-md-4 col-form-label text-md-right">{{ __('Reference_Key') }}</label>
             <div class="col-md-6">
                 <div class="input-group mb-3">
-                    <input id="reference_key" type="text" class="form-control @error('reference_key') is-invalid @enderror" name="reference_key" value="" autocomplete="reference_key" autofocus>
+                    <input id="reference_key" type="text" class="form-control @error('reference_key') is-invalid @enderror" name="reference_key" value="" autocomplete="reference_key" autofocus disabled>
                     <input type="hidden" id="id" name="id" value="">
+                    <input id="rkey" type="hidden" name="rkey" value="">
                 </div>
                 @error('reference_key')
                     <span class="invalid-feedback" role="alert">
@@ -114,7 +113,6 @@
                 <div class="col-md-6">
                     <div class="input-group mb-3">
                         <textarea class="form-control @error('value') is-invalid @enderror" rows="5" id="value" name="value" required autocomplete="value" autofocus></textarea>
-                        {{-- <input id="value" type="textarea" class="form-control @error('value') is-invalid @enderror" name="value" value="{{ old('value', $key->value) }}" required autocomplete="value" autofocus> --}}
                     </div>
                     @error('value')
                         <span class="invalid-feedback" role="alert">
@@ -131,13 +129,12 @@
                 {{ __('Edit Content') }}
             </button>
           </div>
-          {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
         </div>
       </form>
     </div>
   </div>
 </div>
-<!-- End of Add User Modal -->
+<!-- End of Edit Content Modal -->
 
 <script>
   console.log('readi');
@@ -145,9 +142,7 @@
     $('#example1').DataTable({
       "responsive": true,
       "autoWidth": false,
-      
     });
-    
   });
 </script>
 

@@ -29,8 +29,8 @@
                     <thead class="thead-dark">
                       <tr>
                         <th width="5%">#</th>
-                        <th width="15%">ID Terms</th>
-                        <th width="15%">ID User</th>
+                        <th width="15%">Terms</th>
+                        <th width="15%">Username</th>
                         <th width="20%">Created At</th>
                         <th width="20%">Validated By</th>
                         <th width="15%">Sound File</th>
@@ -42,14 +42,14 @@
                         @foreach ($donation as $key) 
                         <tr>
                           <td><?=$i++?></td>
-                          <td>{{ $key->user_id }}</td>
-                          <td>{{ $key->terms_id }}</td>
+                          <td>{{ $key->terms->in_rws }}</td>
+                          <td>{{ $key->users->username }}</td>
                           <td>{{ date('Y-M-d', strtotime($key->created_at)) }}</td>
                           <td>
                             @if ($key->validated_by == NULL)
                                 Not Validated
                             @else 
-                                {{ $key->validated_by }}
+                                Validated
                             @endif
                           </td>
                           <td>
@@ -69,8 +69,9 @@
                           </td>
                         </tr>
                       @endforeach
-                    </tbody>
+                      </tbody>
                   </table>
+                  {{ $donation->links() }}
                 </div>
                  <!-- /.card-body -->
                 </div>
@@ -91,9 +92,10 @@
     $('#example1').DataTable({
       "responsive": true,
       "autoWidth": false,
-      
-    });
-    
+      "paging": false,
+      "ordering": true,
+      "info": true,
+    });  
   });
 </script>
 

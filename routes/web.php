@@ -81,3 +81,6 @@ Route::resource('/donation','DonationController');
 // Route untuk content
 Route::resource('/content', 'ContentController')->only(['store', 'edit', 'destroy', 'index']);
 Route::post('/editcontent', 'ContentController@contentupdate')->name('updatecontent');
+
+//Route untuk download voice
+Route::resource('/vdownload', 'VDownloadController')->only('index');
