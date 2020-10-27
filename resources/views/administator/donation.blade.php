@@ -71,7 +71,9 @@
                       @endforeach
                       </tbody>
                   </table>
-                  {{ $donation->links() }}
+                  <div style="text-align: end">
+                    {{ $donation->links() }}
+                  </div>
                 </div>
                  <!-- /.card-body -->
                 </div>

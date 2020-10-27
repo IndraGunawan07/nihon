@@ -112,7 +112,7 @@
             }).done(function(data) {
                   //  console.log(data);
                   //  alert("Berhasilll woyy","Data udah masuk cok");
-                  toastr.success("success_update", "Kamu berasil");
+                  toastr.success("Your Vote Has Been Saved");
             });
       var pending = setTimeout(() => {
         location.reload();

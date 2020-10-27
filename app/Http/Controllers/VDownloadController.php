@@ -35,6 +35,8 @@ class VDownloadController extends Controller
         $donations = Donations::all()->where('downladed_at', null)->where('created_at', '>=', $request->startdate)->where('created_at', '<=', $enddate);
         $arrayLength = $donations->count();
         // dd($donations);
+
+
         for($i=0;$i<$arrayLength;$i++)
         {
             // $donations[$i]->update([
@@ -44,13 +46,12 @@ class VDownloadController extends Controller
             
             $donate = Donations::where('id', $donations[$i]->id)->first();
             // dd($donate);
-            $donate->fill([
-                'downloaded_at' => $downloadDate,
-                'downloaded_by' => Auth::user()->id
-            ]);
+            $donate->downloaded_at = $downloadDate;
+            $donate->downloaded_by = Auth::user()->id;
             $donate->save();
-            
+            // dd($donate);
         }
+        
         $zip = new \ZipArchive;
         if($zip->open('download.zip', \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === TRUE)
         {
@@ -61,6 +62,7 @@ class VDownloadController extends Controller
             $zip->close();
             return response()->download('download.zip');
         }
+
         // for($i=0;$i<=$arrayLength;$i++)
         // {
         //     echo $donations[$i]->donation_file_url;

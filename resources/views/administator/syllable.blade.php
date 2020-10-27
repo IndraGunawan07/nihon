@@ -209,7 +209,9 @@
                         @endforeach
                     </tbody>
                   </table>
-                  {{ $terms->links() }}
+                  <div style="text-align: end">
+                    {{ $terms->links() }}
+                  </div>
                 </div>
                  <!-- /.card-body -->
                 </div>
