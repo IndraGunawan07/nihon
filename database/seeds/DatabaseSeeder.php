@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             'deleted_at' => null,
         ], [
             'reference_key' => 'about word',
-            'value' => 'S',
+            'value' => 'T',
             'created_by' => null,
             'updated_by' => null,
             'deleted_by' => null,
@@ -76,6 +76,20 @@ class DatabaseSeeder extends Seeder
             'created_at' => null,
             'updated_at' => null,
             'deleted_at' => null,
+        ],
+        [
+            'reference_key' => 'about long',
+            'value' => 'he voice issued by humans is a medium for communicating with fellow humans. The sound issued is basically unique to each individual. 
+            With the development of technology, machines can recognize human voices. Nihonesia is a voice dataset collection website in Japanese that aims to 
+            help everyone build a voice recognition system or other type of application that requires voice data. Nihonesia was developed by Multimedia Nusantara University 
+            students and focuses on providing more voice data for everyone who wants to build voice-based technology.',
+            'created_by' => null,
+            'updated_by' => null,
+            'deleted_by' => null,
+            'created_at' => null,
+            'updated_at' => null,
+            'deleted_at' => null,
+
         ]]);
     }
 }

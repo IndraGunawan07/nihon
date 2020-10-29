@@ -25,7 +25,7 @@ class ValidateController extends Controller
         // Cek user valid 
         if(Auth::user()->role !== "Validator" || Auth::user()->is_locked === 1){
             // toastr()->add('Add message here');
-            return redirect("/")->with("not_authorized", 'Sorry you gak punya akses');
+            return redirect("/")->with("not_authorized", "Sorry you don't have access");
         }
         else {
             // $terms = Terms::inRandomOrder()->first(); // coba doang

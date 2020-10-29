@@ -39,8 +39,7 @@
                                 <h2 class="" style="padding-top: 70px;">{{ get_username('about left') }}</h2>
                             </div>
                             <div class="col-lg-8 about-right pl-4">
-                                <span>{{ get_username('about word') }}</span><p class="right-text">uara yang dikeluarkan manusia adalah salah satu media untuk berkomunikasi dengan sesama manusia. Suara yang dikeluarkan manusia pada dasarnya unik untuk setiap individu. Dengan berkembangnya teknologi, mesin dapat mengenali suara manusia. Namun data suara yang dibutuhkan untuk membangun aplikasi sangat sedikit.</p>
-                                <p class="my-3">Nihonesia adalah website pengumpulan voice dataset dalam bahasa jepang yang bertujuan untuk membantu semua orang membangun sistem pengenalan suara atau jenis aplikasi lainnya yang membutuhkan data suara. Nihonesia dikebangkan oleh mahasiswa umn dan berfokus untuk menyediakan lebih banyak data suara untuk semua orang yang ingin membangun teknologi berbasis suara. </p>
+                                <span>{{ get_username('about word') }}</span><p class="right-text">{{ get_username('about long')</p>
                             </div>
                     </div>
                     {{-- <img src="" class="img-fluid mt-5" alt=""> --}}

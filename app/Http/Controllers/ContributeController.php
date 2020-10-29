@@ -31,7 +31,7 @@ class ContributeController extends Controller
             //     'alert-type' => 'warning',
             //     'positionClass' => 'toast-top-center',
             // );
-            return redirect("/")->with('not_authorized', "Sorry gak punya akses");
+            return redirect("/")->with('not_authorized', "Sorry you don't have access");
         }
         else {
             // get one random record
