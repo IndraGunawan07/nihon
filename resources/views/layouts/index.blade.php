@@ -36,13 +36,14 @@
 
                     <div class="row">
                             <div class="col-lg-4 mb-lg-0 mb-5 about-left">
-                                <h2 class="" style="padding-top: 70px;">{{ get_username('about left') }}</h2>
+                                <h2 class="" style="padding-top: 30px;">{{ get_username('about left') }}</h2>
                             </div>
                             <div class="col-lg-8 about-right pl-4">
-                                <span>{{ get_username('about word') }}</span><p class="right-text">{{ get_username('about long')</p>
+                                <span>{{ get_username('about word') }}</span><p class="right-text">{{ get_username('about long')}}</p>
                             </div>
                     </div>
-                    {{-- <img src="" class="img-fluid mt-5" alt=""> --}}
+                    <img src="{{ asset('images/1.png')}}" class="img-fluid mt-5" alt="" style="display: block; margin-left: auto; 
+                    margin-right: auto; width: 80%; height: 60%">
                     {{-- <p class="iner mt-4"> Nunc fermentum adipiscing tempor cursus nascetur adipiscing adipiscing. Primis aliquam mus lacinia lobortis phasellus suscipit. Fermentum lobortis non tristique ante proin sociis accumsan lobortis. Auctor etiam porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum consequat integer interdum integer purus sapien. Nibh eleifend nulla nascetur pharetra commodo mi augue interdum tellus. Ornare cursus augue feugiat sodales velit lorem. Semper elementum ullamcorper lacinia natoque aenean scelerisque.</p> --}}
             </div>
     </div>
