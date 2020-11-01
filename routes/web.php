@@ -49,6 +49,10 @@ Route::post('/contribute', 'ContributeController@saveAudio')->name('saveAudio');
 
 // Route untuk syllable 
 Route::resource('/syllable','SyllableController');
+// route untuk softdelete syllable 
+Route::post('/deleteterms', 'SyllableController@softdeleteterms')->name('deleteterms');
+// route untuk update syllable 
+Route::post('/update', 'SyllableController@updatesyllable')->name('updateterms');
 
 //Route buat reset password di forgot password
 Route::get('/reset', 'Auth\ResetPasswordController@index')->name('reset');
@@ -58,24 +62,16 @@ Route::post('reset', 'Auth\ResetPasswordController@confirmPass')->name('confirmp
 Route::post('/approve', 'AdminController@approve')->name('approve');
 // route buat add user dari admin
 Route::post('/add', 'AdminController@addUser')->name('addUser');
-
 // route buat delete user dari admin
 Route::post('/delete', 'AdminController@deleteUser')->name('deleteUser');
-
 // route buat edit user dari admin
 Route::post('/edit', 'AdminController@editUser')->name('editUser');
-
-// route untuk softdelete syllable 
-Route::post('/deleteterms', 'SyllableController@softdeleteterms')->name('deleteterms');
-
-// route untuk softdelete syllable 
-Route::post('/update', 'SyllableController@updatesyllable')->name('updateterms');
 
 // route untuk validator
 Route::get('/validate', 'ValidateController@index')->name('validate');
 Route::post('/validate', 'ValidateController@validation')->name('validation');
 
-// Route untuk syllable 
+// Route untuk donation 
 Route::resource('/donation','DonationController');
 
 // Route untuk content
