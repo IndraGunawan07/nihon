@@ -42,7 +42,13 @@
                       @foreach ($donation as $key) 
                       <tr>
                         <td><?=$i++?></td>
-                        <td>{{ $key->terms->in_rws }}</td>
+                        <td>
+                          @if($key->terms == NULL)
+                              Terms Has Been Deleted
+                          @else
+                              {{ $key->terms->in_rws }}
+                          @endif
+                        </td>
                         <td>{{ $key->users->username }}</td>
                         <td>{{ date('Y-M-d', strtotime($key->created_at)) }}</td>
                         <td>

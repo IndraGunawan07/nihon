@@ -14,7 +14,6 @@ class SyllableController extends Controller
     public function __construct(){
         // make sure user udah sign in
         $this->middleware('auth');
-        // $this->middleware('checkadmin');
     }
     
     /**
@@ -24,16 +23,14 @@ class SyllableController extends Controller
      */
     public function index()
     {
-        //
+        // check if user has role admin
         if(Auth::user()->role !== 'Admin'){
             abort(404);
-            // TESTING
         }else {
             // $terms = Terms::all()
             $terms = Terms::paginate(10);
             return view('administator.syllable', compact('terms'));
         }
-       
     }
 
     /**
@@ -41,24 +38,14 @@ class SyllableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-       
-
-    }
+    public function create(){}
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-       
-
-    }
+    public function update(Request $request, $id){}
 
     private function validator(array $data)
     {
@@ -116,10 +103,7 @@ class SyllableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    public function show($id){}
 
     /**
      * Show the form for editing the specified resource.
@@ -135,13 +119,21 @@ class SyllableController extends Controller
 
     public function softdeleteterms(Request $request){
         $deleted = Terms::where('in_jws', $request->in_jws)->first();
-        $deleted->delete(); // untuk delete datanya
-        $deleted->save(); // untuk deleted_by
+        // $deleted = Terms::with('donations')->where('in_jws', $request->in_jws)->first();
+        //Untuk hapus donation juga apabila terms dihapus
+        // for($i = 0; $i < $deleted->donations->count(); $i++){
+        //     $deleted->donations[$i]->deleted_by = Auth::user()->id;
+        //     // dd($deleted->donations[$i]->deleted_by);
+        //     $deleted->donations[$i]->delete();
+        //     $deleted->donations[$i]->save();
+        // }
+        $deleted->delete(); // for delete data
+        $deleted->save(); // for deleted_by
         return back()->with("success_crud", "Your Terms Has Been Deleted");
     }
 
     public function updatesyllable(Request $request){
-        // dd($request->all());
+        // for input validation
         $this->validatedit($request->all())->validate();
 
         $editterms = Terms::where('id', $request->id)->first();

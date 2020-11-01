@@ -18,7 +18,7 @@
         </div>
         <div style="text-align: center; padding-top: 12px;">
             <p>The Audio will record for 5 seconds when you press start</p>
-            <i class="fas fa-microphone fa-7x" id="record"></i>
+            <i class="fas fa-microphone fa-7x image" id="record"></i> 
             <div class="audio" id="audio"></div>
             <div class="id" id="id"></div>
             <div id="audio-form" action="{{ route('saveAudio') }}">
@@ -28,7 +28,7 @@
             <input type="hidden" id="hiddenrws" name="rwshidden" value="{{ $terms->in_rws }}">
         </div>
     </div>
-    </div>
+</div>
 <!-- //banner -->
 
 <script>

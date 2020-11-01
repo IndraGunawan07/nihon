@@ -11,7 +11,6 @@ class ContentController extends Controller
     //
     public function __construct(){
         // make sure user udah sign in
-        // $this->middleware('checkadmin');
         $this->middleware('auth');
     }
     
@@ -21,20 +20,16 @@ class ContentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {    // check user has role admin
         if(Auth::user()->role !== 'Admin'){
             abort(404);
-            // TESTING
         } else {
             $content = Contents::all(); // coba doang
             // dd($terms);
             return view('administator.content', compact('content'));
         }
-        
     }
 
-    
     public function contentupdate(Request $request)
     {
         $editcontent = Contents::where('id', $request->id)->first();
@@ -44,7 +39,6 @@ class ContentController extends Controller
             'updated_by' => Auth::user()->id,
         ]);
         $editcontent->save();
-
         // redirect 
         return back()->with('success_crud', "This Content Has Heen Updated.");
     }

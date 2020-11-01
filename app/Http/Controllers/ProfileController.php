@@ -15,19 +15,19 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
     
-    //untuk direct ke page edit profile
+    // for direct to page edit profile
     public function edit(Request $request){
         return view('edit',[
             'user' => $request->user()
         ]);
     }
 
-    // untuk proses update profile
+    // for update profile
     public function update(UpdateProfileRequest $request){
         $user = User::where('id', $request->id)->first();
         if($request->hasFile('avatar'))
         {
-           $fileName = date('Ymd') . "." . $request->avatar->getClientOriginalName();
+            $fileName = date('Ymd') . "." . $request->avatar->getClientOriginalName();
             $request->avatar->storeAs('images',$fileName,'public');
             $user->update([
                 'imageUrl' => $fileName
@@ -37,6 +37,7 @@ class ProfileController extends Controller
         return redirect()->route('homepage')->with('success_update', "Your profile has been updated");
     }
 
+    // direct to edit password view
     public function editpass(Request $request){
         // dd($request->user);
         return view('editpas',[
@@ -44,6 +45,7 @@ class ProfileController extends Controller
         ]);
     }
 
+    // for update password
     public function updatepass(Request $request)
     {
         if($request->validate([

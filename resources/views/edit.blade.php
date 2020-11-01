@@ -13,7 +13,7 @@
                             @csrf
                         @if( Auth::user()->imageUrl === NULL )
                         <!-- Ketika user klik image profile, maka akan muncul file upload -->
-                        <div class="image-upload img-wrap">
+                        <div class="image-upload img-wrap cn">
                             <label for="file-input">
                                 <img id="blah" class="profile-user-img img-fluid rounded-circle" src="https://www.gravatar.com/avatar/" alt="User profile picture">                                
                             </label>

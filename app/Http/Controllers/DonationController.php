@@ -25,12 +25,11 @@ class DonationController extends Controller
    public function index()
    {
        // $donation = Donations::with('users')->with('terms')->get(); udah oke
-       $donation = Donations::with('users')->with('terms')->paginate(5);
+       $donation = Donations::with('users')->with('terms')->paginate(10);
        return view('administator.donation', compact('donation'));
    }
 
    public function destroy(Request $request, $id){
-        // dd($id);
         $donation = Donations::where('id', $request->id)->first();
         $donation->deleted_by = Auth::user()->id;
         $donation->delete();
