@@ -34,6 +34,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         {{-- Toaster --}}
         <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" type="text/css" media="all">
        
+        {{-- contribute page css --}}
+        <link rel="stylesheet" type="text/css" href="{{ url('/css/contribute.css') }}" />
 
         <style>
             img{

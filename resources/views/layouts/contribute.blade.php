@@ -4,10 +4,11 @@
 <!-- banner -->
 <div class="banner-contribute" id="home">
     <div class="container">
-        <div class="ser-lt" style="padding-top: 10em; text-align: center;">
+        <div class="ser-lt tool" style="padding-top: 10em; text-align: center;">
           <span class="line my-4"></span>
           <h2 class="my-3 banner-sub" style="color: black; display: inline;">{{ $terms->in_jws }} / {{ $terms->in_rws }} / {{ $terms->bahasa_translation }}</h2>
           <span class="fas fa-play-circle fa-2x pl-3" id="playAudio"></span>
+          <span class="tooltiptext">Play Audio</span>
         </div>
 
         <div style="text-align: center; padding-top: 12px;"> 
@@ -16,13 +17,14 @@
               Your browser does not support the audio element.
             </audio>
         </div>
-        <div style="text-align: center; padding-top: 12px;">
+        <div style="text-align: center; padding-top: 12px" class="text">
             <p>The Audio will record for 5 seconds when you press start</p>
             <i class="fas fa-microphone fa-7x" id="record"></i>
+            <span class="tooltiptext">Record Audio</span>
             <div class="audio" id="audio"></div>
             <div class="id" id="id"></div>
             <div id="audio-form" action="{{ route('saveAudio') }}">
-              <button id="save" style="display: none;">Save</button>
+              <button id="save" style="display: none;" class="btn btn-info btn-sm">Save</button>
             </div>
             <input type="hidden" id="hiddenid" name="idhidden" value="{{ $terms->id }}">
             <input type="hidden" id="hiddenrws" name="rwshidden" value="{{ $terms->in_rws }}">

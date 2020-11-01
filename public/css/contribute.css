@@ -1,0 +1,45 @@
+#record:hover{
+    color: #ec524b;
+    cursor: pointer;
+}
+
+#playAudio:hover{
+    color: dodgerblue;
+    cursor: pointer;
+}
+
+.tool .tooltiptext {
+    visibility: hidden;
+    width: 50px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 10px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tool:hover .tooltiptext {
+    visibility: visible;
+}
+
+.text .tooltiptext {
+    visibility: hidden;
+    width: 50px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 10px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.text:hover .tooltiptext {
+    visibility: visible;
+}
