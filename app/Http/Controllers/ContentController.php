@@ -37,9 +37,7 @@ class ContentController extends Controller
     
     public function contentupdate(Request $request)
     {
-        // dd($request);
         $editcontent = Contents::where('id', $request->id)->first();
-        // dd($request->rkey);
         $editcontent->update([
             'reference_key' => $request->rkey,
             'value' => $request->value,
@@ -47,18 +45,8 @@ class ContentController extends Controller
         ]);
         $editcontent->save();
 
-        // redirect jan lupa
+        // redirect 
         return back()->with('success_crud', "This Content Has Heen Updated.");
     }
-
-// Di hide untuk sementara
-//     public function destroy(Request $request, $id){
-//         // dd($id);
-//         $content = Contents::where('id', $request->id)->first();
-//         $content->deleted_by = Auth::user()->id;
-//         $content->delete();
-//         return back()->with("success_crud", "This Content Has Been Deleted");
-//    }
-
 }
 

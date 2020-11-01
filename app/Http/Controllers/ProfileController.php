@@ -24,16 +24,10 @@ class ProfileController extends Controller
 
     // untuk proses update profile
     public function update(UpdateProfileRequest $request){
-        // dd($request->username);
-        // dd($request->hasFile('avatar'));
-        // dd($request->id)
-
         $user = User::where('id', $request->id)->first();
         if($request->hasFile('avatar'))
         {
-        //    $destinationPath = 'public/images/'; // upload path
            $fileName = date('Ymd') . "." . $request->avatar->getClientOriginalName();
-        //    dd($fileName);
             $request->avatar->storeAs('images',$fileName,'public');
             $user->update([
                 'imageUrl' => $fileName
@@ -52,14 +46,10 @@ class ProfileController extends Controller
 
     public function updatepass(Request $request)
     {
-        // dd($request->all());
-        // Log::info('masuk');
         if($request->validate([
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]))
         {
-            // dd($request->all());
-        //     Log::info('masuk');
             $user = User::where('username', $request->username)->first();
             $user->password = Hash::make($request->password);
             $user->save();

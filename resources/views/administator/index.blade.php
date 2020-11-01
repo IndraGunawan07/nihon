@@ -261,6 +261,7 @@
                 </div>
               </div>
             </div>
+            
             <div class="modal-footer">
             {{-- Submit Button --}}
               <div class="col-md-6">

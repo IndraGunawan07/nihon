@@ -35,8 +35,6 @@
   <script src="{{ asset('js/OverlayScrollbars.js') }}" defer></script>
   <link type="text/css" href="{{ asset('css/OverlayScrollbars.css') }}" rel="stylesheet"/>
 
- 
-  
   <!-- bootstrap -->
   <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -46,14 +44,13 @@
 
    {{-- Toaster --}}
    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" type="text/css" media="all">
-       
-
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div id="app"></div>
     <div class="wrapper" id="toggle">
-    <!-- Navbar -->
+    
+        <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
@@ -64,18 +61,6 @@
             <a href="{{ route('admin.index') }}" class="nav-link">Home</a>
         </li>
         </ul>
-
-        <!-- SEARCH FORM -->
-        {{-- <form class="form-inline ml-3">
-            <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                <i class="fas fa-search"></i>
-                </button>
-            </div>
-            </div>
-        </form> --}}
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
@@ -109,84 +94,75 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand -->
         <a href="index3.html" class="brand-link">
-        <span class="brand-text font-weight-light">Nihonesia</span>
+            <span class="brand-text font-weight-light">Nihonesia</span>
         </a>
 
         <!-- Sidebar -->
         <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="info">
-            <a href="#" class="d-block">
-                <i class="nav-icon fas fa-user"></i> {{ Auth::user()->username }}
-            </a>
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="info">
+                <a href="#" class="d-block">
+                    <i class="nav-icon fas fa-user"></i> {{ Auth::user()->username }}
+                </a>
+                </div>
             </div>
-        </div>
 
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                with font-awesome or any other icon font library -->
-                <li class="nav-item">
-                    <a href="{{ route('admin.index') }}"class="nav-link">
-                    <i class="nav-icon fas fa-database"></i>
-                    <p>
-                        Data
-                        <span class="right badge badge-danger">New</span>
-                    </p>
-                    </a>
-                </li>
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                    with font-awesome or any other icon font library -->
+                    <li class="nav-item">
+                        <a href="{{ route('admin.index') }}"class="nav-link">
+                            <i class="nav-icon fas fa-database"></i>
+                            <p>Data<span class="right badge badge-danger">New</span></p>
+                        </a>
+                    </li>
 
-            <!-- Users sidebar -->
-            <li class="nav-header">System Setup</li>
-            <li class="nav-item">
-                <a href="{{ route('showusers') }}" class="nav-link">
-                <i class="nav-icon fas fa-user-check"></i>
-                <p>
-                    Users
-                </p>
-                </a>
-            </li>
-            <li class="nav-item">
-            <a href="{{ url('/syllable') }}"  class="nav-link">
-                <i class="nav-icon fas fa-folder-plus"></i>
-                <p>
-                     Syllable
-                </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('content.index')}}" class="nav-link">
-                <i class="nav-icon fas fa-user-lock"></i>
-                <p>
-                    Content 
-                </p>
-                </a>
-            </li>
-            <!-- //Users sidebar -->
+                    <!-- Management sidebar -->
+                    <li class="nav-header">System Setup</li>
+                    <li class="nav-item">
+                        <a href="{{ route('showusers') }}" class="nav-link">
+                            <i class="nav-icon fas fa-user-check"></i>
+                            <p>Users</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/syllable') }}"  class="nav-link">
+                            <i class="nav-icon fas fa-folder-plus"></i>
+                            <p>Syllable</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('content.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-user-lock"></i>
+                            <p>Content</p>
+                        </a>
+                    </li>
+                    <!-- //Management sidebar -->
 
-                <li class="nav-header">Data</li>
-                <li class="nav-item">
-                    <a href="{{ url('/donation') }}" class="nav-link">
-                        <i class="nav-icon fas fa-file"></i>
-                        <p>Donation</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/vdownload') }}" class="nav-link">
-                        <i class="nav-icon fas fa-file"></i>
-                        <p>Download Voice</p>
-                    </a>
-                </li>
-                
-            </ul>
-        </nav>
-        <!-- //.Sidebar-menu -->
+                    {{-- Donation sidebar --}}
+                    <li class="nav-header">Data</li>
+                    <li class="nav-item">
+                        <a href="{{ url('/donation') }}" class="nav-link">
+                            <i class="nav-icon fas fa-file"></i>
+                            <p>Donation</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/vdownload') }}" class="nav-link">
+                            <i class="nav-icon fas fa-file"></i>
+                            <p>Download Voice</p>
+                        </a>
+                    </li>
+                    {{-- //Donation sidebar --}}
+                </ul>
+            </nav><!-- //.Sidebar-menu -->
         </div>
         <!-- //.Sidebar -->
     </aside>
-    <!-- //Main Sidebar Container -->
+<!-- //Main Sidebar Container -->
 
     <main class="py-0">
         @yield('content')

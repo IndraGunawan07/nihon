@@ -90,8 +90,6 @@ class SyllableController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->bahasa);
-
         // Untuk validasi input
         $this->validator($request->all())->validate();
         // dd($request->all());
@@ -106,7 +104,6 @@ class SyllableController extends Controller
         // Disimpan di file storage
         $request->fileupload->storeAs('sound', $fileName, 'public');
         $terms = Terms::where('in_jws', $request->jws)->first();
-        // $user->is_locked = 0;
         $terms->save();
         $terms = Terms::paginate(10);
 
@@ -137,9 +134,7 @@ class SyllableController extends Controller
     }
 
     public function softdeleteterms(Request $request){
-        // dd($request->in_jws);
         $deleted = Terms::where('in_jws', $request->in_jws)->first();
-        // dd($deleted);
         $deleted->delete(); // untuk delete datanya
         $deleted->save(); // untuk deleted_by
         return back()->with("success_crud", "Your Terms Has Been Deleted");
@@ -155,7 +150,6 @@ class SyllableController extends Controller
             'in_rws' => $request->rws,
             'bahasa_translation' => $request->bahasa_translation,
             'bahasa' => $request->bahasa,
-            // 'sound_file_url' => $fileName,
         ]);
 
         // Untuk cek apakah ada file yg di ubah

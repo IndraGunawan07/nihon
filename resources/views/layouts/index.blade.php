@@ -5,22 +5,21 @@
 	<div class="banner" id="home">
     <div class="container">
         <div class="banner-main ser-lt">
-                <span class="line my-4"></span>
-                <h2 class="my-3 banner-sub" style="color: black">{{ get_username('head') }}</h2>
-                <span class="line my-4"></span>
-                <h6 class="my-" style="color: black">{{ get_username('sub judul')}}</h6>
-                {{-- nihonesia is an audio dataset consisting of short clip of human speech in japanese.  --}}
-                @if(Session::has('success'))
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="alert alert-success alert-dismissible fade show col-md-4 p-3 pr-5">
-                            {{ Session::get('success') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+            <span class="line my-4"></span>
+            <h2 class="my-3 banner-sub" style="color: black">{{ get_username('head') }}</h2>
+            <span class="line my-4"></span>
+            <h6 class="my-" style="color: black">{{ get_username('sub judul')}}</h6>
+            @if(Session::has('success'))
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="alert alert-success alert-dismissible fade show col-md-4 p-3 pr-5">
+                        {{ Session::get('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                @endif
+                </div>
+            @endif
         </div>
     </div>
     </div>
@@ -29,23 +28,22 @@
 
 <!-- about -->
     <div class="about bg-light py-5" id="about">
-            <div class="container py-3">
-                    <div class="middle-heading text-center mb-5">
-                        <h3>about</h3>
-                    </div>
-
-                    <div class="row">
-                            <div class="col-lg-4 mb-lg-0 mb-5 about-left">
-                                <h2 class="" style="padding-top: 30px;">{{ get_username('about left') }}</h2>
-                            </div>
-                            <div class="col-lg-8 about-right pl-4">
-                                <span>{{ get_username('about word') }}</span><p class="right-text">{{ get_username('about long')}}</p>
-                            </div>
-                    </div>
-                    <img src="{{ asset('images/1.png')}}" class="img-fluid mt-5" alt="" style="display: block; margin-left: auto; 
-                    margin-right: auto; width: 80%; height: 60%">
-                    {{-- <p class="iner mt-4"> Nunc fermentum adipiscing tempor cursus nascetur adipiscing adipiscing. Primis aliquam mus lacinia lobortis phasellus suscipit. Fermentum lobortis non tristique ante proin sociis accumsan lobortis. Auctor etiam porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum consequat integer interdum integer purus sapien. Nibh eleifend nulla nascetur pharetra commodo mi augue interdum tellus. Ornare cursus augue feugiat sodales velit lorem. Semper elementum ullamcorper lacinia natoque aenean scelerisque.</p> --}}
+        <div class="container py-3">
+            <div class="middle-heading text-center mb-5">
+                <h3>about</h3>
             </div>
+
+            <div class="row">
+                <div class="col-lg-4 mb-lg-0 mb-5 about-left">
+                    <h2 class="" style="padding-top: 30px;">{{ get_username('about left') }}</h2>
+                </div>
+                <div class="col-lg-8 about-right pl-4">
+                    <span>{{ get_username('about word') }}</span><p class="right-text">{{ get_username('about long')}}</p>
+                </div>
+            </div>
+            <img src="{{ asset('images/1.png')}}" class="img-fluid mt-5" alt="" style="display: block; margin-left: auto; 
+            margin-right: auto; width: 80%; height: 60%"> 
+        </div>
     </div>
 <!-- //about -->
 

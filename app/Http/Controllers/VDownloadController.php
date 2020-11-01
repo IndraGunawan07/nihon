@@ -21,7 +21,7 @@ class VDownloadController extends Controller
      */
     public function index()
     {
-        // silahkan di code
+        // code here
         return view('administator.vdownload');
     }
 
@@ -62,10 +62,5 @@ class VDownloadController extends Controller
             $zip->close();
             return response()->download('download.zip');
         }
-
-        // for($i=0;$i<=$arrayLength;$i++)
-        // {
-        //     echo $donations[$i]->donation_file_url;
-        // }
     }
 }

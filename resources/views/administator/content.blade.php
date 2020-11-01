@@ -3,77 +3,65 @@
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-12">
-            <h1 class="m-0 text-dark">Content Management</h1>
-          </div>
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-12">
+          <h1 class="m-0 text-dark">Content Management</h1>
         </div>
-      </div><!-- /.container-fluid -->
-    </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </div>
 
-
-    <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">DataTable Content</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th width="5%">#</th>
-                        <th width="15%">References Key</th>
-                        <th width="35%">Value</th>
-                        {{-- <th width="15%">Created By</th> --}}
-                        <th width="10%"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php $i = 1; ?>
-                      @foreach ($content as $key) 
-                      <tr>
-                        <td><?=$i++?></td>
-                        <td>{{ $key->reference_key }}</td>
-                        <td>{{ $key->value }}</td>
-                        {{-- <td>{{ $key->created_by }}</td> --}}
-                        <td>
-                          <form action="{{ route('updatecontent') }}" method="POST">
-                            @csrf
-                            <button type="button" class="btn btn-info btn-sm m-1" data-toggle="modal" data-target="#myModal" data-reference_key="{{ $key->reference_key }}" data-value="{{ $key->value }}" data-id="{{ $key->id }}">Edit</button>
-                          </form>
-                        </td>
-                        {{-- <td> --}}
-                          {{-- untuk button delete --}}
-                          {{-- <form action="{{ route('content.destroy', $key->id) }}" method="post">
-                              {{ method_field('DELETE')}}
-                              @csrf
-                            <button class="btn btn-danger btn-sm">Delete</button>
-                            <input type="hidden" name="id" value="{{ $key->id }}"> --}}
-                          {{-- </form> --}}
-                        {{-- </td> --}}
-                      </tr>
-                    @endforeach
-                    </tbody>
-                  </table>
-                </div>
-                 <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-              </div>
-              <!-- /.col -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">DataTable Content</h3>
             </div>
-            <!-- /.row -->
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                  <tr>
+                    <th width="5%">#</th>
+                    <th width="15%">References Key</th>
+                    <th width="35%">Value</th>
+                    <th width="10%"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php $i = 1; ?>
+                  @foreach ($content as $key) 
+                  <tr>
+                    <td><?=$i++?></td>
+                    <td>{{ $key->reference_key }}</td>
+                    <td>{{ $key->value }}</td>
+                    <td>
+                      <form action="{{ route('updatecontent') }}" method="POST">
+                        @csrf
+                        <button type="button" class="btn btn-info btn-sm m-1" data-toggle="modal" data-target="#myModal" data-reference_key="{{ $key->reference_key }}" data-value="{{ $key->value }}" data-id="{{ $key->id }}">Edit</button>
+                      </form>
+                    </td>
+                  </tr>
+                @endforeach
+                </tbody>
+              </table>
+            </div>
+              <!-- /.card-body -->
           </div>
-          <!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
+            <!-- /.card -->
+        </div>
+          <!-- /.col -->
+      </div>
+        <!-- /.row -->
+    </div>
+        <!-- /.container-fluid -->
+  </section>
+    <!-- /.content -->
 </div>
 
 <!-- Edit Content Modal -->

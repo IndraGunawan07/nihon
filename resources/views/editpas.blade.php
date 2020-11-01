@@ -8,7 +8,6 @@
                 <div class="col-md-6" style="display: inline">{{ __('Change Password') }}</div>
             </div>
             
-            
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="card-body">
@@ -33,6 +32,7 @@
                                 </div>
                             </div>
 
+                            {{-- Password Confirmation --}}
                             <div class="form-group row">
                                 <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">{{ __('Confirm New Password') }}</label>
                                 <div class="col-md-6">
@@ -54,7 +54,6 @@
                                     </button>
                                 </div>
                             </div>
-
                         </form>
                     </div> <!-- /.card-body -->
                 </div> <!-- /.card-body profile -->

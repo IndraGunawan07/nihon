@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //Untuk penggunaan observer pada table terms
         Terms::observe(BlameableObserver::class);
     }
 }

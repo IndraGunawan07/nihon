@@ -110,7 +110,7 @@
                           </span>
                       @enderror
                   </div>
-              </div>
+                </div>
 
                 <!-- Upload File -->
                 <div class="form-group row">
@@ -128,6 +128,7 @@
                   </div>
                 </div>
               </div>
+
               <div class="modal-footer">
                 {{-- Submit Button --}}
                 <div class="col-md-6 offset-md-4">
@@ -138,92 +139,87 @@
               </div>
             </form>
           </div>
-          
         </div>
       </div>
 
       <!-- Edit Sylable Modal -->
       @include ('administator._form')
-      
     </div>
 
     <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">DataTable Syllable</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th width="5%">#</th>
-                        <th width="20%">JWS</th>
-                        <th width="20%">RWS</th>
-                        <th width="20%">Translate</th>
-                        <th width="15%">Created At</th>
-                        <th width="15%">Sound File</th>
-                        <th width="10%"></th>
-                        <th width="10%"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php $i = 1; ?>
-                        @foreach ($terms as $key) 
-                          <tr>
-                            <td><?=$i++?></td>
-                            <td>{{ $key->in_jws }}</td>
-                            <td>{{ $key->in_rws }}</td>
-                            <td>{{ $key->bahasa_translation }}</td>
-                            <td>{{ date('Y-M-d', strtotime($key->created_at)) }}</td>
-                            <td>
-                              <audio controls>
-                                <source src="{{ asset('storage/sound/'.$key->sound_file_url )}}" type="audio/mpeg">
-                              Your browser does not support the audio element.
-                              </audio>
-                            </td>
-                            <td>
-                              {{-- untuk button edit --}}
-                              <form action="{{ route('updateterms') }}" method="post">
-                                
-                                @csrf
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">DataTable Syllable</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th width="5%">#</th>
+                      <th width="20%">JWS</th>
+                      <th width="20%">RWS</th>
+                      <th width="20%">Translate</th>
+                      <th width="15%">Created At</th>
+                      <th width="15%">Sound File</th>
+                      <th width="10%"></th>
+                      <th width="10%"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $i = 1; ?>
+                      @foreach ($terms as $key) 
+                        <tr>
+                          <td><?=$i++?></td>
+                          <td>{{ $key->in_jws }}</td>
+                          <td>{{ $key->in_rws }}</td>
+                          <td>{{ $key->bahasa_translation }}</td>
+                          <td>{{ date('Y-M-d', strtotime($key->created_at)) }}</td>
+                          <td>
+                            <audio controls>
+                              <source src="{{ asset('storage/sound/'.$key->sound_file_url )}}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td>
+                            {{-- untuk button edit --}}
+                            <form action="{{ route('updateterms') }}" method="post">
+                              @csrf
                               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-jws="{{ $key->in_jws }}" data-rws="{{ $key->in_rws }}" 
                                 data-translate="{{ $key->bahasa_translation }}" data-filename="{{ $key->sound_file_url }}" 
                               data-id = "{{ $key->id }}" data-target="#editModal" data-bahasa="{{ $key->bahasa }}">Edit</button>
-                                {{-- <button class="btn btn-primary btn-sm">Edit</span></button> --}}
-                                {{-- <input type="hidden" name="user" value="{{ $key->in_jws }}"> --}}
-                              </form>
-                            </td>
-                            <td>
-                              {{-- untuk button delete --}}
-                              <form action="{{ route('deleteterms') }}" method="post">
-                                @csrf
-                                <button class="btn btn-danger btn-sm">Delete</button>
-                                <input type="hidden" name="in_jws" value="{{ $key->in_jws }}">
-                              </form>
-                            </td>
-                          </tr>
-                        @endforeach
-                    </tbody>
-                  </table>
-                  <div style="text-align: end">
-                    {{ $terms->links() }}
-                  </div>
+                            </form>
+                          </td>
+                          <td>
+                            {{-- untuk button delete --}}
+                            <form action="{{ route('deleteterms') }}" method="post">
+                              @csrf
+                              <button class="btn btn-danger btn-sm">Delete</button>
+                              <input type="hidden" name="in_jws" value="{{ $key->in_jws }}">
+                            </form>
+                          </td>
+                        </tr>
+                      @endforeach
+                  </tbody>
+                </table>
+                <div style="text-align: end">
+                  {{ $terms->links() }}
                 </div>
-                 <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
               </div>
-              <!-- /.col -->
+                <!-- /.card-body -->
             </div>
-            <!-- /.row -->
+              <!-- /.card -->
           </div>
-          <!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
+            <!-- /.col -->
+        </div>
+          <!-- /.row -->
+      </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
 </div>
 
 <script>

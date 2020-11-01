@@ -20,7 +20,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
 
         {{-- bootstrap --}}
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
@@ -120,7 +119,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                              <a class="dropdown-item" href="" onclick="event.preventDefault();
                              document.getElementById('password-form').submit();">
                                 {{ __('Edit Password') }}
-                            </a>
+                             </a>
 
                              {{-- Logout dropdown --}}
                              <a class="dropdown-item" href="{{ route('logout') }}"
@@ -138,7 +137,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                              </form>
                              <form id="password-form" action="{{ route('profile.editpassword') }}" method="GET" style="display: none;">
                                 @csrf
-                            </form>
+                             </form>
                          </div>
                      </li>
                  @endguest

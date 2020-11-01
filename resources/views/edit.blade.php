@@ -20,7 +20,7 @@
                             <input id="file-input" type="file" name="avatar" onchange="readURL(this)" />
                         </div>
                         @else 
-                        <!-- Ketika user klik image profile, maka akan muncul file upload -->
+                        <!-- Ketika user klik image profile, maka akan muncul file upload, ini untuk user yang sudah punya avatar-->
                         <div class="img-wrap image-upload">
                             <label for="file-input">
                             <img id="blah" class="profile-user-img img-fluid rounded-circle"
@@ -32,43 +32,28 @@
                         @endif
                     </div>
                     <div class="card-body">
-
-                            <!-- User Name Edit Profile -->
-                            <div class="form-group row">
-                                <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('User Name') }}</label>
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username', $user->username) }}" autocomplete="username" autofocus>
-                                    <input type="hidden" id="hiddenid" name="id" value="{{ $user->id }}">
-                                    @error('username')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                        <!-- User Name Edit Profile -->
+                        <div class="form-group row">
+                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('User Name') }}</label>
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username', $user->username) }}" autocomplete="username" autofocus>
+                                <input type="hidden" id="hiddenid" name="id" value="{{ $user->id }}">
+                                @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
+                        </div>
 
-                            <!-- Update Password -->
-                             {{-- <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="" autocomplete="password">
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror 
-                                </div>
-                            </div> --}}
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-4 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Update Profile
-                                    </button>
-                                </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-4 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Update Profile
+                                </button>
                             </div>
-
-                        </form>
+                        </div>
+                    </form>
                     </div> <!-- /.card-body -->
                 </div> <!-- /.card-body profile -->
             </div>  <!-- /.card -->

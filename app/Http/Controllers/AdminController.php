@@ -19,7 +19,6 @@ class AdminController extends Controller
     public function __construct(){
         // make sure user sudah sign in dan dia admin
         $this->middleware('auth');
-        // $this->middleware('checkadmin');
     }
     
     /**
@@ -29,19 +28,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
-        // Log::info();
-        // $users = User::where('role', '!=', auth()->id())->get(); untuk user curr gk ikut
+        // untuk cek apakah role user adalah admin
         if(Auth::user()->role !== 'Admin'){
             abort(404);
-            // TESTING
         } else {
             $users = User::where('role', '!=', 'Admin')->get()->count();
-            // $users = $users->count();
             $terms = Terms::all()->count();
             $valdonation = Donations::where('is_valid', '!=', false)->get()->count();
             $donation = Donations::where('is_valid', '==', false)->get()->count();
-            // dd($valdonation);
             return view ('administator.home',compact(['users', 'terms', 'valdonation', 'donation']));
         }
     }
@@ -49,9 +43,7 @@ class AdminController extends Controller
     public function showuser()
     {
         //
-        // Log::info();
         $users = User::where('id', '!=', auth()->id())->get(); //untuk user curr gk ikut
-        // $users = User::where('role', '!=', 'Admin')->get();
         return view ('administator.index',compact('users'));
     }
 
@@ -86,7 +78,6 @@ class AdminController extends Controller
 
     public function addUser(Request $request)
     {
-        //dd($request->fileupload->getClientOriginalName());
         $this->validator($request->all())->validate();
         User::create([
             'username' => $request->username,

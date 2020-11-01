@@ -5,20 +5,16 @@
 <div class="banner-contribute" id="home">
     <div class="container">
         <div class="ser-lt" style="padding-top: 10em; text-align: center;">
-                <span class="line my-4"></span>
-                <h2 class="my-3 banner-sub" style="color: black; display: inline;">{{ $terms->in_jws }} / {{ $terms->in_rws }} / {{ $terms->bahasa_translation }}</h2>
-                <span class="fas fa-play-circle fa-2x pl-3" id="playAudio"></span>
-                {{-- <span class="line my-4"></span>
-                <h4 class="my-3 banner-sub" style="color: black; font-size: 30px;">{{ $terms->in_rws }}</h4>
-                <span class="line my-4"></span>
-                <h6 class="my-" style="color: black">{{ $terms->bahasa_translation }}</h6> --}}
+          <span class="line my-4"></span>
+          <h2 class="my-3 banner-sub" style="color: black; display: inline;">{{ $terms->in_jws }} / {{ $terms->in_rws }} / {{ $terms->bahasa_translation }}</h2>
+          <span class="fas fa-play-circle fa-2x pl-3" id="playAudio"></span>
         </div>
 
         <div style="text-align: center; padding-top: 12px;"> 
             <audio id="dataAudio">
                 <source src="{{ asset('storage/sound/' . $terms->sound_file_url )}}" type="audio/mpeg">
               Your browser does not support the audio element.
-              </audio>
+            </audio>
         </div>
         <div style="text-align: center; padding-top: 12px;">
             <p>The Audio will record for 5 seconds when you press start</p>
@@ -28,7 +24,6 @@
             <div id="audio-form" action="{{ route('saveAudio') }}">
               <button id="save" style="display: none;">Save</button>
             </div>
-            {{-- <div id="hidsddenid" value="{{ $terms->id }}"></div> --}}
             <input type="hidden" id="hiddenid" name="idhidden" value="{{ $terms->id }}">
             <input type="hidden" id="hiddenrws" name="rwshidden" value="{{ $terms->in_rws }}">
         </div>
