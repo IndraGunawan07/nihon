@@ -55,13 +55,13 @@
             </div>
             <div class="row">
                 <div class="col-md-4 p-0 pt-5 team-left text-center">
-                    <img src="" class="img-fluid mb-5" alt="">
+                    <img src="{{ asset('images/indra.jpg') }}" class="img-fluid mb-2" alt="" style="width: 50%; height: 50%">
                     <h4>Indra Gunawan</h4>
-                    <p>Lahir di dunia, gender pria, suka makan, hobi bernapas. single 2020.</p>
+                    <p>100% Real Human</p>
                     <div class="team-social py-4 text-center">
                         <ul class="social-icons text-center">
                             <li>
-                                <a href="#">
+                                <a href="https://www.instagram.com/indra.gunawan7/">
                                     <i class="fab fa-instagram"></i>
                                 </a>
                             </li>
@@ -72,20 +72,20 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="fab fa-google-plus-g"></i>
+                                    <i class="fab fa-facebook"></i>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-4 p-0 pt-md-0 pt-5 team-middle text-center">
-                    <img src="" class="img-fluid mb-5" alt="">
+                 <img src="{{ asset('images/kojul.jpg')}}" class="img-fluid mb-2" alt="" style="width: 60%; height: 50%">
                     <h4>Julio Christian Young</h4>
-                    <p>Morbi non elit sed neque init rhoncus maximus ac enim elit sed neque init.</p>
+                    <p>100% Real Human</p>
                     <div class="team-social py-4 text-center">
                         <ul class="social-icons text-center">
                             <li>
-                                <a href="#">
+                                <a href="https://www.instagram.com/julio_cyoung/">
                                     <i class="fab fa-instagram"></i>
                                 </a>
                             </li>
@@ -96,16 +96,16 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="fab fa-google-plus-g"></i>
+                                    <i class="fab fa-facebook"></i>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-4 p-0 pt-5 team-right text-center">
-                    <img src="" class="img-fluid mb-5" alt="">
+                    <img src="{{ asset('images/bella.jpg') }}" class="img-fluid mb-2" alt="" style="width: 50%; height: 50%">
                     <h4>Bella Anggraini Utomo</h4>
-                    <p>Morbi non elit sed neque init rhoncus maximus ac enim elit sed neque init.</p>
+                    <p>100% Real Human</p>
                     <div class="team-social py-4 text-center">
                         <ul class="social-icons text-center">
                             <li>
@@ -121,7 +121,7 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="fab fa-google-plus-g"></i>
+                                    <i class="fab fa-facebook"></i>
                                 </a>
                             </li>
                         </ul>

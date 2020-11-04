@@ -62,7 +62,7 @@ library.add(
     faCheckSquare,
     faFileAudio,
     faPlus, faMinus,
-    faTwitter, faInstagram, faGooglePlusG
+    faTwitter, faInstagram, faFacebook
 );
 
 dom.watch();
