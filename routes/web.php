@@ -58,8 +58,10 @@ Route::post('/update', 'SyllableController@updatesyllable')->name('updateterms')
 Route::get('/reset', 'Auth\ResetPasswordController@index')->name('reset');
 Route::post('reset', 'Auth\ResetPasswordController@confirmPass')->name('confirmpass');
 
-// route buat approve user dari admin
-Route::post('/approve', 'AdminController@approve')->name('approve');
+// route buat approve contributor dari admin
+Route::post('/approve', 'AdminController@approveContributor')->name('approve');
+// route buat approve validator dari admin
+Route::post('/validator', 'AdminController@approveValidator')->name('validator');
 // route buat add user dari admin
 Route::post('/add', 'AdminController@addUser')->name('addUser');
 // route buat delete user dari admin

@@ -295,7 +295,8 @@
                     <th width="20%">Username</th>
                     <th width="20%">Joined</th>
                     <th width="20%">Role</th>
-                    <th width="15%">Approve</th>
+                    <th width="15%">Approve as Contributor</th>
+                    <th width="15%">Approve as Validator</th>
                     <th width="10%">Action</th>
                     <th width="20%">Action</th>
                   </tr>
@@ -311,6 +312,7 @@
                         <td>{{ $user->username }}</td>
                         <td>{{ date('Y-M-d', strtotime($user->created_at)) }}</td>
                         <td>{{ $user->role }}</td>
+                        {{-- approve as contributor --}}
                         <td>
                           <form action="{{ route('approve') }}" method="post">
                             @csrf
@@ -321,7 +323,19 @@
                             <button class="btn btn-info btn-sm" disabled>Approve</button>
                             @endif
                           </form>
-                        </td>                  
+                        </td>
+                        {{-- approve as validator --}}
+                        <td>
+                          <form action="{{ route('validator') }}" method="post">
+                            @csrf
+                            @if($user->role != 'Validator')
+                              <button class="btn btn-info btn-sm">Approve</button>
+                              <input type="hidden" name="user" value="{{ $user->username }}">
+                            @else
+                            <button class="btn btn-info btn-sm" disabled>Approve</button>
+                            @endif
+                          </form>
+                        </td>              
                         <td>
                           {{-- untuk button edit --}}
                           <form action="{{ route('editUser') }}" method="post">

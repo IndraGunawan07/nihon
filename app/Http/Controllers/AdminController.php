@@ -47,13 +47,22 @@ class AdminController extends Controller
         return view ('administator.index',compact('users'));
     }
 
-    public function approve(Request $request)
+    public function approveContributor(Request $request)
     {   
         // dd($request->user);
         $user = User::where('username', $request->user)->first();
         $user->is_locked = 0;
         $user->save();
-        return back()->with("success_crud", $request->user . ' Has Been Approved');
+        return back()->with("success_crud", $request->user . ' Has Been Approved as Contributor');
+    }
+
+    public function approveValidator(Request $request)
+    {   
+        // dd($request->user);
+        $user = User::where('username', $request->user)->first();
+        $user->role = "Validator";
+        $user->save();
+        return back()->with("success_crud", $request->user . ' Has Been Approved as Validator');
     }
 
     protected function validator(array $data)
