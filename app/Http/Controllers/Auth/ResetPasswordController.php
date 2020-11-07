@@ -41,16 +41,11 @@ class ResetPasswordController extends Controller
 
     public function confirmPass(Request $request)
     {
-        // dd($request->all());
-        // Log::info('masuk');
         if($request->validate([
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]))
         {
             Log::info('masuk');
-            // $user = new User;
-            // $user->setPassword($request->username, $request->password);
-            //$user->setRememberToken(Str::random(60));
             $user = User::where('username', $request->username)->first();
             $user->password = Hash::make($request->password);
             $user->save();

@@ -43,9 +43,7 @@ class ContributeController extends Controller
             'donation_file_url' => $fileName,
         ]);
         $files->storeAs('sound', $fileName , 'public');
-        // $files->storeAs('sound', 'test.mp3', 'public');
         return view('auth.login');
-        // $user->save();
     }
 
 }

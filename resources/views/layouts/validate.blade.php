@@ -21,8 +21,8 @@
           <p>Is the audio you heard above valid?</p>
           <form action="{{ route('validation') }}" method="POST">
             @csrf
-            <button name="yes">Yes</button>
-            <button name="no">No</button>
+            <button name="yes" class="btn btn-info btn-sm">Yes</button>
+            <button name="no" class="btn btn-danger btn-sm">No</button>
             <input type="hidden" name="donation_id" value="{{ $donations->id }}">
           </form>
         </div>

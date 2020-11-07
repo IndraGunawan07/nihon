@@ -27,37 +27,31 @@ class VDownloadController extends Controller
 
     public function downloadLink(Request $request)
     {
-        // dd($request);
-        // dd($request->enddate);
         $downloadDate = date('Y-m-d h:i:s');
         $enddate = date('Y-m-d', strtotime($request->enddate . '+1 days'));
-        // echo $enddate;
-        $donations = Donations::all()->where('downladed_at', null)->where('created_at', '>=', $request->startdate)->where('created_at', '<=', $enddate);
+        $donations = Donations::all()->where('downladed_at', null)
+                                     ->where('created_at', '>=', $request->startdate)
+                                     ->where('created_at', '<=', $enddate)
+                                     ->where('is_valid', 1);
         $arrayLength = $donations->count();
-        // dd($donations);
-
-
-        for($i=0;$i<$arrayLength;$i++)
+        if($arrayLength < 1)
         {
-            // $donations[$i]->update([
-            //     'downloaded_at' => $downloadDate,
-            //     'downloaded_by' => Auth::user()->id
-            // ]);
-            
-            $donate = Donations::where('id', $donations[$i]->id)->first();
-            // dd($donate);
+            return back()->with('empty', 'No downloadable data available for that date range');
+        }
+
+        foreach($donations as $donate)
+        {
             $donate->downloaded_at = $downloadDate;
             $donate->downloaded_by = Auth::user()->id;
             $donate->save();
-            // dd($donate);
         }
         
         $zip = new \ZipArchive;
         if($zip->open('download.zip', \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === TRUE)
         {
-            for($i=0;$i<$arrayLength;$i++)
+            foreach($donations as $donate)
             {
-                $zip->addFile('storage/sound/'.$donations[$i]->donation_file_url);
+                $zip->addFile('storage/sound/'.$donate->donation_file_url);
             }
             $zip->close();
             return response()->download('download.zip');

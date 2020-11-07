@@ -245,6 +245,10 @@
         <script>
             toastr.success("{!!Session::get('success_crud')!!}");
         </script>
+    @elseif(Session::has('empty'))
+    <script>
+        toastr.warning("{!!Session::get('empty')!!}");
+    </script>
     @endif
 </body>
 </html>

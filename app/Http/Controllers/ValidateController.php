@@ -24,18 +24,11 @@ class ValidateController extends Controller
     {
         // Cek user valid 
         if(Auth::user()->role !== "Validator" || Auth::user()->is_locked === 1){
-            // toastr()->add('Add message here');
             return redirect("/")->with("not_authorized", "Sorry you don't have access");
         }
         else {
-            // $terms = Terms::inRandomOrder()->first(); // coba doang
-            // $donations = Donations::inRandomOrder()->first();
             $donations = Donations::where('is_valid', 0)->where('validate_at', null)->inRandomOrder()->first();
             $terms = $donations->Terms;
-            // $terms = Terms::inRandomOrder()->first();
-            // $donations = $terms->Donations->where('is_valid', 0)->where('validate_at', null)->first();
-            // dd($terms);
-
             return view('layouts.validate', compact('terms', 'donations'));
         }
         
@@ -56,11 +49,11 @@ class ValidateController extends Controller
         }
         else
         {
-            // $updateValid->update([
-            //     'validate_at' => date('ymdhms'),
-            //     'validated_by' => Auth::user()->id,
-            //     'is_valid' => 0
-            // ]);
+            $updateValid->update([
+                'validate_at' => date('ymd'),
+                'validated_by' => Auth::user()->id,
+                'is_valid' => 0
+            ]);
             return redirect('/')->with('success_update',"Thanks for validating our voice");
 
         }

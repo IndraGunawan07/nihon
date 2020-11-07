@@ -39,5 +39,11 @@ class ForgotPasswordController extends Controller
             Log::info('berhasil');
             return redirect('reset')->with('username', $username);
         }
+        else
+        {
+            $validUser = $user->getUser($username);
+            $gagal = "Jawaban salah";
+            return view('auth.secret')->with('gagal', $gagal)->with('validUser', $validUser);
+        }
     }
 }

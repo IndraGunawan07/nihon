@@ -38,9 +38,6 @@
     const playButton = document.getElementById('playAudio');
     const dataAudio = document.getElementById('dataAudio');
     const recordButton = document.getElementById('record');
-
-    console.log(saveButton);
-    let recorded = document.getElementById('recordedAudio');
     var device = navigator.mediaDevices.getUserMedia({audio: true});
     var blob;
     var isPlaying = 0;
@@ -48,9 +45,6 @@
     
     let id = $('#hiddenid').attr('value');
     let rws = $('#hiddenrws').attr('value');
-    console.log(rws);
-    
-    console.log(id);
 
     playButton.addEventListener('click', function(){
       if(!isPlaying)
@@ -63,15 +57,6 @@
         isPlaying = !isPlaying;
       }
     });
-
-    // startButton.addEventListener('click', function(){
-    //     console.log("start is clicked");
-    //     device.then(handleSuccess);
-    //     if(audio.childNodes.length > 0)
-    //     {
-    //       audio.removeChild(audio.childNodes[0]);
-    //     }
-    // });
 
     recordButton.addEventListener('click', function(){
       console.log("start is clicked");
@@ -107,13 +92,11 @@
                 processData: false,
                 contentType: false
             }).done(function(data) {
-                  //  console.log(data);
-                  //  alert("Berhasilll woyy","Data udah masuk cok");
-                  toastr.success("Your Vote Has Been Saved");
+                  toastr.success("Your Donation Has Been Saved");
             });
       var pending = setTimeout(() => {
         location.reload();
-      }, 2000);
+      }, 3000);
     });
 
     const handleSuccess = function(stream)

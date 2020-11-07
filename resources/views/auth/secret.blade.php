@@ -14,7 +14,6 @@
                         <form action="{{ route('check') }}" method="post">
                             @csrf
                             
-                            {{-- {{ dd(get_defined_vars()['__data']['validUser']->username) }} --}}
                             <div class="form-group row">
                                 <label for="secretanswer" class="col-md-4 col-form-label text-md-right">{{ __('Your Answer') }}</label>
                                 <div class="col-md-6">
@@ -26,11 +25,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @error('secretanswer')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    @if(!empty($gagal))
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        {{ $gagal }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
 
